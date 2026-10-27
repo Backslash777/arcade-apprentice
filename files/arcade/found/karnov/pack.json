@@ -1,0 +1,109 @@
+{
+ "id": "found-karnov",
+ "name": "KARNOV (arcade, auto)",
+ "set": "karnov",
+ "rom_file": "karnov.zip",
+ "crcs": [
+  "02f78ffb",
+  "05669b4b",
+  "072d7c49",
+  "0ed77c6d",
+  "18697c9e",
+  "1e04d7b9",
+  "29d64e42",
+  "2ad53213",
+  "55e63a11",
+  "8933fcb8",
+  "8fd4fa40",
+  "90d9dd9c",
+  "9806772c",
+  "a03308f9",
+  "a4a34e37",
+  "a9121653",
+  "aab0bb93",
+  "ac9e6732",
+  "b70ae950",
+  "db92c264",
+  "fa1a31a8",
+  "fc14291b"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   16,
+   23,
+   76,
+   230
+  ],
+  "fg": 65535,
+  "edge": 44,
+  "gap": 4,
+  "keys": {
+   "5be496e1ebd5": 2,
+   "018ab2541dcf": 4,
+   "18358abe1206": 1,
+   "f9f8a841c084": 8,
+   "1507000dd349": 0
+  },
+  "frame_shape": [
+   240,
+   256
+  ],
+  "report": {
+   "ups": 7,
+   "resets": 1,
+   "digits_seen": 5,
+   "rules": 2,
+   "brain_sure": 0.999,
+   "values": [
+    0,
+    10,
+    220,
+    0,
+    10,
+    220,
+    440,
+    1840,
+    2240
+   ],
+   "zero": "1507000dd349"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 5017,
+  "values": [
+   96,
+   160
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 7,
+  "final": 2240,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 06:30",
+ "n_actions": 36
+}

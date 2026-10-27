@@ -1,0 +1,96 @@
+{
+ "id": "found-cawingu",
+ "name": "CAWINGU (arcade, auto)",
+ "set": "cawingu",
+ "rom_file": "cawingu.zip",
+ "crcs": [
+  "0b0341c3",
+  "0c4837d4",
+  "4a613a2c",
+  "4d0620fd",
+  "66d4cc37",
+  "74584493",
+  "91fceacd",
+  "96fe7485",
+  "b6f896f2",
+  "c73fd713",
+  "e5b75caf",
+  "f090d9b2"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 3087,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 3899,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 2159,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 2855,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 1231,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 24,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 49,
+  "final": 300,
+  "distinct_steps": 3,
+  "busy": 0.35
+ },
+ "made": "2026-10-11 04:28",
+ "n_actions": 36
+}

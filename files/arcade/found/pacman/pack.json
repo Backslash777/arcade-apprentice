@@ -1,0 +1,98 @@
+{
+ "id": "found-pacman",
+ "name": "Pac-Man (arcade, found)",
+ "set": "pacman",
+ "rom_file": "pacman.zip",
+ "crcs": [
+  "0c944964",
+  "1a6fb2d4",
+  "2fc650bd",
+  "3eb3a8e4",
+  "77245b66",
+  "817d94e3",
+  "958fedf9",
+  "a9cc86bf",
+  "bcdd1beb",
+  "c1e6ab10"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 1664,
+  "swapped": false,
+  "scale": 1,
+  "penalty": 0.0,
+  "why": "87 changes, 0 drops, 0 unreadable of 800"
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1664,
+   "swapped": false,
+   "scale": 1,
+   "penalty": 0.0,
+   "why": "87 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1672,
+   "swapped": false,
+   "scale": 1,
+   "penalty": 0.0,
+   "why": "87 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "digits",
+   "stride": -1,
+   "base": 0,
+   "offset": 6151,
+   "swapped": false,
+   "scale": 1,
+   "max_digits": 8,
+   "penalty": 0.1,
+   "why": "87 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "digits",
+   "stride": -1,
+   "base": 0,
+   "offset": 6141,
+   "swapped": false,
+   "scale": 1,
+   "max_digits": 8,
+   "penalty": 0.1713,
+   "why": "86 changes, 0 drops, 19 unreadable of 800"
+  }
+ ],
+ "lives": {
+  "offset": 1556,
+  "adjust": 0,
+  "penalty": 0.03754693366708385
+ },
+ "playing": {
+  "offset": 1536,
+  "values": [
+   3
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "labels": [
+  200,
+  400,
+  580,
+  590
+ ],
+ "made": "2026-10-10 02:36",
+ "n_actions": 9
+}

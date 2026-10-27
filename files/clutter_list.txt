@@ -1,0 +1,77 @@
+# FREE UP THIS PC - apps the kit can close while an AI trains.
+# One line per program:   program.exe | Name people see | warning (optional)
+# Lines with the same Name are closed together (one tick box on the page).
+# "program.exe @Word" only closes it when its folder path contains Word (for shared helper names).
+# Lines starting with # are ignored. Add your own at the bottom. A restart brings everything back.
+
+# --- Game launchers ---
+steam.exe | Steam
+steamwebhelper.exe | Steam
+EpicGamesLauncher.exe | Epic Games Launcher
+EpicWebHelper.exe | Epic Games Launcher
+EADesktop.exe | EA app
+Battle.net.exe | Battle.net
+upc.exe | Ubisoft Connect
+UplayWebCore.exe | Ubisoft Connect
+GalaxyClient.exe | GOG Galaxy
+RiotClientServices.exe | Riot Client
+Overwolf.exe | Overwolf
+
+# --- Chat and calls ---
+Discord.exe | Discord | You'll drop out of any voice chat.
+WhatsApp.exe | WhatsApp
+WhatsApp.Root.exe | WhatsApp
+ms-teams.exe | Microsoft Teams | You'll drop out of any call.
+Teams.exe | Microsoft Teams | You'll drop out of any call.
+Telegram.exe | Telegram
+Slack.exe | Slack
+Zoom.exe | Zoom | You'll drop out of any call.
+
+# --- Cloud sync ---
+OneDrive.exe | OneDrive | Files stop syncing until you restart it.
+GoogleDriveFS.exe | Google Drive | Files stop syncing until you restart it.
+Dropbox.exe | Dropbox | Files stop syncing until you restart it.
+
+# --- Lighting, mice and keyboards ---
+iCUE.exe | Corsair iCUE | Lighting and mouse/keyboard macros may stop until you restart it.
+QmlRenderer.exe @Corsair | Corsair iCUE
+crashpad_handler.exe @Corsair | Corsair iCUE
+RazerAppEngine.exe | Razer Synapse | Lighting and mouse/keyboard macros may stop until you restart it.
+Razer Central.exe | Razer Synapse
+RzEngineMon.exe | Razer Synapse
+razerwdl.exe | Razer Synapse
+lghub.exe | Logitech G HUB | Lighting and mouse/keyboard macros may stop until you restart it.
+lghub_agent.exe | Logitech G HUB
+ArmouryCrate.exe | ASUS Armoury Crate | Lighting may stop until you restart it.
+SteelSeriesGG.exe | SteelSeries GG | Lighting and mouse/keyboard macros may stop until you restart it.
+SteelSeriesEngine.exe | SteelSeries GG
+SignalRgb.exe | SignalRGB | Lighting may stop until you restart it.
+
+# --- Android emulators ---
+dnplayer.exe | LDPlayer
+dnmultiplayerex.exe | LDPlayer
+dnmultiplayer.exe | LDPlayer
+HD-Player.exe | BlueStacks
+HD-MultiInstanceManager.exe | BlueStacks
+
+# --- VPNs ---
+Surfshark.exe | Surfshark | Your VPN may disconnect.
+NordVPN.exe | NordVPN | Your VPN may disconnect.
+ExpressVPN.exe | ExpressVPN | Your VPN may disconnect.
+
+# --- Music ---
+Spotify.exe | Spotify | Your music stops.
+
+# --- Windows extras ---
+PhoneExperienceHost.exe | Phone Link
+CrossDeviceService.exe | Phone Link
+Widgets.exe | Windows Widgets
+WidgetBoard.exe | Windows Widgets
+WidgetService.exe | Windows Widgets
+MicrosoftStartFeedProvider.exe | Windows Widgets
+SDXHelper.exe | Office background helper
+
+# --- AI apps ---
+Kimi.exe | Kimi
+kimi-cu.exe | Kimi
+kimi-webbridge.exe | Kimi

@@ -1,0 +1,127 @@
+{
+ "id": "found-dw",
+ "name": "DW (arcade, auto)",
+ "set": "dw",
+ "rom_file": "dw.zip",
+ "crcs": [
+  "002796dc",
+  "0273d87d",
+  "068741db",
+  "07fc714b",
+  "152ea74a",
+  "1586dbf3",
+  "1833f932",
+  "187b2886",
+  "18fb232c",
+  "1aae69a4",
+  "21a0a453",
+  "29eaf490",
+  "2e2f8320",
+  "339378b8",
+  "381608ae",
+  "38652339",
+  "4951bc0f",
+  "52145369",
+  "523f462a",
+  "6b41f82d",
+  "6f9edd75",
+  "7114e5c6",
+  "7a13cfbf",
+  "7bf51337",
+  "89de1533",
+  "8f663d00",
+  "9db93d7a",
+  "a27e81fa",
+  "ac6e307d",
+  "af62bf07",
+  "b3b79d4f",
+  "b475d4e9",
+  "bc09b360",
+  "c3e83c69",
+  "c6909b6f",
+  "cc83c02f",
+  "cd7923ed",
+  "d36cdb91",
+  "e04af054",
+  "e3de76ff",
+  "e41fff2f",
+  "f9ec6d68",
+  "ff28f8d0"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 2739,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 260563,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 3899,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 260050,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 2043,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 24,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 132,
+  "final": 300,
+  "distinct_steps": 3,
+  "busy": 0.31
+ },
+ "made": "2026-10-11 07:17",
+ "n_actions": 36
+}

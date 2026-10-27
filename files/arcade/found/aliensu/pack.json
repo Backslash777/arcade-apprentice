@@ -1,0 +1,98 @@
+{
+ "id": "found-aliensu",
+ "name": "ALIENSU (arcade, auto)",
+ "set": "aliensu",
+ "rom_file": "aliensu.zip",
+ "crcs": [
+  "081a0566",
+  "0b1035b1",
+  "106cf59c",
+  "19a261f2",
+  "1ac4d283",
+  "24dd612e",
+  "4e209ac8",
+  "7da55800",
+  "89c5c885",
+  "e76b3c19",
+  "e9c56d66",
+  "ea6bdc17",
+  "f9387966"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   0,
+   7,
+   44,
+   117
+  ],
+  "fg": 53247,
+  "edge": 59,
+  "gap": 5,
+  "keys": {
+   "d24c4dd4c6d3": 6,
+   "112734b2e1da": 2,
+   "1718caf98aae": 9,
+   "7ad48627b671": 3,
+   "cd721a7d3d73": 5,
+   "afe308e8b597": 1,
+   "43d80b329474": 0
+  },
+  "frame_shape": [
+   224,
+   288
+  ],
+  "report": {
+   "ups": 5,
+   "resets": 0,
+   "digits_seen": 7,
+   "rules": 3,
+   "brain_sure": 0.928,
+   "values": [
+    0,
+    300,
+    600,
+    900,
+    1200,
+    1500
+   ],
+   "zero": "43d80b329474"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 2048,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 5,
+  "final": 1500,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 02:24",
+ "n_actions": 36
+}

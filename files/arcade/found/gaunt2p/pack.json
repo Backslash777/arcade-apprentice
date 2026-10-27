@@ -1,0 +1,101 @@
+{
+ "id": "found-gaunt2p",
+ "name": "GAUNT2P (arcade, auto)",
+ "set": "gaunt2p",
+ "rom_file": "gaunt2p.zip",
+ "crcs": [
+  "11e0ac5b",
+  "2843bde3",
+  "29a5db41",
+  "29ef9882",
+  "41f5c9e2",
+  "545ead91",
+  "5b4ee415",
+  "6d99ed51",
+  "6ee7f3cc",
+  "869330be",
+  "8784133f",
+  "8bf3b263",
+  "91700f33",
+  "9510b898",
+  "9e2a5b59",
+  "d497d0a8",
+  "fa19861f"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 1063,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 33372,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 135,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 1991,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 251,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 920,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 15,
+  "final": 300,
+  "distinct_steps": 2,
+  "busy": 0.28
+ },
+ "made": "2026-10-11 09:03",
+ "n_actions": 36
+}

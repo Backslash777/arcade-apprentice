@@ -1,0 +1,60 @@
+{
+ "id": "found-amidar",
+ "name": "AMIDAR (arcade, auto)",
+ "set": "amidar",
+ "rom_file": "amidar.zip",
+ "crcs": [
+  "1be170bd",
+  "2f7f1c30",
+  "3656be6f",
+  "5e51e84d",
+  "806785af",
+  "c294bf27",
+  "c4b66ae4",
+  "e6e96826",
+  "f940dcc3"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 480,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 357,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 91,
+  "final": 940,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 04:13",
+ "n_actions": 36
+}

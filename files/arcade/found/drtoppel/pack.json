@@ -1,0 +1,97 @@
+{
+ "id": "found-drtoppel",
+ "name": "DRTOPPEL (arcade, auto)",
+ "set": "drtoppel",
+ "rom_file": "drtoppel.zip",
+ "crcs": [
+  "2d39f1d0",
+  "3584b491",
+  "37a0d3fb",
+  "3e654f82",
+  "495c4c5a",
+  "49f2b1a5",
+  "5754e9d8",
+  "647007a0",
+  "6a547980",
+  "790ae654",
+  "7e72fd25",
+  "8bb06f41",
+  "a7e8a0c1"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 8709,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 8709,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 8708,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 8710,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 8710,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 1056,
+  "values": [
+   16
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 39,
+  "final": 505,
+  "distinct_steps": 6,
+  "busy": 0.05
+ },
+ "made": "2026-10-11 07:05",
+ "n_actions": 36
+}

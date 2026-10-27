@@ -1,0 +1,122 @@
+{
+ "id": "found-splatter",
+ "name": "SPLATTER (arcade, score read off the screen)",
+ "set": "splatter",
+ "rom_file": "splatter.zip",
+ "crcs": [
+  "0187de9a",
+  "08b1953a",
+  "1cedbbae",
+  "1e1f8488",
+  "2199cb66",
+  "24c8cbd7",
+  "24d0266f",
+  "25ea75b6",
+  "321f483b",
+  "350dee5b",
+  "3dfb0230",
+  "434dbe7d",
+  "4dd2ef05",
+  "4e07e6d9",
+  "5eebcdb4",
+  "684cf554",
+  "6e6526ee",
+  "7a3efe09",
+  "7a764999",
+  "80830b0e",
+  "8d05abdb",
+  "8ece9e0a",
+  "90abd4ad",
+  "955ce93f",
+  "97a3e664",
+  "9b6472af",
+  "b2422182",
+  "e4e5a581",
+  "e56e91ee",
+  "ffb5c0bd"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   12,
+   19,
+   91,
+   174
+  ],
+  "fg": 54970,
+  "edge": 53,
+  "gap": 6,
+  "keys": {
+   "00327d74ba98": 2,
+   "022e5d02f236": 7,
+   "094a13cd2bc9": 3,
+   "46905ff6bb17": 8,
+   "9d98880797c7": 6,
+   "c379ccee3fef": 5,
+   "f13562a75a7a": 4,
+   "17125cfdfb4a": 1,
+   "8ef61b0098fe": 9,
+   "78a305d9af0a": 0
+  },
+  "frame_shape": [
+   224,
+   288
+  ],
+  "report": {
+   "ups": 15,
+   "resets": 1,
+   "digits_seen": 10,
+   "rules": 8,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "zero": "78a305d9af0a"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 48,
+  "values": [
+   64
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "made": "2026-10-13 03:15",
+ "note": "made by Claude overnight to test screen-read scores; game-on flag from the Library Robot's check (13 Oct 03:35)",
+ "n_actions": 27,
+ "reset": "reboot"
+}

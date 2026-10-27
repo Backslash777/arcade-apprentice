@@ -1,0 +1,754 @@
+{
+ "n_raw": 53,
+ "top": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 10828,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 2,
+   "ups": 202,
+   "final": 38,
+   "downs": 1,
+   "bad": 0,
+   "distinct_steps": 3,
+   "step_gcd": 2,
+   "max_step": 38,
+   "busy": 0.39,
+   "agree": 2,
+   "confidence": "high"
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 10664,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 100,
+   "ups": 4,
+   "final": 400,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 1,
+   "step_gcd": 100,
+   "max_step": 100,
+   "busy": 0.06,
+   "agree": 2,
+   "confidence": "high"
+  },
+  {
+   "kind": "bin",
+   "n": 3,
+   "big": false,
+   "offset": 10828,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 2,
+   "ups": 202,
+   "final": 56,
+   "downs": 1,
+   "bad": 0,
+   "distinct_steps": 3,
+   "step_gcd": 2,
+   "max_step": 56,
+   "busy": 0.39,
+   "agree": 2,
+   "confidence": "medium"
+  }
+ ],
+ "groups": [
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    1,
+    false,
+    false,
+    "0x2a4c",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    false,
+    "0x2a4c",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    false,
+    "0x2a4c",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    1,
+    false,
+    true,
+    "0x2a4d",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x2a4d",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    true,
+    "0x2a4c",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    true,
+    "0x2a4d",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    true,
+    true,
+    "0x2a4b",
+    2,
+    38,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -200,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    false,
+    "0x2a4c",
+    200,
+    3800,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -200,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x2a4c",
+    200,
+    3800,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -200,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    true,
+    "0x2a4d",
+    200,
+    3800,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -200,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    true,
+    "0x2a4c",
+    200,
+    3800,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -200,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    true,
+    true,
+    "0x2a4c",
+    200,
+    3800,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    4,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    false,
+    "0x29a8",
+    100,
+    400,
+    1,
+    0.06
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    4,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x29a7",
+    100,
+    400,
+    1,
+    0.06
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    4,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    true,
+    "0x29a8",
+    100,
+    400,
+    1,
+    0.06
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    4,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    true,
+    "0x29a7",
+    100,
+    400,
+    1,
+    0.06
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    4,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    true,
+    true,
+    "0x29a7",
+    100,
+    400,
+    1,
+    0.06
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x2a4c",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    2,
+    false,
+    false,
+    "0x2a4c",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    3,
+    false,
+    false,
+    "0x2a4c",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x2a4d",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    2,
+    false,
+    true,
+    "0x2a4d",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    2,
+    true,
+    true,
+    "0x2a4c",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    3,
+    false,
+    true,
+    "0x2a4d",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    202,
+    -2,
+    true
+   ],
+   "c": [
+    "bin",
+    3,
+    true,
+    true,
+    "0x2a4b",
+    2,
+    56,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -20000,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    true,
+    false,
+    "0x2a4c",
+    20000,
+    380000,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -20000,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    true,
+    "0x2a4b",
+    20000,
+    380000,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    202,
+    -20000,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    true,
+    true,
+    "0x2a4d",
+    20000,
+    380000,
+    3,
+    0.39
+   ]
+  },
+  {
+   "rank": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    4,
+    -1,
+    true
+   ],
+   "c": [
+    "bcd",
+    1,
+    false,
+    false,
+    "0x29a9",
+    1,
+    4,
+    1,
+    0.06
+   ]
+  }
+ ]
+}

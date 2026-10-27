@@ -1,0 +1,65 @@
+{
+ "id": "found-hharryu",
+ "name": "HHARRYU (arcade, auto)",
+ "set": "hharryu",
+ "rom_file": "hharryu.zip",
+ "crcs": [
+  "31b741c5",
+  "429d12ab",
+  "4351044e",
+  "80e210e7",
+  "8ef566a1",
+  "b23e966c",
+  "b5b163b0",
+  "bb0d6ad4",
+  "c577ba5f",
+  "def65294",
+  "df0726ae",
+  "ec5127ef",
+  "ede7f755",
+  "faaacaff"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 160324,
+  "swapped": false,
+  "scale": 10
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 158130,
+  "values": [
+   244
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 16,
+  "final": 1100,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 06:02",
+ "n_actions": 36
+}

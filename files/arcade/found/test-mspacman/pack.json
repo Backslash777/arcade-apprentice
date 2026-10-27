@@ -1,0 +1,123 @@
+{
+ "id": "found-test-mspacman",
+ "name": "TEST-MSPACMAN (arcade, found by you)",
+ "set": "test-mspacman",
+ "rom_file": "mspacman.zip",
+ "crcs": [
+  "1a6fb2d4",
+  "2fc650bd",
+  "3eb3a8e4",
+  "5c281d01",
+  "615af909",
+  "77245b66",
+  "817d94e3",
+  "a90e7000",
+  "a9cc86bf",
+  "bcdd1beb",
+  "c1e6ab10",
+  "c82cd714",
+  "f45fbbcd"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 1664,
+  "swapped": false,
+  "scale": 1,
+  "penalty": 0.0,
+  "why": "44 changes, 0 drops, 0 unreadable of 800"
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1664,
+   "swapped": false,
+   "scale": 1,
+   "penalty": 0.0,
+   "why": "44 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1672,
+   "swapped": false,
+   "scale": 1,
+   "penalty": 0.0,
+   "why": "44 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "bin",
+   "n": 3,
+   "big": true,
+   "offset": 1548,
+   "swapped": false,
+   "scale": 10,
+   "penalty": 0.05,
+   "why": "44 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "bin",
+   "n": 1,
+   "big": false,
+   "offset": 1438,
+   "swapped": false,
+   "scale": 10,
+   "penalty": 0.05,
+   "why": "48 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "digits",
+   "stride": -1,
+   "base": 0,
+   "offset": 6151,
+   "swapped": false,
+   "scale": 1,
+   "max_digits": 8,
+   "penalty": 0.1,
+   "why": "44 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "digits",
+   "stride": -1,
+   "base": 0,
+   "offset": 6141,
+   "swapped": false,
+   "scale": 1,
+   "max_digits": 8,
+   "penalty": 0.2125,
+   "why": "43 changes, 0 drops, 30 unreadable of 800"
+  }
+ ],
+ "lives": {
+  "offset": 1556,
+  "adjust": 0,
+  "penalty": 0.03754693366708385
+ },
+ "playing": {
+  "offset": 1036,
+  "values": [
+   63
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [],
+ "decision_repeat": 4,
+ "core": "fbneo",
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "labels": [
+  200,
+  340,
+  440
+ ],
+ "made": "2026-10-13 04:10",
+ "n_actions": 9
+}

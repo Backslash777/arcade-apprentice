@@ -1,0 +1,95 @@
+{
+ "id": "found-foodf",
+ "name": "FOODF (arcade, auto)",
+ "set": "foodf",
+ "rom_file": "foodf.zip",
+ "crcs": [
+  "17828dbb",
+  "608690c9",
+  "64b93076",
+  "84372edf",
+  "8870e3d6",
+  "95159a3e",
+  "c13c90eb",
+  "dfc3d5a8",
+  "e6cff1b1",
+  "ea596480",
+  "ef92dc5c"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 19134,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 16416,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 16404,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 16412,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 16424,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 13271,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 2,
+  "ups": 4,
+  "final": 50,
+  "distinct_steps": 3,
+  "busy": 0.31
+ },
+ "made": "2026-10-11 07:57",
+ "n_actions": 36
+}

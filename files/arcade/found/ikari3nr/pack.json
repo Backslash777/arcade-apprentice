@@ -1,0 +1,112 @@
+{
+ "id": "found-ikari3nr",
+ "name": "IKARI3NR (arcade, auto)",
+ "set": "ikari3nr",
+ "rom_file": "ikari3nr.zip",
+ "crcs": [
+  "073b03f1",
+  "0b4804df",
+  "0cc3ce4a",
+  "0ce6a10a",
+  "10ab4e50",
+  "10e38b66",
+  "16dd227e",
+  "1bae8023",
+  "453bea77",
+  "47e4d256",
+  "4878d883",
+  "4ebdba89",
+  "50d0fbf0",
+  "59d256a4",
+  "711715ae",
+  "781a81fc",
+  "80ba400b",
+  "9a56bd32",
+  "9a851efc",
+  "9c613561",
+  "a43af6b5",
+  "ac222372",
+  "ba106245",
+  "c33971c2",
+  "ce6706fc",
+  "d0fd5c77",
+  "e4e2be43",
+  "e9b26d68"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 265432,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 265259,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 269974,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 262849,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 3,
+   "big": false,
+   "offset": 262850,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 262486,
+  "values": [
+   90
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 222,
+  "final": 400,
+  "distinct_steps": 2,
+  "busy": 0.11
+ },
+ "made": "2026-10-13 06:06",
+ "n_actions": 36
+}

@@ -1,0 +1,97 @@
+{
+ "id": "found-knightsu",
+ "name": "KNIGHTSU (arcade, auto)",
+ "set": "knightsu",
+ "rom_file": "knightsu.zip",
+ "crcs": [
+  "0200bc3d",
+  "0bb2b4e7",
+  "179dfd96",
+  "1f4298d2",
+  "252bc2ba",
+  "37fa8751",
+  "5e44d9ee",
+  "9e36c1a4",
+  "bfc654e9",
+  "c5832cae",
+  "d0b671a9",
+  "da69d15f",
+  "f095be2d"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 44028,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 44028,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 44029,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 44028,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 44027,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 32844,
+  "values": [
+   168
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 110,
+  "final": 100,
+  "distinct_steps": 5,
+  "busy": 0.21
+ },
+ "made": "2026-10-13 06:34",
+ "n_actions": 36
+}

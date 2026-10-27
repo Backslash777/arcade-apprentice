@@ -1,0 +1,69 @@
+{
+ "id": "found-lwings",
+ "name": "LWINGS (arcade, auto)",
+ "set": "lwings",
+ "rom_file": "lwings.zip",
+ "crcs": [
+  "091d923c",
+  "2a0790d6",
+  "32e17b3c",
+  "52e533c1",
+  "5436392c",
+  "5c73d406",
+  "5ed1bc9b",
+  "99e134ba",
+  "a20337a2",
+  "a5efbb1b",
+  "b491bbbb",
+  "b55a7f60",
+  "b693f5a5",
+  "c8f28777",
+  "d96bcc98",
+  "e8834006",
+  "ec5cc201",
+  "fdd1908a"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 3729,
+  "swapped": false,
+  "scale": 10
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 0,
+  "values": [
+   3
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 380020,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 59,
+  "final": 19001,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 06:50",
+ "n_actions": 36
+}

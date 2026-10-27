@@ -1,0 +1,792 @@
+{
+ "n_raw": 7377,
+ "top": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 65,
+   "swapped": true,
+   "scale": 1,
+   "gcd": 100,
+   "ups": 48,
+   "final": 100,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 1,
+   "step_gcd": 100,
+   "max_step": 100,
+   "busy": 0.06,
+   "agree": 1,
+   "confidence": "high"
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 4773,
+   "swapped": true,
+   "scale": 1,
+   "gcd": 20,
+   "ups": 36,
+   "final": 100,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 2,
+   "step_gcd": 20,
+   "max_step": 100,
+   "busy": 0.36,
+   "agree": 1,
+   "confidence": "high"
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 4745,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 20,
+   "ups": 34,
+   "final": 20,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 1,
+   "step_gcd": 20,
+   "max_step": 20,
+   "busy": 0.36,
+   "agree": 1,
+   "confidence": "high"
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 4696,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 100,
+   "ups": 31,
+   "final": 100,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 1,
+   "step_gcd": 100,
+   "max_step": 100,
+   "busy": 0.36,
+   "agree": 1,
+   "confidence": "high"
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 4805,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 1,
+   "ups": 23,
+   "final": 100,
+   "downs": 1,
+   "bad": 0,
+   "distinct_steps": 7,
+   "step_gcd": 1,
+   "max_step": 50,
+   "busy": 0.36,
+   "agree": 1,
+   "confidence": "high"
+  }
+ ],
+ "groups": [
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    48,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    true,
+    "0x41",
+    100,
+    100,
+    1,
+    0.06
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    36,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x12a5",
+    20,
+    100,
+    2,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    34,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    1,
+    false,
+    false,
+    "0x1289",
+    20,
+    20,
+    1,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    34,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    false,
+    "0x1288",
+    20,
+    20,
+    1,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    34,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    1,
+    false,
+    true,
+    "0x1288",
+    20,
+    20,
+    1,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    34,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x1288",
+    20,
+    20,
+    1,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    34,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    true,
+    "0x1288",
+    20,
+    20,
+    1,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    31,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    false,
+    "0x1258",
+    100,
+    100,
+    1,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    31,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    true,
+    "0x1258",
+    100,
+    100,
+    1,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    23,
+    -1,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    false,
+    "0x12c5",
+    1,
+    100,
+    7,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    23,
+    -1,
+    false
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    false,
+    "0x12c5",
+    1,
+    100,
+    7,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    23,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    false,
+    "0x12c4",
+    100,
+    10000,
+    7,
+    0.36
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    21,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    false,
+    "0x1aa0",
+    20,
+    10000,
+    2,
+    0.3
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    21,
+    -20,
+    false
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    true,
+    "0x1aa1",
+    20,
+    10000,
+    2,
+    0.3
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    15,
+    -1,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    false,
+    "0x4b40",
+    1,
+    100,
+    5,
+    0.18
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    15,
+    -1,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x4b40",
+    1,
+    100,
+    5,
+    0.18
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    15,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    false,
+    "0x5259",
+    100,
+    100,
+    1,
+    0.33
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    15,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    true,
+    "0x525b",
+    100,
+    100,
+    1,
+    0.33
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    11,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    false,
+    "0xe08",
+    100,
+    400,
+    3,
+    0.17
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    11,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    false,
+    "0x8c87",
+    100,
+    100,
+    1,
+    0.26
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    11,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0xe08",
+    100,
+    400,
+    3,
+    0.17
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    11,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    true,
+    "0xe09",
+    100,
+    400,
+    3,
+    0.17
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    11,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    true,
+    "0xe08",
+    100,
+    400,
+    3,
+    0.17
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    11,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    3,
+    true,
+    true,
+    "0xe08",
+    100,
+    400,
+    3,
+    0.17
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    10,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    false,
+    "0x4340",
+    100,
+    300,
+    3,
+    0.16
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    10,
+    -100,
+    false
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x4340",
+    100,
+    300,
+    3,
+    0.16
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    8,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    false,
+    "0x42a8",
+    100,
+    100,
+    2,
+    0.44
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    8,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    true,
+    false,
+    "0x42a9",
+    100,
+    100,
+    2,
+    0.44
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    8,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    false,
+    false,
+    "0x42a8",
+    100,
+    100,
+    2,
+    0.44
+   ]
+  },
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    8,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    3,
+    true,
+    false,
+    "0x42a8",
+    100,
+    100,
+    2,
+    0.44
+   ]
+  }
+ ]
+}

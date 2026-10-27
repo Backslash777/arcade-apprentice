@@ -1,0 +1,106 @@
+{
+ "id": "found-commandu",
+ "name": "COMMANDU (arcade, auto)",
+ "set": "commandu",
+ "rom_file": "commandu.zip",
+ "crcs": [
+  "0eaf5158",
+  "14178237",
+  "2019c883",
+  "24f49684",
+  "26fee521",
+  "2b2dee36",
+  "3aba15a1",
+  "4c14c3f6",
+  "505726e0",
+  "5612dbd2",
+  "712ac508",
+  "79f16e3d",
+  "7b2e1b48",
+  "81b417d3",
+  "88865754",
+  "98703982",
+  "a6118935",
+  "b388c246",
+  "ca88bdfd",
+  "de70babf",
+  "f069d2f8",
+  "f9cc4a74"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 9924,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 68731,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 10159,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 10160,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 13518,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 162,
+  "values": [
+   5
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 180,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.31
+ },
+ "made": "2026-10-13 04:37",
+ "n_actions": 36
+}

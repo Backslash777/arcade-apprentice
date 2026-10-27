@@ -1,0 +1,112 @@
+{
+ "id": "found-congo",
+ "name": "CONGO (arcade, auto)",
+ "set": "congo",
+ "rom_file": "congo.zip",
+ "crcs": [
+  "09355b5b",
+  "15e3377a",
+  "1c5e30ae",
+  "1d1321c8",
+  "5024e673",
+  "5332b9bf",
+  "5ee1132c",
+  "73e2709f",
+  "7b15a7a4",
+  "7bf6ba2b",
+  "80927943",
+  "93e2309e",
+  "b788d8ae",
+  "bf9169fe",
+  "cb6d5775",
+  "d637f02b",
+  "db99a619",
+  "f27a9407"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   8,
+   15,
+   0,
+   86
+  ],
+  "fg": 57086,
+  "edge": 56,
+  "gap": 6,
+  "keys": {
+   "00327d74ba98": 2,
+   "022e5d02f236": 7,
+   "094a13cd2bc9": 3,
+   "46905ff6bb17": 8,
+   "9d98880797c7": 6,
+   "c379ccee3fef": 5,
+   "f13562a75a7a": 4,
+   "17125cfdfb4a": 1,
+   "8ef61b0098fe": 9,
+   "78a305d9af0a": 0
+  },
+  "frame_shape": [
+   256,
+   224
+  ],
+  "report": {
+   "ups": 11,
+   "resets": 0,
+   "digits_seen": 10,
+   "rules": 8,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "zero": "78a305d9af0a"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 514,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 11,
+  "final": 110,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 05:03",
+ "n_actions": 36
+}

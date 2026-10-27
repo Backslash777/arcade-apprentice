@@ -1,0 +1,78 @@
+{
+ "id": "found-hangon",
+ "name": "HANGON (arcade, auto)",
+ "set": "hangon",
+ "rom_file": "hangon.zip",
+ "crcs": [
+  "15792969",
+  "1c95013e",
+  "20b1c2b0",
+  "3b942f5f",
+  "4165aea5",
+  "469dad07",
+  "49422691",
+  "54d295dc",
+  "581230e3",
+  "6ca30d69",
+  "6e23c8b4",
+  "701deaa4",
+  "77d0de2c",
+  "7ca0952d",
+  "7d9db1bf",
+  "7fa1bfb6",
+  "87cbc6de",
+  "8e880c93",
+  "a257f0da",
+  "ac883240",
+  "b1a63aef",
+  "ba08c9b8",
+  "cfef5481",
+  "e9718de5",
+  "f21e57a3",
+  "f677b568",
+  "fea12367"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 2327,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 2108,
+  "values": [
+   32
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 6348200,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 332,
+  "final": 317410,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 05:59",
+ "n_actions": 36
+}

@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.log
+My AIs/*
+!My AIs/.gitkeep
+ROMs - put your games here/*
+!ROMs - put your games here/.gitkeep
+Recipe Cards/*
+!Recipe Cards/.gitkeep
+files/runtime/
+files/_dev/
+files/logs/
+files/benchmark.json
+files/TUNING*
+files/clutter_keep.json
+files/settings.json
+files/*.aarecipe
+.DS_Store
+Thumbs.db

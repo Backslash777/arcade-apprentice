@@ -1,0 +1,108 @@
+{
+ "id": "found-exedexes",
+ "name": "EXEDEXES (arcade, auto)",
+ "set": "exedexes",
+ "rom_file": "exedexes.zip",
+ "crcs": [
+  "0d968558",
+  "0e0f300d",
+  "0eaf5158",
+  "173184ef",
+  "1acee376",
+  "1dfad87a",
+  "2bb68710",
+  "35a03579",
+  "3625a68d",
+  "44140dbd",
+  "58ba964c",
+  "6039bdd1",
+  "6057c907",
+  "712ac508",
+  "73cdf3b2",
+  "7ad95e2f",
+  "850064e0",
+  "8d0d5935",
+  "96a65c1d",
+  "b32d8252",
+  "bc83e265",
+  "bf72cfba",
+  "cadb75bd",
+  "d3c17efc"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 1550,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1549,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 647,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 5029,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 4499,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 5,
+  "values": [
+   3
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 35,
+  "final": 105,
+  "distinct_steps": 3,
+  "busy": 0.02
+ },
+ "made": "2026-10-13 04:59",
+ "n_actions": 36
+}

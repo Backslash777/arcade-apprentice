@@ -1,0 +1,103 @@
+{
+ "id": "found-actfancr",
+ "name": "ACTFANCR (arcade, auto)",
+ "set": "actfancr",
+ "rom_file": "actfancr.zip",
+ "crcs": [
+  "08787b7a",
+  "0d36fbfa",
+  "1f006d9f",
+  "22e64730",
+  "27ce2bb1",
+  "289ad106",
+  "34935e93",
+  "5c55b242",
+  "8cb6dd87",
+  "a1baf21e",
+  "b1db0efc",
+  "bcf41795",
+  "c30c37dc",
+  "cabad137",
+  "d38b94aa",
+  "d50a9550",
+  "d6457420",
+  "dd345def",
+  "f313e04f"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 19956,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 19960,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 19958,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 561,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 579,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 17027,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 20,
+  "ups": 365,
+  "final": 20,
+  "distinct_steps": 1,
+  "busy": 0.07
+ },
+ "made": "2026-10-13 04:04",
+ "n_actions": 36
+}

@@ -1,0 +1,102 @@
+{
+ "id": "found-buckrog",
+ "name": "BUCKROG (arcade, auto)",
+ "set": "buckrog",
+ "rom_file": "buckrog.zip",
+ "crcs": [
+  "0d58b154",
+  "1bd6e453",
+  "221f4ced",
+  "2a194270",
+  "32e74bc8",
+  "43f3e5a7",
+  "45e997a8",
+  "631f5b65",
+  "7aff0886",
+  "7d084c39",
+  "7f21b0a4",
+  "8155bd73",
+  "b31a120f",
+  "c34e9b82",
+  "d181fed2",
+  "d3584926",
+  "d83c7fcf",
+  "f0055e97",
+  "fd78dda4"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 31216,
+  "swapped": false,
+  "scale": 1
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 31184,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 31183,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 31185,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 31181,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 31576,
+  "values": [
+   3
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 404,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.42
+ },
+ "made": "2026-10-10 10:19",
+ "n_actions": 36
+}

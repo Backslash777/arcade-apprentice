@@ -1,0 +1,110 @@
+{
+ "id": "found-1942",
+ "name": "1942 (arcade, auto)",
+ "set": "1942",
+ "rom_file": "1942.zip",
+ "crcs": [
+  "024418f8",
+  "1bd3d8bb",
+  "2528bec6",
+  "3884d9eb",
+  "3a2726c3",
+  "3b0c99af",
+  "40201bab",
+  "4858968d",
+  "4921635c",
+  "5df525e1",
+  "6047d91b",
+  "658f02c4",
+  "6ebca191",
+  "712ac508",
+  "821c6481",
+  "835f7b24",
+  "8ab44f7d",
+  "8bb8b3df",
+  "8edb273a",
+  "93ab8153",
+  "999cf6e0",
+  "a60ac644",
+  "bd87f06b",
+  "e2c7e489",
+  "f4ade9a4",
+  "f6fad943",
+  "f89287aa"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 25213,
+  "swapped": true,
+  "scale": 1
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 83831,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 26138,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 26137,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 24970,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 21088,
+  "values": [
+   48
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 456,
+  "final": 200,
+  "distinct_steps": 1,
+  "busy": 0.28
+ },
+ "made": "2026-10-10 08:07",
+ "n_actions": 36
+}

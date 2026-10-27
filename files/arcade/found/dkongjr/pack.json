@@ -1,0 +1,97 @@
+{
+ "id": "found-dkongjr",
+ "name": "DKONGJR (arcade, auto)",
+ "set": "dkongjr",
+ "rom_file": "dkongjr.zip",
+ "crcs": [
+  "0ce7dcf6",
+  "0f8c083f",
+  "24d1ff17",
+  "463dc7ad",
+  "47ba0042",
+  "4ef64ba5",
+  "6fb5faf6",
+  "715da5f8",
+  "8d51aca9",
+  "d042b6a8",
+  "dbf185bf",
+  "dc7f4164",
+  "dea28158"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 542,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 541,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 534,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 543,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 543,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 7,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 38,
+  "final": 101,
+  "distinct_steps": 6,
+  "busy": 0.16
+ },
+ "made": "2026-10-13 04:49",
+ "n_actions": 36
+}

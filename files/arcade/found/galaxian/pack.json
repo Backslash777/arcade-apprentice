@@ -1,0 +1,92 @@
+{
+ "id": "found-galaxian",
+ "name": "GALAXIAN (arcade, auto)",
+ "set": "galaxian",
+ "rom_file": "galaxian.zip",
+ "crcs": [
+  "1b933207",
+  "39fb43a4",
+  "6b3ca10b",
+  "745e2d61",
+  "7e3f56a2",
+  "9c999a40",
+  "b5894925",
+  "c3ac9467"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 162,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 167,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 451,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 511,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 511,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 388,
+  "values": [
+   248
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 3,
+  "step_gcd": 10,
+  "ups": 16,
+  "final": 580,
+  "distinct_steps": 4,
+  "busy": 0.41
+ },
+ "made": "2026-10-11 08:34",
+ "n_actions": 36
+}

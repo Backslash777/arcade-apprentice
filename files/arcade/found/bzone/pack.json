@@ -1,0 +1,92 @@
+{
+ "id": "found-bzone",
+ "name": "BZONE (arcade, auto)",
+ "set": "bzone",
+ "rom_file": "bzone.zip",
+ "crcs": [
+  "0b7bfaa4",
+  "1e14e919",
+  "5d9d9111",
+  "7414177b",
+  "8ea8f939",
+  "ab55cbd2",
+  "ad281297",
+  "efbc3fa0"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 1,
+  "big": false,
+  "offset": 780,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 885,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 2,
+   "big": false,
+   "offset": 876,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 2,
+   "big": false,
+   "offset": 875,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 2,
+   "big": false,
+   "offset": 877,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 347,
+  "values": [
+   7
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 2,
+  "ups": 3,
+  "final": 88,
+  "distinct_steps": 3,
+  "busy": 0.36
+ },
+ "made": "2026-10-13 04:31",
+ "n_actions": 36
+}

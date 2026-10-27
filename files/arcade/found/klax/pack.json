@@ -1,0 +1,96 @@
+{
+ "id": "found-klax",
+ "name": "KLAX (arcade, auto)",
+ "set": "klax",
+ "rom_file": "klax.zip",
+ "crcs": [
+  "12e9b4b7",
+  "15290a0d",
+  "36764bbc",
+  "4d24c768",
+  "5c551e92",
+  "6368dbaf",
+  "72b8c510",
+  "c0d9eb0f",
+  "c7c91a9d",
+  "d2021a88",
+  "e83cca91",
+  "e8991709"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 19266,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 20644,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 19619,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 111,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 20594,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 101,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 468,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.09
+ },
+ "made": "2026-10-13 06:33",
+ "n_actions": 36
+}

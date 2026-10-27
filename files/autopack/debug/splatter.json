@@ -1,0 +1,67 @@
+{
+ "n_raw": 0,
+ "top": [
+  {
+   "kind": "screen",
+   "screen": {
+    "kind": "screen",
+    "box": [
+     12,
+     19,
+     31,
+     198
+    ],
+    "fg": 54970,
+    "edge": 113,
+    "gap": 6,
+    "keys": {
+     "00327d74ba98": 2,
+     "094a13cd2bc9": 3,
+     "c379ccee3fef": 5,
+     "f13562a75a7a": 4,
+     "17125cfdfb4a": 1,
+     "9d98880797c7": 6,
+     "78a305d9af0a": 0
+    },
+    "frame_shape": [
+     224,
+     288
+    ],
+    "report": {
+     "ups": 8,
+     "resets": 1,
+     "digits_seen": 7,
+     "rules": 5,
+     "brain_sure": 1.0,
+     "values": [
+      0,
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      0,
+      100,
+      200
+     ],
+     "zero": "78a305d9af0a"
+    },
+    "confident": true
+   },
+   "confidence": "high",
+   "ups": 8,
+   "final": 600,
+   "agree": 1,
+   "step_gcd": 0,
+   "distinct_steps": 0,
+   "busy": 0,
+   "n": 0,
+   "big": false,
+   "offset": -1,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "groups": null
+}

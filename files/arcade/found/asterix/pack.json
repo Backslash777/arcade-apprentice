@@ -1,0 +1,93 @@
+{
+ "id": "found-asterix",
+ "name": "ASTERIX (arcade, auto)",
+ "set": "asterix",
+ "rom_file": "asterix.zip",
+ "crcs": [
+  "32efdbc4",
+  "53aac057",
+  "61d6621d",
+  "6df9ec0e",
+  "7eb07a81",
+  "8223ebdc",
+  "9f351828",
+  "b9da8e9c",
+  "c41278fe",
+  "d3d0d77b"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 92678,
+  "swapped": true,
+  "scale": 1
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 92598,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 70978,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 66634,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 88641,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 1191,
+  "values": [
+   100
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 583,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.3
+ },
+ "made": "2026-10-10 09:22",
+ "n_actions": 36
+}

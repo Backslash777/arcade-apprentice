@@ -1,0 +1,94 @@
+{
+ "id": "found-macross2",
+ "name": "MACROSS2 (arcade, auto)",
+ "set": "macross2",
+ "rom_file": "macross2.zip",
+ "crcs": [
+  "36a618fe",
+  "435653a2",
+  "67eb2901",
+  "aa1b21b9",
+  "b4aa8ac7",
+  "b5335abb",
+  "c4d77ff0",
+  "c7417410",
+  "e6ead349",
+  "ef0ffec0"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 26445,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 26444,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 26447,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 26395,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 26446,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 38944,
+  "values": [
+   3
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 78200,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 10,
+  "ups": 200,
+  "final": 3910,
+  "distinct_steps": 16,
+  "busy": 0.29
+ },
+ "made": "2026-10-13 06:54",
+ "n_actions": 36
+}

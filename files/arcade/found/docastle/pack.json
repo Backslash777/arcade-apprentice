@@ -1,0 +1,96 @@
+{
+ "id": "found-docastle",
+ "name": "DOCASTLE (arcade, auto)",
+ "set": "docastle",
+ "rom_file": "docastle.zip",
+ "crcs": [
+  "0636b8f4",
+  "066f52bc",
+  "17c6fc24",
+  "1d2fc7f4",
+  "2747ca77",
+  "3bbc9b26",
+  "3dfaa9d1",
+  "479a745e",
+  "71a70ba9",
+  "9afb16e9",
+  "af24bce0",
+  "f23b5cdb"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 6658,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 692,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 146,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 18,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 6605,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 114,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 3,
+  "step_gcd": 100,
+  "ups": 254,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.02
+ },
+ "made": "2026-10-13 04:50",
+ "n_actions": 36
+}

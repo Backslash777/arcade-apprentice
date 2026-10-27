@@ -1,0 +1,100 @@
+{
+ "id": "found-fantzone",
+ "name": "FANTZONE (arcade, auto)",
+ "set": "fantzone",
+ "rom_file": "fantzone.zip",
+ "crcs": [
+  "0acd335d",
+  "14fc7e82",
+  "2f4f71b8",
+  "4091af42",
+  "531ca13f",
+  "5bb7c8b6",
+  "5f79b2a9",
+  "68807b49",
+  "74ae4b57",
+  "77d67bfd",
+  "8eb02f6b",
+  "b0a67cd0",
+  "bc1374fa",
+  "d90609c6",
+  "e05a1e25",
+  "fd909341"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 92491,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 92694,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 92694,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 92683,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 92680,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 257,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 13,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.27
+ },
+ "made": "2026-10-11 07:35",
+ "n_actions": 36
+}

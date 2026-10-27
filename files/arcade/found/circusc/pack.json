@@ -1,0 +1,102 @@
+{
+ "id": "found-circusc",
+ "name": "CIRCUSC (arcade, auto)",
+ "set": "circusc",
+ "rom_file": "circusc.zip",
+ "crcs": [
+  "0532347e",
+  "10dd4eaa",
+  "13989357",
+  "18c20adf",
+  "23dfe3a6",
+  "3ba95390",
+  "48feafcf",
+  "4d847dc6",
+  "56e5b408",
+  "5aca0193",
+  "607df0fb",
+  "a6ad30e1",
+  "a9fba85a",
+  "c244f2aa",
+  "c283b887",
+  "df0405c6",
+  "e1725d24",
+  "e90c0e86"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": true,
+  "offset": 607,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 2286,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 345,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 345,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 511,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 349,
+  "values": [
+   71
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 201,
+  "final": 200,
+  "distinct_steps": 1,
+  "busy": 0.25
+ },
+ "made": "2026-10-11 04:52",
+ "n_actions": 36
+}

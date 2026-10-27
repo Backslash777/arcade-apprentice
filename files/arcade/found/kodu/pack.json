@@ -1,0 +1,103 @@
+{
+ "id": "found-kodu",
+ "name": "KODU (arcade, auto)",
+ "set": "kodu",
+ "rom_file": "kodu.zip",
+ "crcs": [
+  "0360fa72",
+  "113358f3",
+  "38853c44",
+  "402b9b4f",
+  "4c63181d",
+  "4ca6a48a",
+  "5e5303bf",
+  "5f74bf78",
+  "825817f9",
+  "92941b80",
+  "9367bcd9",
+  "95a3cef8",
+  "9af36039",
+  "9ef36604",
+  "a7750322",
+  "bac6ec26",
+  "be8405a1",
+  "d2422dfb",
+  "e45b8701"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": true,
+  "offset": 65,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 4773,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 4745,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 4696,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 4805,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 11,
+  "values": [
+   10
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 48,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.06
+ },
+ "made": "2026-10-13 06:35",
+ "n_actions": 36
+}

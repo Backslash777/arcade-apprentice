@@ -1,0 +1,59 @@
+{
+ "id": "found-aerofgt",
+ "name": "AEROFGT (arcade, auto)",
+ "set": "aerofgt",
+ "rom_file": "aerofgt.zip",
+ "crcs": [
+  "286d109e",
+  "4d2c4df2",
+  "630d8e0b",
+  "6d42723d",
+  "6fdff0a2",
+  "76ce0926",
+  "a1ef64ec",
+  "cdbbdb1d"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 15523,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 4402,
+  "values": [
+   4
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 2,
+  "final": 9,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 04:05",
+ "n_actions": 36
+}

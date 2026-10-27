@@ -1,0 +1,105 @@
+{
+ "id": "found-gaiden",
+ "name": "GAIDEN (arcade, auto)",
+ "set": "gaiden",
+ "rom_file": "gaiden.zip",
+ "crcs": [
+  "016bec95",
+  "08cf7a93",
+  "1291a696",
+  "140b47ca",
+  "1ac892f5",
+  "1ecfddaa",
+  "3fadafd6",
+  "454f7314",
+  "6e9b7fd3",
+  "75fd3e6a",
+  "7638cccb",
+  "7d9f5c5e",
+  "7ef7f880",
+  "7fbfdf5e",
+  "8d4035f7",
+  "90f1e13a",
+  "a6451dec",
+  "b0e0faf9",
+  "ddae9d5b",
+  "e037ff7c",
+  "e7ccdf9f"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 1,
+  "big": false,
+  "offset": 2006,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 16564,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 45161,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 36969,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 53353,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 850,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 9,
+  "step_gcd": 50,
+  "ups": 499,
+  "final": 50,
+  "distinct_steps": 1,
+  "busy": 0.09
+ },
+ "made": "2026-10-11 08:19",
+ "n_actions": 36
+}

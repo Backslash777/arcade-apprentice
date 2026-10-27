@@ -1,0 +1,135 @@
+{
+ "id": "found-lkage",
+ "name": "LKAGE (arcade, auto)",
+ "set": "lkage",
+ "rom_file": "lkage.zip",
+ "crcs": [
+  "0033c06a",
+  "0e8b8846",
+  "17dfbd14",
+  "27b509da",
+  "3ff3b230",
+  "493e76d8",
+  "541faf9a",
+  "973da9c5",
+  "9f04d9ad",
+  "b20561a4"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   7,
+   16,
+   3,
+   86
+  ],
+  "fg": 65535,
+  "edge": 69,
+  "gap": 6,
+  "keys": {
+   "855ae0603456": 7,
+   "c2bc4a462047": 4,
+   "1f8821318b27": 6,
+   "d0139fe7084e": 5,
+   "ea9ecf4c6490": 8,
+   "0964eac1461f": 2,
+   "6ef13fd00af3": 3,
+   "2ed116b2fe85": 1,
+   "f357a22afbef": 9,
+   "8231769fff0b": 0
+  },
+  "frame_shape": [
+   224,
+   240
+  ],
+  "report": {
+   "ups": 41,
+   "resets": 1,
+   "digits_seen": 10,
+   "rules": 16,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    1000,
+    2000,
+    3000,
+    4000,
+    5000,
+    7000,
+    9000,
+    11000,
+    12000,
+    14000,
+    17000,
+    0,
+    1000,
+    2000,
+    3000,
+    4500,
+    5500,
+    6000,
+    7000,
+    9000,
+    9500,
+    10500,
+    11500,
+    13500,
+    14500,
+    15500,
+    18500,
+    19500,
+    20500,
+    21500,
+    22500,
+    24500,
+    26500,
+    27500,
+    28500,
+    30500,
+    32000,
+    34000,
+    35000,
+    36500,
+    38500,
+    39000
+   ],
+   "zero": "8231769fff0b"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 108,
+  "values": [
+   49
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 780000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 41,
+  "final": 39000,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 06:41",
+ "n_actions": 36
+}

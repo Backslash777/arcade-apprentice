@@ -1,0 +1,105 @@
+{
+ "id": "found-aliensyn",
+ "name": "ALIENSYN (arcade, auto)",
+ "set": "aliensyn",
+ "rom_file": "aliensyn.zip",
+ "crcs": [
+  "1308ee63",
+  "29166ef6",
+  "2e1ec7b1",
+  "393bc813",
+  "40ba1d48",
+  "6a50e08f",
+  "6b6dd9f5",
+  "876ad019",
+  "911e7ebc",
+  "91bf42fb",
+  "992369eb",
+  "99953526",
+  "9cdc2a14",
+  "a7c57384",
+  "addf0a90",
+  "cb2ad9b3",
+  "cff78f39",
+  "d50b7736",
+  "ececde3a",
+  "f971a817",
+  "fe7378d9"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 1043,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 905,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 1139,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 583,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 583,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 19,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 72,
+  "final": 300,
+  "distinct_steps": 3,
+  "busy": 0.43
+ },
+ "made": "2026-10-13 04:08",
+ "n_actions": 36
+}

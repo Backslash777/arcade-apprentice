@@ -1,0 +1,93 @@
+{
+ "id": "found-dondokod",
+ "name": "DONDOKOD (arcade, auto)",
+ "set": "dondokod",
+ "rom_file": "dondokod.zip",
+ "crcs": [
+  "51c176ce",
+  "543aa0d1",
+  "67b4e979",
+  "6e4e1351",
+  "a46e1f0b",
+  "ac4c1716",
+  "b5aa49e1",
+  "d0fce87a",
+  "dad40cd3"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 131155,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 131168,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 4717,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 33988,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 33988,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 388,
+  "values": [
+   16
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 44,
+  "final": 100,
+  "distinct_steps": 2,
+  "busy": 0.36
+ },
+ "made": "2026-10-13 04:53",
+ "n_actions": 36
+}

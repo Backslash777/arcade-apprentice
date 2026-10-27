@@ -1,0 +1,105 @@
+{
+ "id": "found-deadconx",
+ "name": "DEADCONX (arcade, auto)",
+ "set": "deadconx",
+ "rom_file": "deadconx.zip",
+ "crcs": [
+  "143a0cc1",
+  "181d7b69",
+  "40805d74",
+  "4c872bd9",
+  "5b4bff51",
+  "862f9665",
+  "9b74e631",
+  "a1804b52",
+  "d301771c",
+  "dcabc26b"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   16,
+   23,
+   74,
+   181
+  ],
+  "fg": 65504,
+  "edge": 77,
+  "gap": 6,
+  "keys": {
+   "9d98880797c7": 6,
+   "022e5d02f236": 7,
+   "3f8a91f32f5f": 1,
+   "8ef61b0098fe": 9,
+   "46905ff6bb17": 8,
+   "c379ccee3fef": 5,
+   "f13562a75a7a": 4,
+   "78a305d9af0a": 0
+  },
+  "frame_shape": [
+   224,
+   320
+  ],
+  "report": {
+   "ups": 14,
+   "resets": 0,
+   "digits_seen": 8,
+   "rules": 6,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    50,
+    60,
+    110,
+    610,
+    660,
+    700,
+    740,
+    1080,
+    1090,
+    1110,
+    1160,
+    1170,
+    1190,
+    1440
+   ],
+   "zero": "78a305d9af0a"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 250,
+  "values": [
+   15
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 14,
+  "final": 1440,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 06:05",
+ "n_actions": 36
+}

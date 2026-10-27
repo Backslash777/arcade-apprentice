@@ -1,0 +1,96 @@
+{
+ "id": "found-ffightu",
+ "name": "FFIGHTU (arcade, auto)",
+ "set": "ffightu",
+ "rom_file": "ffightu.zip",
+ "crcs": [
+  "0b605e44",
+  "1ef137f9",
+  "2f5771f9",
+  "375c66e7",
+  "52291cd2",
+  "9c284108",
+  "a7584dfb",
+  "b8367eb5",
+  "c371c667",
+  "c747696e",
+  "e2a48af9",
+  "f4bb480e"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 1,
+  "big": false,
+  "offset": 221772,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 252062,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 20800,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 2275,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 2507,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 101,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 208,
+  "final": 73,
+  "distinct_steps": 14,
+  "busy": 0.31
+ },
+ "made": "2026-10-11 07:51",
+ "n_actions": 36
+}

@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arcade Apprentice</title>
+<script>(function(){var t=null;try{var q=new URLSearchParams(location.search).get('theme');if(q=='light'||q=='dark'){t=q;localStorage.setItem('theme',q)}else t=localStorage.getItem('theme')}catch(e){}
+if(t!='light'&&t!='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t})()</script>
+<link rel="icon" type="image/png" href="/help/chip-icon.png">
+<link rel="preload" href="/help/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/help/fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Arcade Apprentice - the kit's page. Same look as arcadeapprentice.co.uk: the Golden Mile at night (dark) or by day (light).
+   Fonts are the website's own, kept in files\help\fonts. (c) 2026 Jonathan Terrington */
+@font-face{font-family:'Press Start 2P';src:url('/help/fonts/press-start-2p.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'Atkinson Hyperlegible';src:url('/help/fonts/atkinson-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Atkinson Hyperlegible';src:url('/help/fonts/atkinson-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Zero Fix';src:url('/help/fonts/zero-fix-400.woff2') format('woff2');font-weight:400;font-display:swap;unicode-range:U+0030}
+@font-face{font-family:'Zero Fix';src:url('/help/fonts/zero-fix-700.woff2') format('woff2');font-weight:700;font-display:swap;unicode-range:U+0030}
+@font-face{font-family:'VT323';src:url('/help/fonts/vt323.woff2') format('woff2');font-display:swap}
+/* ---------------------------------------------------------------- the Golden Mile at night (dark) */
+:root{color-scheme:dark;
+--bg:#12052a;--glow1:rgba(255,60,172,.11);--glow2:rgba(34,230,255,.07);
+--panel:#170838;--card:#1d0b45;--card-hi:#261157;--input:#0e0322;
+--line:#341a5e;--line-strong:#55318c;
+--text:#fbf3e1;--muted:#cbbbe0;--faint:#9d8cc0;
+--accent:#ff6a1a;--accent-deep:#b8420a;--accent-ink:#0c1626;--accent-text:#ffe14d;--accent-soft:rgba(255,106,26,.15);--accent-line:rgba(255,106,26,.6);
+--teal:#22e6ff;--teal-soft:rgba(34,230,255,.12);
+--lime:#7cff6b;--lime-soft:rgba(124,255,107,.11);--lime-line:rgba(124,255,107,.45);
+--pink:#ff3cac;--pink-soft:rgba(255,60,172,.13);--pink-line:rgba(255,60,172,.5);
+--violet:#b86bff;--violet-soft:rgba(184,107,255,.15);
+--zero:#4a2d78;--focus:#ffe14d;
+--shadow:0 1px 0 rgba(255,255,255,.04) inset,0 18px 40px -26px rgba(0,0,0,.9);
+--shadow-pop:0 40px 90px -30px rgba(0,0,0,.9);
+--backdrop:rgba(5,1,13,.66);
+--toast-bg:#fbf3e1;--toast-ink:#12052a;
+--s-avg:#ff7a2e;--s-best:#22e6ff;--s-views:#7cff6b;--s-map:#ffe14d;--s-rand:#cbbbe0;--s-bonus:#ff3cac;
+--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23cbbbe0' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+/* the live scoreboard is an arcade screen in both themes */
+--screen:#07020f;--screen-text:#fbf3e1;--screen-muted:#b9a8d6;
+/* older names still used in a few places */
+--orange:var(--accent-text);--cyan:var(--teal);--green:var(--lime);--red:var(--pink);--danger:var(--pink-line);--sel:var(--accent-soft);
+--ui:"Zero Fix","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+--pixel:"Press Start 2P","Courier New",monospace;
+--crt:"VT323","Cascadia Mono",Consolas,monospace;
+--mono:"Cascadia Mono",Consolas,ui-monospace,monospace}
+/* ---------------------------------------------------------------- the Golden Mile by day (light) */
+:root[data-theme="light"]{color-scheme:light;
+--bg:#f7eedb;--glow1:rgba(255,60,172,.07);--glow2:rgba(34,230,255,.12);
+--panel:#fffbf2;--card:#fbf3e1;--card-hi:#f4e7cb;--input:#fffdf8;
+--line:#e8d9bb;--line-strong:#d3bd93;
+--text:#12052a;--muted:#584a72;--faint:#7a6c91;
+--accent-text:#b8420a;--accent-soft:rgba(255,106,26,.12);--accent-line:rgba(184,66,10,.45);
+--teal:#007c91;--teal-soft:rgba(0,124,145,.09);
+--lime:#1d7f33;--lime-soft:rgba(29,127,51,.09);--lime-line:rgba(29,127,51,.4);
+--pink:#c8157a;--pink-soft:rgba(200,21,122,.08);--pink-line:rgba(200,21,122,.4);
+--violet:#7a35d0;--violet-soft:rgba(122,53,208,.09);
+--zero:#dccaa5;--focus:#7a35d0;
+--shadow:0 1px 2px rgba(18,5,42,.06),0 14px 34px -24px rgba(18,5,42,.35);
+--shadow-pop:0 40px 90px -30px rgba(18,5,42,.45);
+--backdrop:rgba(18,5,42,.35);
+--toast-bg:#12052a;--toast-ink:#fbf3e1;
+--s-avg:#d9520b;--s-best:#007c91;--s-views:#1d7f33;--s-map:#9a7400;--s-rand:#85779b;--s-bonus:#c8157a;
+--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23584a72' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+
+/* ---------------------------------------------------------------- base */
+*{box-sizing:border-box}
+html{scrollbar-color:var(--line-strong) transparent}
+body{margin:0;color:var(--text);font:15px/1.55 var(--ui);-webkit-font-smoothing:antialiased;
+ background:radial-gradient(1100px 520px at 88% -12%,var(--glow1),transparent 62%),radial-gradient(900px 480px at -8% -18%,var(--glow2),transparent 60%),var(--bg);background-attachment:fixed;min-height:100vh}
+::selection{background:var(--pink-soft)}
+::-webkit-scrollbar{width:12px;height:12px}::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:999px;border:3px solid transparent;background-clip:padding-box}::-webkit-scrollbar-track{background:transparent}
+a{color:var(--teal);text-underline-offset:3px}a:hover{color:var(--text)}
+b,strong{font-weight:700}
+main{max-width:1120px;margin:auto;padding:26px 22px 40px}
+h2{font-size:18px;font-weight:700;letter-spacing:-.1px;margin:0 0 12px}
+.muted{color:var(--muted)}.small{font-size:13.5px}.row{display:flex;gap:10px;flex-wrap:wrap}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------------------------------------------------------------- header */
+header.top{display:flex;align-items:center;gap:16px;margin:4px 0 22px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:16px;flex:1;min-width:280px}
+.chiphead{width:76px;height:auto;flex:none;filter:drop-shadow(0 4px 10px rgba(255,106,26,.28))}
+h1.wordmark{font:400 20px/1.35 var(--pixel);letter-spacing:.5px;margin:0 0 7px;color:var(--text);text-shadow:2px 2px 0 var(--pink),0 0 18px rgba(255,60,172,.35)}
+.tagline{color:var(--muted);font-size:15px;max-width:78ch}
+.hdbtns{display:flex;gap:8px;align-items:center}
+.hdbtns button{border-radius:999px;padding:8px 16px}
+.themebtn{position:relative;width:66px;height:36px;padding:0 9px!important;border-radius:999px!important;display:flex;align-items:center;justify-content:space-between;flex:none}
+.themebtn svg{width:16px;height:16px;position:relative;z-index:1;color:var(--muted);transition:color .2s}
+.themebtn::before{content:'';position:absolute;top:3px;left:3px;width:28px;height:28px;border-radius:50%;background:var(--accent);box-shadow:inset 0 -2px 0 var(--accent-deep),0 1px 3px rgba(0,0,0,.3);transition:transform .22s ease}
+.themebtn .moon{color:var(--accent-ink)}
+:root[data-theme="light"] .themebtn::before{transform:translateX(30px)}
+:root[data-theme="light"] .themebtn .moon{color:var(--muted)}:root[data-theme="light"] .themebtn .sun{color:var(--accent-ink)}
+
+/* ---------------------------------------------------------------- panels; the four steps are the cabinet's four buttons */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px 22px 22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.panel.ais{border-top:3px solid var(--accent)}
+.panel.st1{border-top:3px solid #ff3cac}.panel.st2{border-top:3px solid #ffe14d}.panel.st3{border-top:3px solid #22e6ff}.panel.st4{border-top:3px solid #7cff6b}
+.step{--c:#ff6a1a;display:inline-grid;place-items:center;width:30px;height:30px;flex:none;border-radius:50%;margin-right:11px;vertical-align:middle;
+ background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.6) 0 11%,transparent 12%),var(--c);
+ box-shadow:inset 0 -3px 0 rgba(0,0,0,.22),0 2px 0 rgba(0,0,0,.3);color:#0c1626;font:400 11px/1 var(--pixel);padding-top:1px}
+.step.s1{--c:#ff3cac}.step.s2{--c:#ffe14d}.step.s3{--c:#22e6ff}.step.s4{--c:#7cff6b}
+.panel>h2.fold{cursor:pointer;user-select:none;display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:-4px -6px 12px;padding:4px 6px;border-radius:12px}
+.panel>h2.fold:hover{background:var(--card)}
+.panel>h2.fold::after{content:'';width:8px;height:8px;margin:0 6px 4px auto;border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);transform:rotate(45deg);transition:transform .18s}
+.panel.shut>h2.fold::after{transform:rotate(-45deg);margin-bottom:0}.panel.shut>h2.fold{margin-bottom:-4px}.panel.shut>.pbody{display:none}
+.intro{color:var(--muted);font-size:14.5px;margin:-2px 0 12px;max-width:80ch}
+
+/* ---------------------------------------------------------------- controls */
+button{font:inherit;font-size:14px;line-height:1.3;cursor:pointer;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);padding:8px 14px;transition:background .15s,border-color .15s,transform .06s,filter .15s,box-shadow .15s}
+button:hover:not(:disabled){border-color:var(--line-strong);background:var(--card-hi)}
+button:active:not(:disabled){transform:translateY(1px)}
+button:disabled{opacity:.42;cursor:not-allowed}
+button.go{background:var(--accent);border-color:var(--accent-deep);color:var(--accent-ink);font-weight:700;box-shadow:0 3px 0 var(--accent-deep)}
+button.go:hover:not(:disabled){background:var(--accent);filter:brightness(1.07);box-shadow:0 3px 0 var(--accent-deep),0 0 18px rgba(255,106,26,.35)}
+button.go:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 var(--accent-deep)}
+button.danger{background:transparent;border-color:transparent;color:var(--pink)}
+button.danger:hover:not(:disabled){background:var(--pink-soft);border-color:var(--pink-line)}
+button.danger.solid{background:var(--pink);border-color:var(--pink);color:#fff;font-weight:700;box-shadow:0 3px 0 rgba(0,0,0,.28)}
+button.danger.solid:hover:not(:disabled){filter:brightness(1.08);background:var(--pink)}
+select,input[type=text]{font:inherit;font-size:14.5px;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:9px 12px;min-width:260px;transition:border-color .15s}
+select{appearance:none;-webkit-appearance:none;padding-right:34px;background:var(--input) var(--chev) no-repeat right 12px center;cursor:pointer}
+select:hover,input[type=text]:hover{border-color:var(--line-strong)}
+input[type=text]::placeholder{color:var(--faint)}
+select option,select optgroup{background:var(--panel);color:var(--text)}
+input[type=checkbox],input[type=radio]{accent-color:var(--accent);width:16px;height:16px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:24px;background:transparent;margin:6px 0 2px;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(90deg,var(--accent) var(--p,0%),var(--line) var(--p,0%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-6px;border-radius:50%;background:var(--accent);border:3px solid var(--panel);box-shadow:0 0 0 1px var(--accent-deep)}
+input[type=range]::-moz-range-track{height:6px;border-radius:999px;background:linear-gradient(90deg,var(--accent) var(--p,0%),var(--line) var(--p,0%))}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--panel);box-shadow:0 0 0 1px var(--accent-deep)}
+button.info{padding:0;width:22px;height:22px;flex:none;border-radius:50%;font:italic 700 13px/20px Georgia,serif;margin-left:8px;vertical-align:middle;background:var(--teal-soft);border-color:transparent;color:var(--teal)}
+button.info:hover:not(:disabled){background:var(--teal);color:var(--panel);border-color:var(--teal)}
+.vidbtn{font-size:13px!important;padding:4px 12px!important;margin-left:10px;vertical-align:middle;border-radius:999px!important;background:var(--pink-soft)!important;border-color:var(--pink-line)!important;color:var(--pink)!important;font-weight:700}
+kbd{background:var(--card-hi);border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:6px;padding:0 6px;font:12px var(--mono)}
+
+/* ---------------------------------------------------------------- your AIs */
+.proj{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:start;border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin-top:12px;background:var(--card)}
+.proj.is-live{border-color:var(--lime-line);box-shadow:0 0 0 3px var(--lime-soft)}
+.proj>.livebox,.proj>.charts,.proj>.chips,.proj>.projmsg,.proj>.smile{grid-column:1/-1}
+.proj .nm{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:700 17.5px/1.3 var(--ui);min-width:0}
+.proj .gt{flex-basis:100%;margin-left:19px;font:400 13.5px/1.3 var(--ui);color:var(--muted)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.acts button{padding:7px 12px;font-size:13.5px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;background:var(--faint);opacity:.7}
+.dot.live{background:var(--lime);opacity:1;box-shadow:0 0 0 0 var(--lime-line);animation:beat 1.8s ease-out infinite}
+@keyframes beat{0%{box-shadow:0 0 0 0 var(--lime-line)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:-2px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 11px;font-size:13px;color:var(--muted);background:var(--panel);border:1px solid var(--line)}
+.chip b{color:var(--text)}
+.chip.live{color:var(--lime);background:var(--lime-soft);border-color:var(--lime-line);font-weight:700}
+.chip.evo{color:var(--violet);background:var(--violet-soft);border-color:transparent}
+.chip.bad{color:var(--pink);background:var(--pink-soft);border-color:var(--pink-line);font-weight:700}
+.projmsg{border:1px solid var(--pink-line);background:var(--pink-soft);color:var(--text);border-radius:12px;padding:8px 12px;font-size:14px}
+.smile{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted)}
+.smile img{width:46px;height:auto;flex:none}
+.empty{display:flex;align-items:center;gap:16px;border:1px dashed var(--line-strong);border-radius:16px;padding:14px 18px;color:var(--muted);margin-top:4px}
+.empty img{width:88px;height:auto;flex:none}
+.empty b{color:var(--text)}
+.toolrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+/* the live scoreboard - the one loud thing on the page, styled like the website's high-score screen */
+.livebox{position:relative;overflow:hidden;border-radius:16px;padding:14px 18px 12px;background:var(--screen);color:var(--screen-text);
+ border:2px solid rgba(34,230,255,.55);box-shadow:0 0 22px rgba(34,230,255,.16),inset 0 0 28px rgba(34,230,255,.07);
+ background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px)}
+.livebox::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 40px rgba(0,0,0,.55)}
+.sb{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-end}
+.chipface{position:relative;width:62px;height:42px;flex:none;align-self:center;margin-right:-6px}
+.chipface img{position:absolute;inset:0;width:100%;height:100%}
+.chipface .blink{opacity:0;animation:blink 5s steps(1) infinite}
+@keyframes blink{0%,86%{opacity:0}87%,91%{opacity:1}92%,100%{opacity:0}}
+.sb-lab{font:20px/1 var(--crt);color:var(--screen-muted);margin-bottom:8px}
+.sb-num{font:400 24px/1 var(--pixel);color:#ff8a3d;text-shadow:0 0 10px rgba(255,106,26,.6),0 0 2px rgba(255,106,26,.6);letter-spacing:1px;white-space:nowrap}
+.sb-num.hi{color:#22e6ff;text-shadow:0 0 10px rgba(34,230,255,.55)}
+.sb-num.sm{font-size:16px;color:var(--screen-text);text-shadow:none}
+.sb-bar{height:10px;margin:14px 0 8px;border-radius:3px;background:#1b0f33;overflow:hidden}
+.sb-bar i{display:block;height:100%;background:repeating-linear-gradient(90deg,#ffe14d 0 9px,transparent 9px 12px);transition:width .6s}
+.sb+.sb-meta{margin-top:14px}
+.sb-meta{display:flex;gap:4px 18px;flex-wrap:wrap;align-items:center;font:20px/1.1 var(--crt);color:var(--screen-muted);position:relative;z-index:1}
+.sb-meta b{color:var(--screen-text);font-weight:400}
+.sb-btn{margin-left:auto;background:transparent!important;border:1px solid rgba(34,230,255,.6)!important;color:#22e6ff!important;padding:4px 12px!important;font:13px var(--ui)!important;border-radius:999px!important;box-shadow:0 0 12px rgba(34,230,255,.18)}
+.sb-btn:hover{border-color:#ffe14d!important;color:#ffe14d!important}
+.sb-wait{font:20px var(--crt);color:var(--screen-muted)}
+.wow{display:flex;align-items:center;gap:10px;margin-top:12px;border-radius:12px;padding:6px 12px;font-weight:700;background:rgba(255,225,77,.12);border:1px solid rgba(255,225,77,.5);color:var(--screen-text);animation:pop .5s ease;position:relative;z-index:1}
+.wow img{width:40px;height:auto;flex:none}
+@keyframes pop{0%{transform:scale(.94);opacity:0}60%{transform:scale(1.02);opacity:1}100%{transform:scale(1)}}
+
+/* graphs */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:2px}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px 8px;min-width:0}
+.ct{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ct b{font-size:14px}
+.lgs{display:flex;gap:4px 12px;flex-wrap:wrap;margin:3px 0 6px;min-height:18px}
+.lg{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.lg i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.lg b{color:var(--text)}
+.chart svg{width:100%;height:92px;display:block;overflow:visible}
+.cfoot{display:flex;justify-content:space-between;gap:6px;font-size:11.5px;color:var(--faint);margin-top:4px;font-variant-numeric:tabular-nums}
+.cempty{height:118px;display:grid;place-items:center;text-align:center;color:var(--faint);font-size:13.5px;padding:0 10px}
+.cempty.slim{grid-column:1/-1;height:auto;place-items:start;text-align:left;padding:12px 16px;border:1px dashed var(--line-strong);border-radius:14px}
+
+/* ---------------------------------------------------------------- your computer */
+.hw{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0 0}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 14px}
+.tile .l{font-size:13px;color:var(--muted)}
+.tile .v{font-weight:700;font-size:16.5px;line-height:1.35;margin-top:2px;overflow-wrap:anywhere}
+#hwplan{max-width:85ch}
+
+/* ---------------------------------------------------------------- pick a game */
+.pickgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 12px}
+.pk{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:var(--card);display:flex;flex-direction:column}
+.pk b{display:flex;align-items:center;gap:8px;font-size:15.5px;margin-bottom:2px}
+.pk b::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--lime);flex:none}
+.pk.ready b::before{background:var(--teal)}.pk.find b::before{background:var(--accent)}
+.pk .small{display:block;margin-bottom:10px;flex:1}
+.pk select{width:100%;min-width:0}
+#scanmsg{color:var(--muted)}
+.badge{display:inline-block;font:700 12.5px/1.6 var(--ui);border-radius:999px;padding:1px 10px;margin-left:8px;vertical-align:middle;border:1px solid}
+.badge.auto{background:var(--lime-soft);color:var(--lime);border-color:var(--lime-line)}
+.badge.find{background:var(--accent-soft);color:var(--accent-text);border-color:var(--accent-line)}
+.badge.no{background:var(--pink-soft);color:var(--pink);border-color:var(--pink-line)}
+#gamecard{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:16px;padding:14px 18px;display:none;margin-top:12px}
+#gamecard .nm{font-weight:700;font-size:18px;line-height:1.35}
+.nudge{margin-top:10px;border:1px dashed var(--accent-line);border-radius:12px;padding:9px 12px;font-size:14px;background:var(--panel)}
+details.cant{margin-top:12px}details.cant summary{cursor:pointer;color:var(--muted);font-size:13.5px;width:max-content;padding:2px 0}
+details.cant summary:hover{color:var(--text)}
+.robot{border:1px dashed var(--line-strong);border-radius:16px;padding:11px 14px;margin:2px 0 0;font-size:14px;background:var(--card)}
+.robot .bar{height:8px;border-radius:999px;background:var(--line);overflow:hidden;margin:8px 0}.robot .bar i{display:block;height:100%;background:var(--lime);border-radius:999px}
+.robot button:not(.info){padding:6px 12px;font-size:13px}
+
+/* ---------------------------------------------------------------- how should it learn */
+.choice{flex:1;min-width:240px;position:relative;border:1px solid var(--line);border-radius:16px;padding:14px 40px 14px 16px;cursor:pointer;background:var(--card);transition:border-color .15s,background .15s,box-shadow .15s}
+.choice:hover{border-color:var(--line-strong)}
+.choice.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft)}
+.choice.sel::after{content:'';position:absolute;top:13px;right:13px;width:20px;height:20px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' viewBox='0 0 12 10'%3E%3Cpath d='M1.5 5.2l3 3 6-6.4' fill='none' stroke='%230c1626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center}
+.choice b{display:block;margin-bottom:4px;font-size:16px}
+.choice strong{color:var(--accent-text)}
+.dials{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.dial{border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:var(--card);min-width:0}
+.dial>b{display:flex;align-items:center;font-size:15px;margin-bottom:6px}
+.dial>b .info{margin-left:auto}
+.dial select{min-width:0;width:100%}
+.dial>span,.dial input[type=range]+span{font-weight:700;font-size:14px}
+.dial .small{margin-top:6px}
+.dial>label{display:inline-flex;gap:8px;align-items:center;font-weight:700;cursor:pointer;margin:2px 0}
+.seg{display:flex;flex-direction:column;gap:6px;margin:4px 0 2px}
+.seg label{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:7px 10px;cursor:pointer;background:var(--panel);font-size:14px;line-height:1.35;transition:border-color .15s,background .15s}
+.seg label:hover{border-color:var(--line-strong)}.seg input{margin-top:1px;flex:none}
+.seg label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.opt{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;margin:8px 0}.opt b{color:var(--text)}
+
+/* ---------------------------------------------------------------- step 4 + footer */
+.step4{display:flex;gap:18px;align-items:stretch;flex-wrap:wrap}.step4 .left{flex:1;min-width:300px}
+.step4 input[type=text]{flex:1;min-width:220px}
+.coffeecard{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px 16px;background:var(--card);max-width:420px}
+.coffeecard img{width:64px;height:64px;border-radius:50%;flex:none}
+.coffeecard a{color:var(--accent-text);font-weight:700;text-decoration:none}.coffeecard a:hover{text-decoration:underline}
+footer.foot{display:flex;justify-content:space-between;gap:8px 18px;flex-wrap:wrap;color:var(--faint);font-size:13.5px;padding:4px 6px}
+footer.foot nav{display:flex;gap:16px;flex-wrap:wrap}
+footer.foot a{color:var(--muted);text-decoration:none}footer.foot a:hover{color:var(--text);text-decoration:underline}
+
+/* ---------------------------------------------------------------- pop-ups */
+.modal{position:fixed;inset:0;background:var(--backdrop);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:6vh 14px 40px;z-index:20}
+.modal .box{background:var(--panel);border:1px solid var(--line);border-radius:24px;max-width:900px;width:100%;padding:22px 26px 24px;box-shadow:var(--shadow-pop);animation:rise .2s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+.modal .box>.row:first-child{position:sticky;top:-12px;z-index:2;background:var(--panel);margin:-22px -26px 0;padding:22px 26px 10px;border-radius:24px 24px 0 0}
+.modal h2{font-size:20px}
+.modal h3{margin:18px 0 6px;font-size:15.5px;color:var(--accent-text)}
+#infobox{z-index:30}#infobox .box{max-width:680px}#infobox p,#infobox li{line-height:1.6}#infobox ul{padding-left:20px;margin:6px 0}
+#helpbox .box,#aboutbox .box{max-width:740px}#helpbox li,#aboutbox p{line-height:1.6}#helpbox h3 small{color:var(--muted);font-weight:400}
+.helpvid{margin:12px 0;align-items:center;border:1px solid var(--pink-line);border-radius:16px;padding:12px 16px;background:var(--pink-soft)}
+.coffee{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:14px;border-top:1px solid var(--line);padding-top:16px}
+.coffee img{width:150px;height:150px;border-radius:50%}
+a.btn{display:inline-block;text-decoration:none;border-radius:12px;padding:9px 16px;background:var(--accent);color:var(--accent-ink);font-weight:700;box-shadow:0 3px 0 var(--accent-deep)}
+a.btn:hover{filter:brightness(1.07);color:var(--accent-ink)}
+#modal h2{margin-top:24px}#modal .box>.row:first-child h2{margin-top:0}
+.cp{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 14px;font-size:14px;margin-top:6px;background:var(--card)}
+#delbox .box{max-width:560px}
+#delbox .big{font-size:15.5px}
+#delbox .big b{color:var(--accent-text);font:400 18px/1 var(--pixel);letter-spacing:.5px;margin:0 2px}
+#conbox .box{max-width:1000px}#conbox pre{background:#07020f;color:#e9e1f7;border:1px solid #2a1650;border-radius:14px;padding:12px 14px;font:12.5px/1.5 var(--mono);max-height:60vh;overflow:auto;white-space:pre-wrap}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);max-width:min(680px,92vw);background:var(--toast-bg);color:var(--toast-ink);padding:11px 20px;border-radius:16px;box-shadow:var(--shadow-pop);font-size:14.5px;display:none;z-index:40;text-align:center;animation:rise .2s ease-out}
+
+/* ---------------------------------------------------------------- narrow screens */
+@media(max-width:900px){.pickgrid{grid-template-columns:1fr}.proj{grid-template-columns:1fr}.acts{justify-content:flex-start}}
+@media(max-width:700px){.hw{grid-template-columns:1fr 1fr}main{padding:18px 14px 30px}.panel{padding:16px 16px 18px;border-radius:18px}h1.wordmark{font-size:15px}.chiphead{width:58px}.opt{grid-template-columns:1fr}select,input[type=text]{min-width:0;width:100%}.sb{gap:18px}.sb-num{font-size:19px}}
+.hdbtns .closebtn{color:var(--pink);border-color:var(--pink-line)}.hdbtns .closebtn:hover:not(:disabled){background:var(--pink-soft);border-color:var(--pink)}
+.chipsays{display:flex;gap:12px;align-items:flex-start;margin:10px 0;padding:12px 14px;border:1px solid var(--pink-line);border-radius:14px;background:var(--pink-soft);line-height:1.5}.chipsays img{width:44px;height:auto;flex:none;margin-top:2px}.chipsays .row{margin-top:8px;gap:8px}.chipsays .small{margin-top:6px}.pcwarn{margin:2px 0;font-size:13.5px;color:var(--muted)}.proj>.chipsays,.proj>.pcwarn{grid-column:1/-1}
+</style></head><body><main>
+<header class="top"><div class="brand"><img class="chiphead" src="/help/chip-head.webp" width="76" height="44" alt=""><div><h1 class="wordmark">Arcade Apprentice</h1><div class="tagline">Teach an AI to play a game from scratch. It starts knowing nothing - not even what the buttons do - and learns by playing thousands of games. You watch it get better.</div></div></div>
+<div class="hdbtns"><button class="themebtn" id="themebtn" onclick="flipTheme()" aria-label="Light page" aria-pressed="false" title="Switch to the light page"><svg class="moon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M10.6 1.6A6.6 6.6 0 1 0 14.4 11 5.4 5.4 0 0 1 10.6 1.6z"/></svg><svg class="sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="currentColor"/><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3.05 3.05l1.13 1.13M11.82 11.82l1.13 1.13M3.05 12.95l1.13-1.13M11.82 4.18l1.13-1.13"/></svg></button><button onclick="openBox('helpbox')">Help</button><button onclick="openBox('aboutbox')">About</button><button class="closebtn" onclick="quitKit()" title="Stops training (it saves first), the robot and the report card, then closes the page">&#9211; Close the kit</button></div></header>
+
+<div class="panel ais"><h2>Your AIs <button class="info" onclick="info('graphs')" title="What do the graphs mean?">i</button><button class="vidbtn" onclick="openVideo()" title="Three minutes, and it's a song">&#9654; Watch the help video</button><button class="vidbtn" onclick="stopAll()" title="Stop every AI that's training (each one saves first). Anything stuck is closed after 3 minutes.">&#9632; Stop all training</button></h2><div id="projects"><div class="small muted">Loading your AIs...</div></div>
+<div class="toolrow"><button onclick="report()">&#128202; Open the report card</button>
+<button onclick="get('/api/openkit').then(r=>toast(r.msg))" title="My AIs, the ROMs folder and START HERE.bat live here">&#128193; Open the kit folder</button>
+<button onclick="diag(this)" title="Something not working? This makes one text file describing your PC and what went wrong.">&#129520; Make a problem report</button></div></div>
+
+<div class="panel st1"><h2><span class="step s1">1</span>Your computer <button class="info" onclick="info('tune')" title="What does Tune for this PC do?">i</button></h2><div id="hwplan" class="muted">Checking your hardware...</div><div class="hw" id="hw"></div><div class="toolrow"><button onclick="tunePC(this)" title="Times the real trainer on this PC (about 15 minutes) and keeps the fastest settings. Once per PC, and again after new hardware.">&#9889; Tune for this PC</button><button onclick="clutterOpen()" title="Closes background apps (game launchers, chat, lighting software...) so training gets the whole PC. A restart brings them back.">&#129529; Free up this PC</button></div></div>
+
+<div class="panel st2"><h2><span class="step s2">2</span>Start a new one: pick a game</h2>
+<div class="intro">Put your game files in the folder <b>ROMs - put your games here</b>: Atari 2600 games (.bin / .a26) or arcade games (.zip, MAME/FBNeo sets). Games are recognised by their fingerprint, so the file name doesn't matter.</div>
+<div class="row" style="margin:10px 0;align-items:center"><button class="go" id="scanbtn" onclick="scanRoms()">&#128269; Scan the ROMs folder</button><button onclick="get('/api/openroms')">&#128193; Open the ROMs folder</button><span class="small muted" id="scanmsg"></span></div>
+<div class="pickgrid">
+<div class="pk"><b>Atari 2600</b><span class="small muted">Every one reads its own score.</span><select id="sel_atari" onchange="pickSel(this)"></select></div>
+<div class="pk ready"><b>Arcade - ready to train</b><span class="small muted">The kit already knows where the score is.</span><select id="sel_ready" onchange="pickSel(this)"></select></div>
+<div class="pk find"><b>Arcade - score needs finding</b><span class="small muted">Play it for a few minutes first and show the kit the score.</span><select id="sel_find" onchange="pickSel(this)"></select></div>
+</div>
+<div class="robot" id="robotbox"></div>
+<div id="gamecard"></div>
+<details class="cant" id="cantwrap"><summary id="cantsum"></summary><div id="cantlist" class="small muted" style="margin-top:6px"></div></details></div>
+
+<div class="panel st3"><h2><span class="step s3">3</span>How should it learn? <button class="info" onclick="info('presets')">i</button></h2>
+<div class="intro">The only thing an AI ever learns from is its reward. Start from a preset - you can change any of this later with the &#9881; button on your AI.</div>
+<div class="row" id="preset">
+<div class="choice sel" data-v="normal" tabindex="0"><b>Most games (recommended)</b><span class="small muted">Shooters, mazes, bat-and-ball. Points come often, so points are enough.</span></div>
+<div class="choice" data-v="explore" tabindex="0"><b>Exploration games</b><span class="small muted">Pitfall, Montezuma's Revenge, Adventure... Points are rare and far away, so it gets an <strong>explorer bonus</strong> for finding new screens.</span></div></div>
+<div id="dials_new" style="margin-top:12px"></div></div>
+<div class="panel st4"><div class="step4"><div class="left"><h2><span class="step s4">4</span>Name it and create it</h2>
+<div class="row" style="align-items:center"><input type="text" id="title" placeholder="Name your AI (optional)"><button class="go" id="createbtn" onclick="createIt()">&#9654; Create my AI and start training</button></div>
+<div class="small muted" style="margin-top:8px">It appears at the top of the page under <b>Your AIs</b> - that's where you come back to it, train it more and watch it.</div></div>
+<div class="coffeecard"><img src="/help/coffee.png" alt=""><div class="small"><b>Enjoying it?</b><br>Buy Jonny a coffee - any amount you like.<br><a href="https://paypal.me/arcadeapprentice" target="_blank" rel="noopener">paypal.me/arcadeapprentice &#8599;</a></div></div></div></div>
+<footer class="foot"><span>Everything runs on your computer. Nothing is uploaded anywhere. &copy; 2026 Jonathan Terrington</span><nav><a href="#" onclick="openBox('aboutbox');return false">About</a><a href="#" onclick="openBox('helpbox');return false">Help</a><a href="#" onclick="quitKit();return false" title="Stops training (it saves first), the robot and the report card, then closes the page">Close the kit</a></nav></footer>
+</main><div id="toast"></div>
+<div class="modal" id="infobox" onclick="if(event.target==this)closeInfo()"><div class="box">
+<div class="row" style="justify-content:space-between;align-items:center"><h2 id="i_title" style="margin:0"></h2><button onclick="closeInfo()">Got it</button></div>
+<div id="i_body" style="margin-top:8px"></div></div></div>
+<div class="modal" id="conbox" onclick="if(event.target==this)closeCon()"><div class="box">
+<div class="row" style="justify-content:space-between;align-items:center"><h2 id="con_title" style="margin:0">Training console</h2><button onclick="closeCon()">Close</button></div>
+<div class="small muted" style="margin:6px 0">The training's own words, updated every 5 seconds - the same text the old black window showed.</div><pre id="con_text"></pre></div></div>
+<div class="modal" id="helpbox" onclick="if(event.target==this)closeBox(this.id)"><div class="box">
+<div class="row" style="justify-content:space-between;align-items:center"><h2 style="margin:0">Help</h2><button onclick="closeBox('helpbox')">Close</button></div>
+<div class="row helpvid">
+<div style="flex:1;min-width:220px"><b>Watch the help video</b><div class="small muted">Three minutes, and it's a song. Honestly. It shows every step below being done for real.</div></div>
+<button class="go" onclick="openVideo()">&#9654; Play the help video</button></div>
+<h3>Getting going</h3><ol>
+<li>Put your game files in the <b>ROMs - put your games here</b> folder (Atari 2600 .bin/.a26, arcade .zip). Sub-folders are fine.</li>
+<li>Press <b>Scan the ROMs folder</b>, then pick a game from one of the three lists.</li>
+<li>Pick <b>Most games</b> or <b>Exploration games</b>, give it a name, and press <b>Create my AI and start training</b>.</li>
+<li>Your AI appears at the top of the page. The graphs start moving after a few minutes. Leave it running - overnight is best.</li></ol>
+<h3>Where do I get games?</h3>
+<p>The kit doesn't come with any games - you bring your own, and only ones you're allowed to use. The honest ways to get them:</p><ul>
+<li><b>Your own boards and cartridges.</b> If you own the machine or cartridge, its chips can be copied ("dumped") for your own use.</li>
+<li><b>Games given away free by their owners.</b> The MAME team keeps a page of arcade games whose owners have said they can be shared free (<a href="https://www.mamedev.org/roms/" target="_blank" rel="noopener" style="color:var(--cyan)">mamedev.org/roms</a>). Atari 2600 fans are still making brand new games ("homebrew") - many are free to download from their makers.</li></ul>
+<p class="small muted">Arcade games go in as the .zip file just as it is - don't unzip it. Atari 2600 games are .bin or .a26 files. The kit works out which game it is from what's inside, so the file name doesn't matter, and it shows the game's proper name.</p>
+<h3>What the lists mean</h3>
+<p><span class="badge auto">Score: automatic</span> the kit already knows where the game keeps its score, so you can train straight away.<br>
+<span class="badge find">Score: you need to find it</span> before an AI can learn it, play the game for a few minutes in the <b>Find the score</b> window and type the score in now and then. You only do this once per game.<br>
+<span class="badge no">Won't run</span> that copy of the game was made for a different emulator, so it won't load here.</p>
+<h3>Watching and teaching</h3><ul>
+<li><b>Watch it play</b> opens a window showing the AI's best brain playing live. <kbd>M</kbd> turns the sound on and off.</li>
+<li>Press <kbd>L</kbd> in that window to take over and show it how: arrows to move, <kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> for buttons. Press <kbd>L</kbd> again to hand back. Next time it trains, it copies you first.</li>
+<li><kbd>F1</kbd> shows the help in any game window.</li></ul>
+<h3>Find the score keys</h3><ul>
+<li><kbd>5</kbd> coin, <kbd>1</kbd> start, arrows and <kbd>Z</kbd>-<kbd>D</kbd> to play.</li>
+<li><kbd>P</kbd> then type the score you can see. Do it two or three times at different scores.</li>
+<li><kbd>G</kbd> at GAME OVER, then <kbd>F</kbd> to search. <kbd>Y</kbd> saves what it found, <kbd>N</kbd> tries the next one.</li>
+<li>Fighting games: <kbd>H</kbd> round starts, <kbd>J</kbd> you got hit, <kbd>K</kbd> you hit them, <kbd>U</kbd> nothing happened.</li></ul>
+<h3>Something not right?</h3><p>Press <b>Make a problem report</b> near the top of the page. It writes one small text file about your PC and what went wrong - send that to Jonny.</p>
+<p class="small muted">Every little <button class="info" style="pointer-events:none">i</button> button on the page explains the thing next to it.</p>
+</div></div>
+<div class="modal" id="clutterbox" onclick="if(event.target==this)closeBox(this.id)"><div class="box" style="max-width:560px">
+<h2 style="margin:0 0 6px">Free up this PC</h2>
+<div class="small muted">These background apps are running but aren't needed while an AI trains. Untick any you want to keep - the kit remembers. Nothing is deleted or uninstalled, and a restart brings them all back.</div>
+<div id="cl_list" style="margin-top:12px;max-height:50vh;overflow:auto"></div>
+<div class="row" style="margin-top:16px;justify-content:space-between;align-items:center"><div class="row"><button onclick="clutterEdit()" title="Add your own apps to the list, or take some off">&#9998; Edit the list</button><button onclick="clutterOpen()">&#8635; Look again</button></div>
+<div class="row"><button onclick="closeBox('clutterbox')">Cancel</button><button class="go" id="cl_go" onclick="clutterGo()">Close ticked apps</button></div></div></div></div>
+<div class="modal" id="delbox" onclick="if(event.target==this)closeBox(this.id)"><div class="box" style="max-width:560px">
+<h2 style="margin:0 0 6px">Delete <span id="d_name"></span>?</h2>
+<div id="d_body" class="small"></div>
+<div class="row" style="margin-top:16px;justify-content:flex-end"><button onclick="closeBox('delbox')">Keep it</button>
+<button class="danger solid" id="d_go" onclick="doDelete()">&#128465; Delete for ever</button></div></div></div>
+<div class="modal" id="aboutbox" onclick="if(event.target==this)closeBox(this.id)"><div class="box">
+<div class="row" style="justify-content:space-between;align-items:center"><h2 style="margin:0">About Arcade Apprentice</h2><button onclick="closeBox('aboutbox')">Close</button></div>
+<p>Hiya, I'm Jonny. I run a little shop on Dickson Road in Blackpool, and when it's quiet I tinker with AI.</p>
+<p>I wanted to watch a computer learn to play a game from nothing. It doesn't know what the buttons do, it doesn't know what a ghost is, it just has a go thousands of times until it gets good. It's daft how addictive it is to watch. So I built this kit, and then I thought, why keep it to myself?</p>
+<p>It's free. No adverts, no sign-ups, and nothing leaves your computer. Bring your own games, pick one, press go, and turn the dials to see what happens.</p>
+<div class="coffee"><img src="/help/coffee.png" alt="Buy Jonny a coffee">
+<div style="flex:1;min-width:220px"><p style="margin-top:0">If it's put a smile on your face and you fancy buying me a coffee, the button's here - you choose the amount, whatever you like. It helps pay for the tools I use to build it. No pressure at all - enjoy it either way.</p>
+<a class="btn" href="https://paypal.me/arcadeapprentice" target="_blank" rel="noopener">&#9749; Buy Jonny a coffee</a>
+<div class="small muted" style="margin-top:6px">paypal.me/arcadeapprentice</div></div></div>
+<p class="small muted" style="margin-top:16px">Cheers, Jonny.<br>&copy; 2026 Jonathan Terrington. Only use game files you're entitled to.</p>
+</div></div>
+<div class="modal" id="modal"><div class="box">
+<div class="row" style="justify-content:space-between;align-items:center"><h2 id="m_title" style="margin:0">Settings</h2><button onclick="closeM()">Close</button></div>
+<div class="small muted" style="margin:6px 0 10px">Changes are used the next time you press Train (if it's training now: Stop, then Train). Tip: save a checkpoint first, so you can go back if a tweak makes it worse.</div>
+<div id="dials_edit"></div>
+<h2 style="margin-top:22px">Recipe cards</h2>
+<div class="small muted">Share the settings and results, never the ROM. Export shows exactly what goes in the file first. Import lets you tick the dials to keep and backs up first.</div>
+<div class="row" style="margin:8px 0;align-items:center"><input type="text" id="recipe_notes" placeholder="Optional notes for this recipe"><label class="small"><input type="checkbox" id="recipe_specs"> Include my PC specs (never PC name, username, serials or paths)</label></div>
+<div class="row" style="margin:8px 0"><button onclick="previewRecipe(false)">&#128221; Preview &amp; export settings</button><button onclick="previewRecipe(true)">&#128279; Share to forum</button><button onclick="$('recipe_file').click()">&#128229; Import settings</button><input type="file" id="recipe_file" accept=".aarecipe,.json" style="display:none" onchange="importRecipe(this.files[0])"><button id="recipe_undo" style="display:none" onclick="undoRecipe()">&#8634; Undo last import</button></div>
+<div class="row" style="margin-top:12px"><button class="go" onclick="saveSettings()">Save settings</button><button onclick="closeM()">Close</button></div>
+<h2 style="margin-top:22px">Checkpoints <button class="info" onclick="info('checkpoints')">i</button></h2>
+<div class="small muted">A checkpoint is a saved copy of the brain <i>and</i> its settings. Restore one to go back to that moment.</div>
+<div class="row" style="margin:8px 0;align-items:center"><input type="text" id="cp_name" placeholder="Name, e.g. before explorer bonus"><button onclick="saveCp()">&#128190; Save checkpoint now</button></div>
+<div id="cp_list" class="small muted"></div>
+<h2 style="margin-top:22px">Buttons <button class="info" onclick="info('buttons')" title="Why its buttons matter">i</button></h2>
+<div id="btn_box" class="small"></div>
+<h2 style="margin-top:22px">Teach another AI <button class="info" onclick="info('teacher')">i</button></h2>
+<div class="small muted">This AI plays a few hundred games while another AI on the same game takes notes - next time that one trains, it copies this one first.</div>
+<div class="row" style="margin:8px 0;align-items:center"><select id="pupil"></select><button onclick="teachIt()">&#127891; Teach it</button></div>
+<h2 style="margin-top:22px">Check &amp; repair <button class="info" onclick="info('repair')">i</button></h2>
+<div class="small muted">If the PC crashed or lost power while it was training, this checks its files and fixes what it can. Copies of everything are kept first.</div>
+<div class="row" style="margin-top:8px"><button onclick="repairIt(editId)">&#129657; Check &amp; repair</button></div>
+<h2 style="margin-top:22px">Start again</h2>
+<div class="small muted">Wipes what it has learned and starts from scratch with the current settings. The old run is kept in the AI's <i>files\old runs</i> folder, just in case.</div>
+<div class="row" style="margin-top:8px"><button class="danger" onclick="resetAI()">&#8635; Reset training</button></div>
+</div></div>
+<div class="modal" id="recipebox"><div class="box">
+<div class="row" style="justify-content:space-between;align-items:center"><h2 id="recipe_title" style="margin:0">Recipe card</h2><button onclick="closeRecipe()">Close</button></div>
+<div id="recipe_msg" class="small muted" style="margin:8px 0"></div>
+<pre id="recipe_json" style="max-height:45vh;overflow:auto;white-space:pre-wrap;word-break:break-word;background:#0b0320;padding:12px;border-radius:8px"></pre>
+<div id="recipe_diff"></div>
+<div class="row" style="margin-top:12px"><button class="go" id="recipe_save" onclick="saveRecipe(false)">Save recipe</button><button id="recipe_share" onclick="saveRecipe(true)">Save &amp; share to forum</button><button class="go" id="recipe_apply" style="display:none" onclick="applyRecipe()">Apply ticked dials</button><button onclick="closeRecipe()">Close</button></div>
+</div></div>
+<script>
+const $=id=>document.getElementById(id);let gameId=null,gamePlat='atari',gameFile=null,editId=null;
+const get=u=>fetch(u,{cache:'no-store'}).then(r=>r.json());
+const post=(u,b)=>fetch(u,{method:'POST',body:JSON.stringify(b)}).then(r=>r.json());
+function toast(m,ms){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',ms||5000)}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// text going inside onclick="f('...')": escape for the JS string first (backslashes in sub-folder paths, apostrophes), then for HTML
+const jsq=s=>esc(String(s??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'"));
+const cap=s=>s?String(s)[0].toUpperCase()+String(s).slice(1):'';
+// ---------------------------------------------------------------- the dials (shared by "create" and "settings")
+const DIALS=[
+ {k:'learn_style',t:'choice',l:'How it learns',o:[['practice','Practice - one brain gets better and better'],['evolution','Evolution - a family of 4 brains compete; the best are copied and mutated']],h:'Evolution is slower to get going but tunes its own settings as it goes. Try one of each on the same game and race them!'},
+ {k:'reward_style',t:'choice',l:'How points count',o:[['log','Bigger points matter more (recommended)'],['equal','Every score counts the same'],['raw','Exact points']],h:'A 1,000-point prize should usually beat a 10-point dot - without drowning everything else out.'},
+ {k:'explorer',t:'steps',l:'Explorer bonus',o:[[0,'off'],[0.5,'gentle'],[1,'normal'],[2,'strong'],[3,'very strong']],h:"Extra reward for reaching screens it hasn't seen much. Essential when points are rare (Pitfall, Montezuma's Revenge). Usually not needed for shooters."},
+ {k:'go_explore',t:'steps',l:'Go-Explore (restart from far places)',o:[[0,'off'],[0.25,'sometimes'],[0.5,'half the time'],[0.75,'mostly']],h:'Keeps a map of places it has reached and restarts some games from the far edge of it. The big gun for Pitfall-type games. Atari games only.'},
+ {k:'ignore_losses',t:'check',l:'Ignore points it loses',h:'Some games take points off for bumps (Pitfall logs). Ignoring them stops it being too scared to move.'},
+ {k:'life_penalty',t:'steps',l:'Penalty for losing a life',o:[[0,'none'],[0.25,'small'],[0.5,'medium'],[1,'big'],[2,'huge']],h:'Makes it careful. Too much and it may hide instead of playing.'},
+ {k:'lives_at_game_over',t:'check',l:'A game over costs every life it had left',h:'If the game ends with lives to spare (the invaders landing), it loses all of them at once - so it learns that is the worst thing that can happen.'},
+ {k:'miss_price',t:'steps',l:'A missed shot costs',o:[[0,'nothing'],[0.01,'a tiny bit'],[0.02,'a little'],[0.05,'some'],[0.1,'a lot'],[0.2,'a real lot']],h:'Shots that hit nothing (off the top, or into its own shields) cost a little, so it stops firing at empty sky. Keep it tiny or it gets scared to shoot. Arcade Space Invaders only, for now.'},
+ {k:'practice',t:'steps',l:'Practise the hard parts',o:[[0,'off'],[0.125,'1 game in 8'],[0.25,'1 game in 4'],[0.5,'half the games']],h:"Some games start from moments kept from its own games (the last few invaders, the later waves) instead of the beginning. They don't count on the scoreboard. Arcade games only."},
+ {k:'curiosity',t:'steps',l:'Randomness (trying other buttons)',o:[[0.003,'low'],[0.01,'normal'],[0.02,'high'],[0.03,'very high']],h:'How often it tries something other than its favourite move. Too high and it never settles on what works.'},
+ {k:'gamma',t:'steps',l:'How far ahead it plans',o:[[0.97,'a few seconds'],[0.98,'short'],[0.99,'normal'],[0.995,'long'],[0.999,'very long (exploration games)']],h:'Short = grabs points now. Long = will walk a long way for a prize.'},
+ {k:'learning_rate',t:'steps',l:'Learning speed',o:[[0.0001,'careful'],[0.00025,'normal'],[0.0005,'fast (can wobble)']],h:'How big a nudge each lesson gives the brain.'},
+ {k:'sticky',t:'check',l:'Slightly sticky buttons, like a real joystick',h:'Stops it memorising one perfect run instead of really learning.'},
+ {k:'brain_size',t:'choice',l:'Brain size',o:[['auto','Automatic (sized to your graphics card)'],['normal','Normal'],['large','Large (2x - for hard games, needs a good card)']],h:'Bigger brains can learn harder games but train slower. Changing it on an existing AI needs Reset training.'},
+ {k:'learn_from_me',t:'steps',l:'Learn from my games',o:[[0,'off'],[0.5,'a little'],[1,'normal'],[2,'a lot']],h:"Play it yourself in the Watch window (press L) and it copies you first, then learns to beat you."},
+ {k:'learn_from_best',t:'check',l:'Learn from its own best games',h:'Any game better than its average is kept and studied, then thrown away. Its record games go to the Hall of Fame - press B in the Watch window to watch them.'},
+ {k:'best_study_times',t:'steps',l:'Times each best game is studied',o:[[1,'once'],[2,'twice'],[3,'3 times'],[4,'4 times'],[5,'5 times']],h:'Once keeps it trying new things. More = it copies its best games harder (only matters when the box above is ticked).'},
+ {k:'length',t:'choice',l:'How long it practises',o:[['taster','Quick taster (~5M moves)'],['more5','5M more moves, then stop (for experiments)'],['overnight','Overnight (~100M moves)'],['forever','Until I stop it']],h:'5M more: every time you press Train it does another 5 million moves from where it is, then stops - handy for trying a setting and comparing.'}];
+const PRESETS={normal:{reward_style:'log',explorer:0,go_explore:0,brain_size:'auto',ignore_losses:false,learn_from_me:1,learn_from_best:false,best_study_times:1,miss_price:0,practice:0,learn_style:'practice',life_penalty:0,curiosity:0.01,gamma:0.99,learning_rate:0.00025,sticky:true,length:'overnight'},
+ explore:{reward_style:'log',explorer:2,go_explore:0.5,brain_size:'auto',ignore_losses:true,learn_from_me:1,learn_from_best:false,best_study_times:1,miss_price:0,practice:0,learn_style:'practice',life_penalty:0,curiosity:0.01,gamma:0.999,learning_rate:0.00025,sticky:true,length:'forever'}};
+const EXPLORE_GAMES=['pitfall','montezuma_revenge','private_eye','venture','gravitar','solaris','adventure','pitfall2','freeway','hero'];
+const INFO={
+repair:['Check & repair',`<p>If Windows crashes or the power goes while an AI is training, the files it was writing at that moment can be left half-written - a brain save that won't open, or blank padding in its logs - and the kit can't carry on training it.</p><p><b>Check &amp; repair</b> does the same fix every time: a damaged brain save is rebuilt from its newest good copy (its best brain, else a checkpoint - you lose a few minutes of progress, and its learning momentum builds back up within minutes); broken lines are dropped from its logs (every good line is kept); small files that won't open are reset; and recordings that won't open are moved aside, never deleted. Copies of everything it changes go in the AI's <i>files</i> folder first.</p><p>Better still is not needing it: close other programs while it trains.</p>`],
+buttons:['Its buttons',`<p>An arcade AI chooses between <b>moves</b>: each joystick direction, with and without each button. A game found with <b>Find the score</b> starts with every direction and button you touched while showing it the game - so one stray tap of Up, in a game where Up does nothing, gives it three times as many moves, and it has to find out the hard way that "left" and "left + up" are the same thing.</p><p><b>Why it matters:</b> fewer moves, faster learning - every lesson about "left" goes to one move instead of being split between copies of it. But a button that really does something must never be dropped, however rarely it matters - a potion you have to pick up first, a door on a later level - or the AI can never discover it.</p><p>So the kit checks. Now and then, in the middle of its own play, it tries a button and looks at whether the screen comes out any different. A button that changes something even once is kept for good. One that never does, after hundreds of tries, is <i>suggested</i> for dropping - and you decide, because you know the game. <b>Arkanoid:</b> Up and Down do nothing, so drop them. <b>Gauntlet:</b> the potion button only works once you're carrying a potion, so keep it.</p><p>Changed your mind? <b>Give it its buttons back</b> puts them all back. Either way, what it has already learned is carried over.</p>`],
+tune:['Tune for this PC',`<p>Every PC is different, so the kit has to guess how many games to run at once and how big a bite of each lesson your graphics card can chew. <b>Tune for this PC</b> stops guessing: it runs the real trainer for about a minute at a time with more and more games at once, times each one, and keeps the fastest.</p><p>It takes about 15 minutes, in its own window - don't train anything while it runs. Do it once on each PC, and again after new hardware or if things feel slow. The results only count on the PC that made them, so the kit can travel between PCs safely.</p><p>It only changes how <b>fast</b> your AIs learn - never <b>how</b> they learn. An AI learns the same on a gaming PC as on a laptop; the gaming PC just gets there sooner.</p>`],
+robot:['The Library Robot (optional add-on)',`<p>Every arcade game keeps its score in a different place, so for games the kit doesn't know yet, someone has to show it where the score is (the <b>Find the score</b> window). The Library Robot does that job <b>for you, on its own</b>.</p>
+<ul><li>It works through every arcade game in your ROMs folder (sub-folders too), one at a time - about 5 minutes each.</li>
+<li>For each one it starts the game, plays it badly, watches the game's memory and the screen for a number that behaves like a score, then checks its answer by actually playing.</li>
+<li>Every game it cracks moves to <b>Arcade - ready to train</b>. Games that already have a score are skipped.</li></ul>
+<h3>Good to know</h3><ul><li>A big collection takes hours - start it before bed.</li><li>It uses one CPU thread, so you can keep using the PC (training at the same time will be a little slower).</li><li>It won't crack everything: some games almost never score when played badly, and some don't run in the kit's emulators. Those stay in "score needs finding".</li><li>Stop any time - it remembers what it has done and carries on next time.</li></ul>
+<h3>Getting it</h3><p>It's a separate small download from the same place as the kit (arcadeapprentice.co.uk). Unzip it into your kit folder - the one with START HERE.bat in it - and say yes if Windows asks to merge the <i>files</i> folder. If it lands in a folder of its own inside the kit, that's fine too - the kit finds it. Then refresh this page.</p>`],
+presets:['Presets - where to start',`<p>A preset fills in all the settings below with a sensible starting point. You can still change any of them, now or later.</p>
+<h3>Most games</h3><p>For games where points come thick and fast - Space Invaders, Breakout, Pong, Ms. Pac-Man, Donkey Kong. The AI stumbles onto points by accident within seconds, and that's enough for it to start learning what works.</p>
+<h3>Exploration games</h3><p>For games where points are rare and far away - <b>Pitfall</b>, <b>Montezuma's Revenge</b>, Adventure, Private Eye, Venture. Pressing random buttons almost never finds the treasure, so a normal AI never gets a single point to learn from. This preset switches on the <b>explorer bonus</b> (it gets rewarded just for discovering new places), tells it to ignore small point losses, and makes it plan much further ahead.</p>
+<h3>How do I know which my game is?</h3><p>Watch a few seconds of someone playing badly. If they still score points, it's "Most games". If they score nothing at all for minutes, it's an exploration game.</p>`],
+reward_style:['How points count',`<p>The AI learns <b>only</b> from its reward. Normally the reward is the game's own points - this decides how those points are counted.</p>
+<div class="opt"><b>Bigger points matter more</b><span>(recommended) A 1,000-point bonus is worth more than a 10-point dot, but not 100 times more - roughly "how many digits" the score has. It chases big prizes without ignoring the small stuff.</span>
+<b>Every score counts the same</b><span>Any points = +1, whatever the amount. This is the classic research setting: very steady, but it won't go out of its way for a big prize (it values a dot the same as a mothership).</span>
+<b>Exact points</b><span>Pure score. Fine for games with similar-sized points, but in games with huge jackpots one lucky moment can drown out everything else and make learning jumpy.</span></div>
+<h3>When to change it</h3><p>Stick with the recommended one unless the AI ignores obvious big prizes (try Exact) or its learning swings wildly up and down (try Every score counts the same).</p>`],
+explorer:['Explorer bonus',`<p>Gives the AI an extra reward for <b>seeing screens it hasn't seen much before</b>. Think of a child who gets a sticker every time they find a new room in a museum - they'll wander off and explore instead of staying by the door.</p>
+<p>How it works: a second little brain tries to guess what each screen will look like. Screens it has seen loads of times are easy to guess; brand-new places aren't - and that surprise is the bonus. As places become familiar, their bonus fades, so it keeps pushing outwards.</p>
+<div class="opt"><b>Off</b><span>Points only. Best for most games.</span><b>Gentle / Normal</b><span>A nudge to explore while still caring mostly about points. Normal is a good start for Pitfall-type games.</span><b>Strong / Very strong</b><span>Exploring matters more than points. Try this if the "different screens seen" graph flattens out early.</span></div>
+<h3>Signs it's set wrong</h3><ul><li><b>Too low:</b> the Exploring graph goes flat and the score never leaves zero.</li><li><b>Too high:</b> it wanders everywhere but never bothers grabbing points it walks past.</li></ul>
+<p class="small muted">This is a real research method (Random Network Distillation, 2018) - the one that first made progress on Montezuma's Revenge.</p>`],
+go_explore:['Go-Explore (restart from far places)',`<p>The hardest thing about games like Pitfall isn't playing well - it's ever getting far enough to find anything. Go-Explore fixes that by keeping a <b>map</b>.</p>
+<ul><li>Every distinct place the AI reaches goes on the map, along with a <b>save-state</b> - like a save point in a modern game.</li>
+<li>When a game ends, it can restart from a place on the map instead of from the beginning. It favours places it has rarely explored from, so it keeps pushing the frontier outwards.</li>
+<li>The brain learns from all of this, so over time it learns how to get to those far places by itself.</li></ul>
+<div class="opt"><b>Off</b><span>Every game starts from the beginning. Best for normal games.</span><b>Sometimes</b><span>A quarter of games restart from the map.</span><b>Half the time</b><span>Good balance for Pitfall-type games: half the time it practises from the start, half the time it explores from the frontier.</span><b>Mostly</b><span>Maximum exploring. It may get less practice at the early part of the game.</span></div>
+<h3>What you'll see</h3><p>A <b>Map</b> graph appears: the best score reached anywhere on its map. The Score graph only counts games played from the very start, so it stays an honest measure of what the AI can do on its own.</p>
+<h3>Good to know</h3><p>Atari games only for now. It runs each game in its own process, so it uses more memory and the moves-per-second figure will be lower than without it.</p>
+<p class="small muted">From "First return, then explore" (Ecoffet et al., Nature 2021) - the method that first scored big on Pitfall and Montezuma's Revenge.</p>`],
+brain_size:['Brain size',`<p>How many "neurons" the AI's brain has.</p>
+<div class="opt"><b>Automatic</b><span>Large if your graphics card has 16 GB or more, otherwise normal.</span><b>Normal</b><span>Plenty for most games. Fastest.</span><b>Large</b><span>Twice as wide. Can learn more complicated games (Pitfall, Montezuma's Revenge, Ms. Pac-Man at high levels) but every lesson takes longer and it needs more graphics memory.</span></div>
+<h3>Changing it later</h3><p>A brain can't change size once it has learned things, so on an existing AI this only takes effect after <b>Reset training</b>. Save a checkpoint first if you might want to go back.</p>`],
+ignore_losses:['Ignore points it loses',`<p>Some games <b>take points away</b> - in Pitfall you lose points every time you touch a rolling log. To a beginner AI that's terrifying: it quickly learns that moving loses points and standing still loses nothing... so it stands still forever.</p>
+<p>With this ticked, losing points simply counts as nothing. The AI isn't scared to move, so it explores. (The real score shown on the graphs still includes the losses.)</p>
+<h3>When to use it</h3><p><b>Yes</b> for Pitfall and similar games. <b>No</b> for games where losing points is the whole point of the lesson - e.g. Pong, where the other player scoring is how it learns to defend.</p>`],
+life_penalty:['Penalty for losing a life',`<p>Takes a bit of reward away every time it loses a life, on top of whatever the game does.</p>
+<div class="opt"><b>None</b><span>It only cares about points. Losing a life matters only because the game ends sooner.</span><b>Small / Medium</b><span>Teaches it to be a bit careful - useful in games with lots of lives where dying seems free.</span><b>Big / Huge</b><span>Very cautious. Risky: it may learn to hide in a corner and never take a chance, because doing nothing is the safest way to not die.</span></div>
+<h3>Signs it's set wrong</h3><p>If the AI cowers or camps in one spot, lower it. If it charges recklessly into enemies, raise it a little.</p>`],
+lives_at_game_over:['A game over costs every life it had left',`<p>Normally the penalty for losing a life is only taken when it loses a life <b>during</b> a game. If the game ends early with lives to spare - in Space Invaders, the invaders landing - those spare lives cost it nothing extra.</p>
+<p>Ticked, a game over costs <b>every life it had left</b> (times the penalty above). Letting the invaders land with three lives in hand then hurts three times as much as dying on its last life, so it learns to keep the bottom row trimmed.</p>
+<h3>When to use it</h3><p>Games that can end with lives to spare, like Space Invaders. It only matters when the penalty for losing a life is above none.</p>`],
+miss_price:['A missed shot costs',`<p>Every shot that hits nothing - flying off the top of the screen, or blowing a hole in its own shields - takes a little reward away. Shooting down a bomb is free (that's defending).</p>
+<p>Without it a miss costs nothing, so it learns to hold the fire button down whether there's anything to hit or not.</p>
+<div class="opt"><b>Nothing</b><span>Spraying is free.</span><b>A tiny bit</b><span>With exact points, 1 point a miss (a bottom invader is worth 10). The safe start.</span><b>A little / Some</b><span>It gets choosier about when to shoot.</span><b>A lot</b><span>Risky: it may get scared to shoot at all.</span></div>
+<h3>Signs it's set wrong</h3><p>Watch <b>Shots that hit</b> on its scoreboard. If that climbs and the score holds, it's learning to aim. If it climbs but the score drops, it's gone timid - turn this down.</p><p>Arcade Space Invaders only, for now: other games can't tell a miss yet.</p>`],
+practice:['Practise the hard parts',`<p>Normally every practice game starts from the very beginning, so it spends most of its time on the part it's already good at. With this on, some games start from <b>moments kept from its own games</b> instead: in Space Invaders the last few invaders and the start of each later wave; in other arcade games, moments further into its games.</p>
+<p>Each one starts after a short random wait, so it can't learn a moment off by heart, and practice games <b>don't count</b> on the scoreboard (average, best game).</p>
+<h3>When to use it</h3><p>When it's good at the start but rarely gets far enough to learn the rest. Start with 1 game in 8. Arcade games only.</p>`],
+curiosity:['Randomness (trying other buttons)',`<p>Every move, the AI has a favourite button - but sometimes it should try a different one, otherwise it never discovers anything better. This sets how much it's rewarded for <b>keeping its options open</b>.</p>
+<div class="opt"><b>Low</b><span>Settles quickly on what works. Good once it's already playing well.</span><b>Normal</b><span>The standard research setting. A good start for almost everything.</span><b>High / Very high</b><span>Keeps trying things for longer. Can help if it gets stuck in a rut, but too high and it never commits to anything - it just presses random buttons forever.</span></div>
+<h3>How to read it on the graph</h3><p>The Brain graph shows its randomness. It should start high and slowly come down as it learns what works. If it stays at the very top for millions of moves, the AI isn't learning anything - try lowering this, or (for exploration games) turning on the explorer bonus.</p>`],
+gamma:['How far ahead it plans',`<p>How much the AI cares about rewards in the future compared with right now.</p>
+<div class="opt"><b>A few seconds</b><span>Only cares about points it can get almost immediately.</span><b>Short</b><span>A bit further ahead.</span><b>Normal</b><span>About the next 10-20 seconds of play. Right for most games.</span><b>Long</b><span>Will set things up for later, e.g. lining up shots.</span><b>Very long</b><span>Will walk a long way for a prize it can't see yet - needed for exploration games where the treasure is several screens away.</span></div>
+<h3>The catch</h3><p>Planning further ahead makes learning slower and noisier, because it has to work out which of many earlier moves deserve the credit. Only go long when the game really needs it.</p>`],
+learning_rate:['Learning speed',`<p>After each batch of games, the AI's brain is nudged towards the moves that worked. This sets how big that nudge is.</p>
+<div class="opt"><b>Careful</b><span>Small nudges. Slower, but very steady - good for squeezing out the last bit of skill from an AI that already plays well.</span><b>Normal</b><span>The standard research setting. Use this.</span><b>Fast</b><span>Bigger nudges. Can learn the basics quicker, but may "wobble": the score jumps up then crashes as it over-corrects.</span></div>
+<h3>Signs it's set wrong</h3><p>If the score graph goes up, then suddenly collapses and has to climb again, slow it down. If it's improving but painfully slowly and smoothly, you can try fast.</p>`],
+sticky:['Sticky buttons',`<p>A quarter of the time, the joystick "sticks" and repeats the previous move instead of the new one - like a worn arcade joystick.</p>
+<p>Why? Old games are perfectly predictable. Without this, an AI can memorise one exact sequence of button presses that scores well, without understanding the game at all - and it falls apart the moment anything is different. Sticky buttons force it to actually react to what's on the screen.</p>
+<h3>When to turn it off</h3><p>Almost never - leave it on. It's the standard for fair, research-style results.</p>`],
+length:['How long it practises',`<p>How many moves before it stops by itself. You can always press Stop earlier, and Train again later to carry on from where it left off - nothing is lost.</p>
+<div class="opt"><b>5M more moves, then stop</b><span>For experiments: every time you press Train it does another 5 million moves from wherever it is, then stops. Change one setting, press Train, compare the report card - then try the next. (Learning speed stays the same the whole way, so runs compare fairly.)</span><b>Quick taster</b><span>~5 million moves - roughly half an hour to a few hours depending on your PC. Enough to see it learn the basics of an easy game.</span><b>Overnight</b><span>~100 million moves. Usually plays properly by the morning on a gaming PC.</span><b>Until I stop it</b><span>Just keeps going. Best for hard games and for seeing how good it can get.</span></div>
+<p>With a set length, its learning also gently slows towards the end so it settles on its best play.</p>`],
+finder:['Find the score - teaching the kit a new game',`<p>An AI learns by chasing a number - the score. Every arcade game keeps its score somewhere different in its memory, so before the kit can train an AI on a new game, it has to find that number. <b>You help it.</b></p>
+<ul><li>A window opens with the game. Put a coin in (<b>5</b>), start (<b>1</b>) and play - arrows to move, <b>Z X C A S D</b> for the buttons. A game pad works too.</li>
+<li>Every so often press <b>P</b> and type the score you can see (and, if you like, how many lives are left). Two or three times is enough - at different scores. Losing a life in between helps it find the lives too.</li>
+<li>When the game says GAME OVER press <b>G</b>, then <b>F</b> to search.</li>
+<li>It searches the game's memory for a place holding <i>every</i> number you typed, then shows you its reading while you play again. If it matches the game, press <b>Y</b> to save. If not, <b>N</b> tries the next place it found.</li></ul>
+<h3>Fighting games (health bars, no number to type)</h3><p>Street Fighter II and friends show health as a bar, so there is nothing to type. Instead you tell it what just happened: <b>H</b> when a round starts (both bars full), <b>J</b> straight after you get hit, <b>K</b> straight after you hit them, <b>U</b> when nothing has happened for a couple of seconds. Each press rules out memory places that did not behave like that - the "unknown value" search from cheat finders. A few rounds is enough. The AI is then rewarded for damage it deals and penalised for damage it takes (a whole bar = 100 points).</p><p>When the game says GAME OVER, press <b>G</b> and let the demo play for 40 seconds, hands off - that is how it learns what "no game on" looks like.</p><h3>What it finds</h3><p>The <b>score</b> (essential), the <b>lives</b> (if you typed them), and a "<b>game on</b>" switch so it knows when a game is over. It also notes which joystick directions and buttons you used - those become the AI's buttons, so use every button the game needs.</p>
+<h3>Good to know</h3><p>This is the same trick "cheat finder" tools use. A game set up this way trains well, but the four hand-made arcade games (Space Invaders, Ms. Pac-Man, Donkey Kong, Track &amp; Field) have extra tuning that a found game doesn't. Only use game files you're entitled to.</p>`],
+teacher:['Teach another AI',`<p>Any AI that has learned something can be a <b>teacher</b>. It plays its game (about 20,000 moves, on the processor - so it's fine while another AI trains), and every move it makes is saved as a lesson for the pupil - exactly like when you press L in Watch and teach it yourself.</p>
+<p>Next time the pupil trains, it copies the teacher first, then learns to beat it. Handy for:</p>
+<ul><li>Starting an <b>evolution</b> family from a brain that already plays well.</li><li>Racing a fresh AI against an experienced one - with a head start.</li><li>Trying different settings without starting from zero.</li></ul>
+<p class="small muted">Both AIs must play the same game. The pupil's own brain isn't touched until it trains.</p>`],
+learn_style:['How it learns - practice or evolution',`<p>Two completely different ways for an AI to get good at a game.</p>
+<h3>Practice</h3><p>One brain plays thousands of games at once and, after every batch, nudges itself towards the moves that scored more than it expected. It uses the settings you pick with the dials. Quick to get going - this is how most game-playing AIs learn.</p>
+<h3>Evolution</h3><p>A <b>family of 4 brains</b>, each with its own settings (learning speed, randomness, how far ahead it plans, how big a step each lesson takes). They take turns practising. After everyone's had a go:</p>
+<ul><li>they're <b>ranked</b> on their real scores,</li><li>the worst one <b>copies the brain of a winner</b>,</li><li>and its settings <b>mutate</b> a little - a bit faster here, a bit more random there.</li></ul>
+<p>Over the generations the family discovers good settings by itself - you don't have to guess the dials. It's called Population-Based Training (DeepMind, 2017). The best brain at any moment is the one you see in <b>Watch</b>.</p>
+<h3>Which should I pick?</h3><p>Practice is faster at the start. Evolution often ends up better on tricky games, and it's fun to watch the family tree. Make two AIs on the same game, one of each, and race them. If an AI has already been practising, switching it to evolution starts the whole family from what it has learned so far.</p>`],
+learn_from_best:['Learn from its own best games',`<p>Most of its games are ordinary. Now and then it plays a <b>blinder</b> - and normally that game is gone the moment it ends, lost among thousands of others. Tick this box and it keeps its good games and learns from them.</p>
+<ul><li>Every game it plays is kept in memory until it ends.</li>
+<li>If a game <b>beats its average</b> (over its last 100 games), it joins a queue of its 5 best. A better game bumps the weakest one off.</li>
+<li>Each queued game is <b>studied</b> - a little in every lesson, it's nudged towards the buttons it pressed in that game - and then <b>thrown away</b>, so it never gets stuck copying one lucky run.</li>
+<li>Because only games better than its own average get in, the bar rises as it improves.</li></ul>
+<div class="opt"><b>Times each best game is studied</b><span><b>Once</b> (recommended) keeps it trying new things. <b>2-5</b> make it copy its best games harder - try it if once doesn't seem to make a difference.</span></div>
+<h3>The Hall of Fame</h3><p>Every game that sets a <b>new record</b> is saved for you to watch. Open <b>Watch it play</b> and press <b>B</b>: the record game plays again, move for move, in full colour with sound (arcade games). Press <b>B</b> again for the next one - older records, then the games it's studying right now - and <b>B</b> after the last one goes back to watching it live. Speed, slow motion, pause and sound all work as normal.</p>
+<h3>Where did the idea come from?</h3><p>It's called <b>self-imitation learning</b> (Oh et al., 2018): an AI that copies its own best moments learns hard games much faster - especially ones like Splatterhouse, where a great run is rare.</p>`],
+learn_from_me:['Learn from my games',`<p>You can teach it by playing. Open <b>Watch it play</b>, press <b>L</b> and the controls are yours (arrows, and Z X C A S D for the buttons). Every move you make is saved as a lesson. Press <b>L</b> again to hand back.</p>
+<p>Next time you press Train, it first <b>copies you</b> - it looks at each screen you saw and learns to press what you pressed. Then it trains on its own as normal, with a pull towards your moves that fades away over its first 5 million moves. So you get it started, and it learns to beat you.</p>
+<div class="opt"><b>Off</b><span>Ignore my games.</span><b>A little / Normal / A lot</b><span>How hard it tries to stick to your moves while it's learning on its own.</span></div>
+<h3>Why bother?</h3><p>In games where pressing random buttons never scores (Pitfall, Montezuma's Revenge), a few minutes of you showing it how can save it days. It's the same trick the big labs used to teach AIs Minecraft and Montezuma's Revenge - by watching people play.</p>
+<h3>Tips</h3><ul><li>Play properly - it copies your bad habits too.</li><li>Ten minutes is plenty to get it going.</li><li>If it's training, press Stop then Train after you've played, so it picks your lessons up.</li></ul>`],
+graphs:['Reading the graphs',`<h3>Score</h3><p>The <b style="color:var(--s-avg)">orange line</b> is its average over the last 100 games - the best sign of real progress. The <b style="color:var(--s-best)">dashed blue line</b> is the best single game so far. Expect it to wobble: what matters is the trend over hours.</p>
+<h3>Exploring</h3><p>How many different-looking screens it has seen. For exploration games this is the number to watch - it should keep climbing even while the score is still zero, because the treasure is only found after the exploring.</p>
+<h3>Map (Go-Explore only)</h3><p>The best score reached anywhere on its map of places, including games restarted part-way. It shows what the explorer has found; the Score graph shows what the AI can do on its own from the start.</p>
+<h3>Brain</h3><p><b>Randomness</b> (the pale purple line) should start at the top and slowly fall as it works out what to do. Stuck at the very top for millions of moves = it isn't learning yet. <b style="color:var(--s-bonus)">Explorer bonus</b> (if on) shows how much new stuff it's finding - it naturally fades as places become familiar.</p>
+<h3>Patience</h3><p>Easy games show progress within minutes. Hard ones can take many hours. For the full detail open the report card.</p>`],
+checkpoints:['Checkpoints - save points for experimenting',`<p>A checkpoint saves a copy of the AI's brain <b>and</b> its settings at this moment - like a save point in a game.</p>
+<h3>How to use them</h3><ul><li>Before changing a setting, save a checkpoint (e.g. "before stronger explorer").</li><li>Change the setting, press Stop then Train, and watch the graphs for a while.</li><li>Worse? Press Restore on your checkpoint and you're back exactly where you were.</li></ul>
+<p><b>Reset training</b> is different: it throws away what it has learned and starts from zero with the current settings. The old run is still kept in the AI's files\\old runs folder, just in case.</p>`]};
+function info(k){const x=INFO[k];if(!x)return;$('i_title').textContent=x[0];$('i_body').innerHTML=x[1];$('infobox').style.display='flex'}
+function closeInfo(){$('infobox').style.display='none'}
+document.addEventListener('keydown',e=>{if(e.key!='Escape')return;let top=null,tz=-1;
+ document.querySelectorAll('.modal').forEach(m=>{if(m.style.display!='flex')return;const z=+getComputedStyle(m).zIndex||0;if(z>=tz){tz=z;top=m}});
+ if(!top)return;if(top.id=='conbox')closeCon();else if(top.id=='infobox')closeInfo();else top.style.display='none'});
+function near(o,v){let bi=0;o.forEach((x,i)=>{if(Math.abs(x[0]-v)<Math.abs(o[bi][0]-v))bi=i});return bi}
+function renderDials(el,vals){el.innerHTML='<div class="dials">'+DIALS.map(d=>{const v=vals[d.k];let c='';
+ if(d.t=='choice'){const g='r'+Math.random().toString(36).slice(2,8);c=`<div class="seg" data-k="${d.k}">${d.o.map(([x,n])=>`<label><input type="radio" name="${g}" value="${x}" ${x==v?'checked':''}><span>${n}</span></label>`).join('')}</div>`}
+ else if(d.t=='steps'){const i=near(d.o,+v);c=`<input type="range" data-k="${d.k}" min="0" max="${d.o.length-1}" step="1" value="${i}" style="--p:${(i/(d.o.length-1)*100).toFixed(1)}%" oninput="this.style.setProperty('--p',this.value/this.max*100+'%');this.nextElementSibling.textContent=DIALS.find(x=>x.k=='${d.k}').o[this.value][1]"> <span>${d.o[i][1]}</span>`}
+ else c=`<label><input type="checkbox" data-k="${d.k}" ${v?'checked':''}> yes</label>`;
+ return `<div class="dial"><b>${d.l}<button class="info" title="What does this do?" onclick="info('${d.k}')">i</button></b>${c}<div class="small muted">${d.h}</div></div>`}).join('')+'</div>'}
+function readDials(el){const o={};DIALS.forEach(d=>{const i=el.querySelector(`[data-k="${d.k}"]`);if(!i)return;
+ o[d.k]=d.t=='check'?i.checked:d.t=='steps'?d.o[+i.value][0]:d.t=='choice'?((i.querySelector('input:checked')||{}).value??d.o[0][0]):i.value});return o}
+function pick(groupId,cb){document.querySelectorAll('#'+groupId+' .choice').forEach(c=>{c.onclick=()=>{document.querySelectorAll('#'+groupId+' .choice').forEach(x=>x.classList.remove('sel'));c.classList.add('sel');cb&&cb(c.dataset.v)};
+ c.onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();c.click()}}})}
+function setPreset(v){document.querySelectorAll('#preset .choice').forEach(x=>x.classList.toggle('sel',x.dataset.v==v));renderDials($('dials_new'),PRESETS[v])}
+pick('preset',setPreset);setPreset('normal');
+// ---------------------------------------------------------------- hardware + games
+async function loadHW(){const h=await get('/api/hardware?platform='+gamePlat);$('hwplan').textContent=h.plan;
+ const t=(l,v)=>`<div class="tile"><div class="l">${l}</div><div class="v">${v??'-'}</div></div>`;
+ $('hw').innerHTML=t('Graphics card',h.gpu_name||'none in use')+t('Graphics memory',h.vram_gb?h.vram_gb+' GB':'-')+t('CPU threads',h.cpu_threads)+t('Games at once',h.num_envs)}
+let GAMES={};
+const SCORE_BADGE={auto:'<span class="badge auto">Score: automatic</span>',find:'<span class="badge find">Score: you need to find it</span>',no:'<span class="badge no">Won\'t run</span>'};
+const short=n=>String(n||'').replace(/ \(arcade, auto\)| \(arcade, found\)| \(arcade\)| \(Atari 2600\)/,'');
+const nm=r=>r.title||short(r.name)||String(r.file||'').replace(/^.*[\\/]/,'').replace(/\.zip$/i,'');
+async function scanRoms(){const b=$('scanbtn');b.disabled=true;$('scanmsg').textContent='Scanning... (a big library on a cloud drive can take a minute)';
+ try{showGames(await get('/api/scan'))}finally{b.disabled=false}}
+async function loadGames(){showGames(await get('/api/games'))}
+function showGames(g){GAMES={};let n=0;const add=(o)=>{const k='g'+(n++);GAMES[k]=o;return k};
+ const opt=(k,label)=>`<option value="${k}">${esc(label)}</option>`;
+ // Atari: the player's own files, then everything the kit includes
+ const atAll={};g.yours.filter(r=>r.platform=='atari'&&r.game_id).forEach(r=>{if(!atAll[r.game_id]||(atAll[r.game_id].library&&!r.library))atAll[r.game_id]=r});const atYours=Object.values(atAll).sort((x,y)=>x.name.localeCompare(y.name));const seenA=new Set(atYours.map(r=>r.game_id));
+ let a='<option value="">- choose an Atari game -</option>';
+ if(atYours.length)a+='<optgroup label="In your ROMs folder">'+atYours.map(r=>opt(add({...r,score:'auto',how:'Atari 2600 games read their own score'}),short(r.name)+'  -  score: automatic')).join('')+'</optgroup>';
+ a+='<optgroup label="Built into the kit">'+g.supported.filter(([nm,i])=>!seenA.has(i)).map(([nm,i])=>opt(add({game_id:i,platform:'atari',file:null,name:nm+' (Atari 2600)',score:'auto',how:'Atari 2600 games read their own score'}),nm+'  -  score: automatic')).join('')+'</optgroup>';
+ $('sel_atari').innerHTML=a;
+ // Arcade ready: one entry per game (your top-level copy wins over a library copy)
+ const ready={};g.yours.filter(r=>r.platform=='arcade'&&r.game_id).forEach(r=>{if(!ready[r.game_id]||(ready[r.game_id].library&&!r.library))ready[r.game_id]=r});
+ const rl=Object.values(ready).sort((x,y)=>nm(x).localeCompare(nm(y)));
+ const howR=r=>/\(arcade, auto\)/.test(r.name)?'found by the auto-pack robot':r.found?'found with Find the score':'hand-made pack with extra tuning';
+ $('sel_ready').innerHTML=(rl.length?'<option value="">- choose an arcade game ('+rl.length+') -</option>':'<option value="">- none yet -</option>')+rl.map(r=>opt(add({...r,score:'auto',how:howR(r)}),nm(r)+'  -  score: automatic')).join('');
+ // Arcade needing the score finding
+ const fl=g.yours.filter(r=>r.platform=='arcade'&&!r.game_id&&r.can_find).sort((x,y)=>nm(x).localeCompare(nm(y)));
+ $('sel_find').innerHTML=(fl.length?'<option value="">- choose a game to set up ('+fl.length+') -</option>':'<option value="">- nothing waiting -</option>')+fl.map(r=>opt(add({...r,score:'find',how:r.why}),nm(r)+'  -  score: you need to find it')).join('');
+ // files it can't use
+ const cant=g.yours.filter(r=>!r.game_id&&!r.can_find);
+ $('cantwrap').style.display=cant.length?'':'none';$('cantsum').textContent=`Files the kit can't use (${cant.length})`;
+ $('cantlist').innerHTML=cant.map(r=>`<div>${esc(r.file)} - ${esc(r.why)}</div>`).join('');
+ $('scanmsg').textContent=`Found ${atYours.length} Atari, ${rl.length} arcade ready, ${fl.length} arcade to set up.`;
+ if(gameId){const k=Object.keys(GAMES).find(k=>GAMES[k].game_id==gameId&&GAMES[k].file==gameFile);if(k){['sel_atari','sel_ready','sel_find'].forEach(id=>{if([...$(id).options].some(o=>o.value==k))$(id).value=k});card(GAMES[k])}}}
+function pickSel(el){['sel_atari','sel_ready','sel_find'].forEach(id=>{if(id!=el.id)$(id).value=''});const r=GAMES[el.value];
+ if(!r){gameId=null;$('gamecard').style.display='none';return}
+ gameId=r.game_id||null;gamePlat=r.platform;gameFile=r.file;card(r);if(gameId)chosen()}
+function card(r){const f=r.file?esc(r.file):'included with the kit';const fq=r.file?jsq(r.file):'';
+ let btn='';if(r.score=='find')btn=`<button class="go" style="margin-top:8px" onclick="findScore('${fq}')">&#128269; Find the score</button><button class="info" onclick="info('finder')">i</button><div class="small muted" style="margin-top:6px">When you've saved it, press Scan the ROMs folder and it moves to <b>Arcade - ready to train</b>.</div>`;
+ else if(r.platform=='arcade'&&r.file)btn=`<button style="margin-top:8px;padding:4px 11px" onclick="findScore('${fq}')">&#128269; Find the score again</button>`;
+ const mine=r.game_id?PROJ.filter(x=>x.game_id==r.game_id):[];
+ const nudge=mine.length?`<div class="nudge">You've already got ${mine.length>1?'AIs':'an AI'} on this game: <b>${mine.map(x=>esc(x.id)).join(', ')}</b>. To carry on training ${mine.length>1?'one':'it'}, use its Train button at the top of the page. <button style="padding:3px 10px;margin-left:4px" onclick="goToAI('${jsq(mine[0].id)}')">Take me there</button><br><span class="small muted">Or carry on below to start a brand new one from scratch.</span></div>`:'';
+ $('gamecard').innerHTML=`<div class="nm">${esc(nm(r))} ${SCORE_BADGE[r.score]}</div><div class="small muted">${r.maker?esc(r.maker)+' &middot; ':''}${f} &middot; ${esc(r.how||'')}</div>`+nudge+(r.score=='auto'?'<div class="small" style="margin-top:6px;color:var(--green)">Ready - carry on to step 3.</div>':'')+btn;
+ $('gamecard').style.display='block'}
+function curTheme(){return document.documentElement.dataset.theme=='light'?'light':'dark'}
+function setTheme(t){if(t){try{localStorage.setItem('theme',t)}catch(e){}document.documentElement.dataset.theme=t}
+ const b=$('themebtn');if(!b)return;const light=curTheme()=='light';b.setAttribute('aria-pressed',light?'true':'false');b.title=light?'Switch to the dark page':'Switch to the light page'}
+function flipTheme(){setTheme(curTheme()=='dark'?'light':'dark')}
+// no choice made yet: follow Windows when it switches between light and dark
+try{matchMedia('(prefers-color-scheme: light)').addEventListener('change',e=>{let k=null;try{k=localStorage.getItem('theme')}catch(_){}if(!k){document.documentElement.dataset.theme=e.matches?'light':'dark';setTheme()}})}catch(e){}
+let DEL=null;
+async function askDelete(id){const r=await get('/api/delete_info?id='+encodeURIComponent(id));if(!r.ok)return toast(r.msg||'Could not check that AI.');DEL=id;
+ $('d_name').textContent='"'+r.name+'"';
+ $('d_body').innerHTML=`<p class="big">This frees up <b>${esc(r.pretty)}</b> on your disk.</p>`+
+  (r.parts.length?'<ul style="margin:4px 0 10px;padding-left:20px">'+r.parts.map(([k,v])=>`<li>${esc(k)}: ${esc(v)}</li>`).join('')+'</ul>':'')+
+  (r.moves?`<p class="muted">It has practised ${(r.moves/1e6).toFixed(1)} million moves${r.best>-1e8&&r.best!=null?' (best average '+Math.round(r.best)+')':''}. All of that, its checkpoints and its old runs go.</p>`:'<p class="muted">It hasn\'t trained yet.</p>')+
+  '<p><b>This can\'t be undone.</b> Your game file stays in the ROMs folder - you can always make a new AI from it.</p>'+
+  (r.live?'<p style="color:var(--red)"><b>It is training right now - press Stop first.</b></p>':'');
+ $('d_go').disabled=!!r.live;openBox('delbox')}
+async function doDelete(){if(!DEL)return;$('d_go').disabled=true;const r=await get('/api/delete?id='+encodeURIComponent(DEL));closeBox('delbox');$('d_go').disabled=false;toast(r.msg,9000);DEL=null;loadProjects()}
+let CL=[];
+async function clutterOpen(){openBox('clutterbox');$('cl_go').disabled=true;$('cl_list').innerHTML='<div class="small muted">Looking at what\'s running...</div>';const r=await get('/api/clutter');CL=r.apps||[];$('cl_go').disabled=!CL.length;
+$('cl_list').innerHTML=CL.length?CL.map((a,i)=>`<label style="display:block;padding:7px 0;cursor:pointer"><input type="checkbox" id="cl_${i}" ${a.keep?'':'checked'}> <b>${esc(a.name)}</b> <span class="small muted">${a.mem_mb} MB${a.keep?' - you kept this last time':''}</span>${a.note?`<div class="small muted" style="margin-left:24px">&#9888; ${esc(a.note)}</div>`:''}</label>`).join(''):(r.ok?'<div class="small">Nothing on the list is running - this PC is already tidy. &#10024;</div>':'<div class="small">Couldn\'t look: '+esc(r.msg||'')+'</div>')}
+async function clutterGo(){const names=[],keep=[];CL.forEach((a,i)=>($('cl_'+i).checked?names:keep).push(a.name));const b=$('cl_go');b.disabled=true;b.textContent='Closing...';const r=await post('/api/clutter',{names,keep,running:CL.map(a=>a.name)});b.textContent='Close ticked apps';closeBox('clutterbox');toast(r.msg,9000)}
+function clutterEdit(){get('/api/clutter_list').then(r=>toast(r.msg))}
+function openBox(id){$(id).style.display='flex'}
+async function quitKit(){const n=PROJ.filter(x=>(x.status||{}).live).length;
+ if(!confirm('Close the kit?\n\n'+(n?`Training stops first (${n>1?'each AI saves':'your AI saves'} before it stops, which can take a minute). `:'')+'The Library Robot and the report card stop too. Start it all again any time with START HERE.bat.'))return;
+ let r={};try{r=await get('/api/quit')}catch(e){}
+ document.body.innerHTML='<main style="padding:80px 24px;text-align:center"><img class="chiphead" src="/help/chip-head.webp" alt="" style="margin:0 auto 18px;display:block"><h1 class="wordmark" id="qh">Closing...</h1><p class="muted" id="qmsg"></p></main>';
+ const done=()=>{$('qh').textContent='The kit is closed';$('qmsg').innerHTML='Everything has stopped and saved. Double-click <b>START HERE.bat</b> to open it again. You can close this tab.'};
+ const tick=async()=>{let s;try{s=await get('/api/quit_status')}catch(e){return done()}
+  if(s.state=='stopping'&&s.waiting.length){$('qh').textContent='Saving...';$('qmsg').textContent='Waiting for '+s.waiting.join(', ')+' to save and stop. Leave this tab open.'}
+  else $('qmsg').textContent='Nearly done...';setTimeout(tick,2000)};tick()}
+function closeBox(id){$(id).style.display='none'}
+async function openVideo(){const r=await get('/api/openvideo');toast(r.msg,6000)}
+async function findScore(f){const r=await get('/api/findscore?file='+encodeURIComponent(f));toast(r.msg,9000)}
+function chosen(){loadHW();if(gameId&&EXPLORE_GAMES.includes(gameId)){setPreset('explore');toast('That is an exploration game - switched to the exploration preset (explorer bonus on).',7000)}}
+async function createIt(){if(!gameId)return toast(gameFile?'Find the score for that game first (step 2) - then it can be trained.':'Pick a game first (step 2).',7000);
+ const body={game_id:gameId,platform:gamePlat,rom_file:gameFile,title:$('title').value,...readDials($('dials_new'))};
+ const r=await post('/api/create',body);if(!r.ok)return toast('Problem: '+r.msg);
+ const t=await get('/api/train?id='+encodeURIComponent(r.id));toast(t.ok?'Created and training! A training window has opened - leave it running. Your AI is at the top of this page.':t.msg,9000);
+ await loadProjects();window.scrollTo({top:0,behavior:'smooth'})}
+// ---------------------------------------------------------------- AIs, graphs, settings, checkpoints
+async function stopAll(){if(!confirm('Stop all training?\n\nEvery AI that is training saves first, then stops. Anything stuck is closed after 3 minutes.'))return;const r=await get('/api/stopall');toast(r.msg||'',9000);setTimeout(loadProjects,2000)}
+async function watchBest(id){const r=await get('/api/watch?best=1&id='+encodeURIComponent(id));toast(r.msg||'')}
+const STARTING={};async function act(a,id){if(a=='train'){if(Date.now()-(STARTING[id]||0)<90000){toast('It\'s already starting - give it a minute. The first minute always looks quiet.',7000);return}STARTING[id]=Date.now();document.querySelectorAll('.acts button.go').forEach(b=>b.disabled=true);toast('Starting up... it takes a minute or so to get going before the numbers move. No need to click again.',9000)}const r=await get(`/api/${a}?id=`+encodeURIComponent(id));toast(r.msg||'');setTimeout(loadProjects,1500)}
+async function report(id){const r=await get('/api/report');if(!r.url)return toast(r.msg||'Could not open the report card.');
+ const i=r.url.indexOf('#'),base=i<0?r.url:r.url.slice(0,i),hash=id?'#'+encodeURIComponent('Portable/'+id):i<0?'':r.url.slice(i);window.open(base+(base.includes('?')?'&':'?')+'theme='+curTheme()+hash,'_blank')}
+async function tunePC(b){if(!confirm('Tune for this PC?\n\nIt times the real trainer here with different numbers of games at once and keeps the fastest. About 15 minutes, in its own window - nothing should be training meanwhile.'))return;b.disabled=true;const r=await get('/api/tune');b.disabled=false;toast(r.msg,10000)}
+async function diag(b){b.disabled=true;toast('Making the problem report - about 30 seconds...');const r=await get('/api/diagnose');b.disabled=false;toast(r.msg,12000)}
+const fmt=n=>n==null||!isFinite(n)?'-':Math.abs(n)>=1e6?(n/1e6).toFixed(1)+'M':Math.abs(n)>=1e4?(n/1e3).toFixed(0)+'k':Math.abs(n)<10&&n%1?String(+n.toFixed(Math.abs(n)<1?3:2)):Math.round(n).toLocaleString();
+function chart(title,rows,series,z){const W=300,H=92,P=5,head=`<div class="ct"><b>${title}</b></div>`;const xs=rows.map(r=>r.step);
+ if(xs.length<2)return `<div class="chart">${head}<div class="cempty">The graph appears after a few minutes of training.</div></div>`;
+ const x0=Math.min(...xs),x1=Math.max(...xs);let ys=[];series.forEach(s=>rows.forEach(r=>{if(r[s.k]!=null&&isFinite(r[s.k]))ys.push(r[s.k])}));
+ if(!ys.length)return `<div class="chart">${head}<div class="cempty">Nothing to show for this one yet.</div></div>`;
+ let y0=Math.min(...ys),y1=Math.max(...ys);if(z){y0=Math.min(y0,0);y1=Math.max(y1,0)}if(y1==y0){y1+=1;y0-=1}
+ const X=v=>P+(v-x0)/(x1-x0||1)*(W-2*P),Y=v=>H-P-(v-y0)/(y1-y0)*(H-2*P);let area='';
+ const lines=series.map((s,i)=>{const pr=rows.filter(r=>r[s.k]!=null&&isFinite(r[s.k]));if(!pr.length)return '';const pts=pr.map(r=>X(r.step).toFixed(1)+','+Y(r[s.k]).toFixed(1)).join(' ');
+  if(i==0&&!s.d&&pr.length>1)area=`<polygon points="${X(pr[0].step).toFixed(1)},${H} ${pts} ${X(pr[pr.length-1].step).toFixed(1)},${H}" style="fill:${s.c};opacity:.14"/>`;
+  return `<polyline points="${pts}" fill="none" style="stroke:${s.c}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"${s.d?' stroke-dasharray="4 4"':''}/>`}).join('');
+ const lgs=series.map(s=>{const r=[...rows].reverse().find(r=>r[s.k]!=null&&isFinite(r[s.k]));return `<span class="lg"><i style="background:${s.d?`repeating-linear-gradient(90deg,${s.c} 0 4px,transparent 4px 7px)`:s.c}"></i>${s.n} <b>${r?fmt(r[s.k]):'-'}</b></span>`}).join('');
+ const zero=y0<0&&y1>0?`<line x1="0" x2="${W}" y1="${Y(0).toFixed(1)}" y2="${Y(0).toFixed(1)}" style="stroke:var(--zero)" stroke-width="1" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"/>`:'';
+ return `<div class="chart">${head}<div class="lgs">${lgs}</div><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">${zero}${area}${lines}</svg><div class="cfoot"><span>${fmt(y0)} to ${fmt(y1)}</span><span>${fmt(x0)} to ${fmt(x1)} moves</span></div></div>`}
+const HIST={};
+async function loadHist(id){const h=await get('/api/history?id='+encodeURIComponent(id));HIST[id]=h.rows||[];const el=document.getElementById('ch_'+id);if(el)el.innerHTML=charts(id)}
+function charts(id){const r=HIST[id]||[];if(r.length<2)return '<div class="cempty slim">Graphs of its score, its exploring and its brain appear here after a few minutes of training.</div>';
+ const expl=r.some(x=>x.novelty),seen=r.some(x=>x.views!=null||x.places!=null);
+ return chart('Score',r,[{k:'score_mean100',c:'var(--s-avg)',n:'average'},{k:'best_game',c:'var(--s-best)',n:'best game',d:1}])+
+  (r.some(x=>x.accuracy!=null)?chart('Aim',r,[{k:'accuracy',c:'var(--s-best)',n:'shots that hit (%)'}]):'')+
+  (seen?chart('Exploring',r,[{k:'views',c:'var(--s-views)',n:'different screens seen'}].concat(r.some(x=>x.places)?[{k:'places',c:'var(--s-map)',n:'places on its map',d:1}]:[])):'')+
+  (r.some(x=>x.map_best!=null)?chart('Map',r,[{k:'map_best',c:'var(--s-map)',n:'best score reached on its map'}]):'')+
+  chart('Brain',r,[{k:'entropy',c:'var(--s-rand)',n:'randomness'}].concat(expl?[{k:'novelty',c:'var(--s-bonus)',n:'explorer bonus'}]:[]),1)}
+let PROJ=[],LIVEHTML={},LIVEMEM={},CONID=null;
+const big=n=>n==null||isNaN(n)?'-':Math.round(n).toLocaleString();
+async function liveTick(){for(const x of PROJ){const s=x.status||{};if(!s.live&&CONID!=x.id)continue;let L;try{L=await get('/api/live?id='+encodeURIComponent(x.id))}catch(e){continue}
+ if(CONID==x.id){$('con_text').textContent=(L.console||[]).join('\n')+((L.window||[]).length?'\n\n--- problems ---\n'+L.window.join('\n'):'');const pr=$('con_text');pr.scrollTop=pr.scrollHeight}
+ if(!s.live)continue;const st=L.status||{},r=L.last||{};const avg=parseFloat(r.score_mean100),best=parseFloat(r.best_game),step=st.step||+r.step||0,ent=parseFloat(r.entropy),nov=parseFloat(r.novelty),acc=parseFloat(r.accuracy);
+ const tgt=+L.target||0,pct=tgt&&tgt<1e11?Math.min(100,step/tgt*100):null;const sure=L.start_entropy&&!isNaN(ent)?Math.max(0,Math.min(100,(1-ent/L.start_entropy)*100)):null;
+ const m=LIVEMEM[x.id]||{};let wow=m.wow||'',wowT=m.wowT||0;const now=Date.now();
+ if(m.best!=null&&best>m.best){wow=`New best game! ${big(best)} points (the old record was ${big(m.best)})`;wowT=now}
+ else if(m.avg!=null&&avg>m.avgBest*1.03&&m.avgBest>0){wow=`New best average: ${big(avg)} - it's getting better`;wowT=now}
+ else if(m.step!=null&&Math.floor(step/1e6)>Math.floor(m.step/1e6)){wow=`${Math.floor(step/1e6)} million moves of practice!`;wowT=now}
+ LIVEMEM[x.id]={best:isNaN(best)?m.best:best,avg,avgBest:Math.max(m.avgBest||0,isNaN(avg)?0:avg),step,wow,wowT};
+ const warm=isNaN(avg)||!(+r.games>0);
+ const cell=(l,v,c)=>`<div class="sb-cell"><div class="sb-lab">${l}</div><div class="sb-num${c?' '+c:''}">${v}</div></div>`;
+ const cheer=wow&&now-wowT<60000,face=cheer?'yes':warm?'normal':'conc';
+ const h=`<div class="sb"><div class="chipface" aria-hidden="true"><img src="/help/chip-${face}.webp" alt="">${cheer?'':'<img class="blink" src="/help/chip-blink.webp" alt="">'}</div>${cell('Average score, last 100 games',warm?'WARMING UP':big(avg))}${cell(`Best game <button class="sb-btn" style="padding:1px 7px;margin-left:4px" onclick="watchBest('${jsq(x.id)}')" title="Watch its best game again (needs 'Learn from its own best games' ticked)">&#9654;</button>`,big(best),'hi')}${!isNaN(acc)?cell('Shots that hit',acc.toFixed(0)+'%','sm'):''}${sure!=null?cell('Making up its mind',sure.toFixed(0)+'%','sm'):''}</div>
+ ${pct!=null?`<div class="sb-bar" title="${pct.toFixed(0)}% of this practice done"><i style="width:${pct.toFixed(1)}%"></i></div>`:''}
+ <div class="sb-meta"><span><b>${(step/1e6).toFixed(2)}M</b> moves${pct!=null?` of ${(tgt/1e6).toFixed(0)}M`:''}</span><span><b>${big(st.sps||+r.sps)}</b> moves a second</span><span><b>${big(+r.games)}</b> games in the last round</span>${!isNaN(nov)&&nov>0?`<span>${nov>0.01?'Exploring new places':'Has seen most of it'}</span>`:''}${st.state=='stopping'?'<span><b>Stopping - saving first...</b></span>':''}<button class="sb-btn" onclick="openCon('${jsq(x.id)}')">&#128421; Show console</button></div>
+ ${cheer?`<div class="wow"><img src="/help/chip-cheer.webp" alt="">${wow}</div>`:''}`;
+ LIVEHTML[x.id]=h;const el=document.getElementById('lv_'+x.id);if(el)el.innerHTML=h}}
+function openCon(id){CONID=id;$('con_title').textContent='Training console - '+id;$('con_text').textContent='Loading...';$('conbox').style.display='flex';liveTick()}
+function closeCon(){CONID=null;$('conbox').style.display='none'}
+setInterval(liveTick,5000);
+function goToAI(id){const el=document.getElementById('ai_'+id);if(el){const pn=el.closest('.panel');if(pn)pn.classList.remove('shut');el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='3px solid var(--accent)';el.style.outlineOffset='3px';setTimeout(()=>{el.style.outline='';el.style.outlineOffset=''},2500)}}
+const lookUp=t=>'https://www.google.com/search?q='+encodeURIComponent(t+' arcade game controls buttons');
+function chipSays(x){const c=x.chip,q=jsq(x.id),many=(c.drop||[]).length>1,game=esc(x.game_title||x.name);
+ const mv=c.played>=1e6?(c.played/1e6).toFixed(1)+' million':Math.round(c.played||0).toLocaleString();
+ return `<div class="chipsays"><img src="/help/chip-head.webp" alt=""><div>`+
+  (c.source=='finder'?`<b>When you showed Chip ${game}, ${esc(c.dead)} never changed anything.</b>`:`<b>Chip has been playing ${game} for ${mv} moves.</b>`)+
+  (c.useful&&c.useful.length?`<br>These buttons do something: <b>${esc(c.useful.join(', '))}</b>.`:'')+
+  (c.source=='finder'?'':`<br>But <b>${esc(c.dead)}</b> ${many?"haven't":"hasn't"} changed anything in ${(c.tries||0).toLocaleString()}+ tries${many?' each':''}.`)+
+  ` Shall we remove ${many?'them':'it'} from the controls?<div class="small muted">Fewer moves means Chip learns faster. But if one only works later in the game, like a potion you have to pick up first, removing it means Chip can never discover it. Not sure? <a href="${lookUp(x.game_title||x.name)}" target="_blank" rel="noopener">Look up the game's controls</a>.</div>`+
+  `<div class="row"><button class="go" onclick="chipDo('${q}','drop')">Yes, remove ${many?'them':'it'}</button><button onclick="chipDo('${q}','keep')">No, keep ${many?'them':'it'}</button></div></div></div>`}
+async function chipDo(id,a){if(a=='drop'&&!confirm('Remove those buttons?\n\nYou can give them back any time in Settings > Buttons.'))return;const r=await get(`/api/buttons?id=${encodeURIComponent(id)}&do=${a}`);toast(r.msg,10000);loadProjects()}
+async function repairIt(id){if(!confirm('Check and repair '+id+'?\n\nIf the PC crashed while it was training, this fixes what it can: a damaged brain save is rebuilt from its newest good copy (a few minutes of progress lost) and damaged log lines are dropped. Copies of everything are kept first.'))return;toast('Checking its files...',5000);const r=await get('/api/repair?id='+encodeURIComponent(id));toast(r.msg,16000);loadProjects()}
+async function loadProjects(){const p=await get('/api/projects');PROJ=p;let smiled=false;
+ $('projects').innerHTML=p.length?p.map(x=>{const s=x.status||{};const id=esc(x.id),q=jsq(x.id);const smile=!smiled&&s.step>=5e6&&!s.live&&(smiled=true);
+ const chips=[];
+ if(s.live)chips.push(s.evo?`<span class="chip live">Evolving</span><span class="chip evo">generation <b>${s.evo.generation}</b>, brain <b>${esc(s.evo.member||'-')}</b> of ${s.evo.population} practising</span>`:'<span class="chip live">Training now</span>');
+ else chips.push(s.state=='crashed'?'<span class="chip bad">Crashed</span>':`<span class="chip">${s.state?esc(cap(s.state)):'Not trained yet'}</span>`);
+ if(s.step&&!s.live)chips.push(`<span class="chip"><b>${(s.step/1e6).toFixed(1)}M</b> moves</span>`);
+ if(s.best_mean100>-1e8&&s.best_mean100!=null&&s.step)chips.push(`<span class="chip">best average <b>${Math.round(s.best_mean100).toLocaleString()}</b></span>`);
+ return `<div class="proj${s.live?' is-live':''}" id="ai_${id}">
+ <div class="nm"><i class="dot${s.live?' live':''}"></i>${esc(x.name)}${x.game_title&&x.game_title!=x.name?`<span class="gt">${esc(x.game_title)}</span>`:''}</div>
+ <div class="acts"><button class="go" onclick="act('train','${q}')" ${s.live?'disabled':''}>&#9654; Train</button><button onclick="act('stop','${q}')" ${s.live?'':'disabled'}>&#9632; Stop</button>
+ <button onclick="act('watch','${q}')" title="Watch it play - press L in the window to take over and teach it">&#128065; Watch it play / teach it</button><button onclick="watchBest('${q}')" title="Watch its best game again - its record games are kept when 'Learn from its own best games' is ticked">&#127942; Best game</button><button onclick="report('${q}')" title="Open the report card on this AI: live charts of its score and learning">&#128202; Report card</button><button onclick="openM('${q}')">&#9881; Settings &amp; checkpoints</button><button class="danger" onclick="askDelete('${q}')" title="Remove this AI and free up its disk space" aria-label="Delete ${id}">&#128465; Delete</button></div>
+ <div class="chips">${chips.join('')}</div>${s.msg?`<div class="projmsg">${esc(s.msg)}</div>`:''}${x.chip?chipSays(x):''}${x.damaged&&!s.live?`<div class="projmsg">&#129657; Some of its files look damaged - probably a crash or power cut while it was training. <button onclick="repairIt('${q}')">Check &amp; repair</button></div>`:''}${s.live?'<div class="pcwarn">&#9888; Training uses your whole PC. Close as many other programs as you can - it trains faster, and crashes are much less likely.</div>':''}
+ ${s.live?`<div class="livebox" id="lv_${id}">${LIVEHTML[x.id]||'<div class="sb-wait">Getting the latest scores...</div>'}</div>`:''}<div class="charts" id="ch_${id}">${charts(x.id)}</div>${smile?`<div class="smile"><img src="/help/chip-cheer.webp" alt=""><span>Your AI's got good. If the kit made you smile, Jonny's coffee fund is in <a href="#" onclick="openBox('aboutbox');return false">About</a>.</span></div>`:''}</div>`}).join(''):'<div class="empty"><img src="/help/chip-still.webp" alt=""><div>No AIs yet. Follow steps 1-4 below and press <b>Create my AI and start training</b>. Your AI then appears here with its Train, Stop, Watch and Settings buttons.</div></div>';
+ p.forEach(x=>loadHist(x.id))}
+async function teachIt(){const to=$('pupil').value;if(!to)return toast('Make another AI on the same game first - then this one can teach it.',7000);const r=await get(`/api/teach?from=${encodeURIComponent(editId)}&to=${encodeURIComponent(to)}`);toast(r.msg,10000)}
+async function openM(id){editId=id;const s=await get('/api/settings?id='+encodeURIComponent(id));
+ const all=await get('/api/projects');const me=all.find(x=>x.id==id)||{};const others=all.filter(x=>x.id!=id&&x.game_id==me.game_id);
+ $('pupil').innerHTML=others.length?others.map(x=>`<option value="${esc(x.id)}">${esc(x.id)}${x.learn_style=='evolution'?' (evolution)':''}</option>`).join(''):'<option value="">- no other AI on this game yet -</option>';$('m_title').textContent='Settings - '+s.game_name;renderDials($('dials_edit'),s);loadCps();loadBtns();$('modal').style.display='flex'}
+function closeM(){$('modal').style.display='none'}
+async function saveSettings(){const r=await post('/api/settings',{id:editId,...readDials($('dials_edit'))});toast(r.msg,8000)}
+async function loadCps(){const c=await get('/api/checkpoints?id='+encodeURIComponent(editId));
+ $('cp_list').innerHTML=c.length?c.map(x=>`<div class="cp"><span style="flex:1">${esc(x.name)}${x.step?' &middot; '+(x.step/1e6).toFixed(1)+'M moves':''}${x.best_mean100>-1e8&&x.best_mean100!=null?' &middot; best avg '+Math.round(x.best_mean100):''}</span><button onclick="restoreCp('${jsq(x.name)}')">Restore</button></div>`).join(''):'No checkpoints yet.'}
+async function loadBtns(){const el=$('btn_box');if(!el)return;el.innerHTML='<span class="muted">Checking...</span>';let b;
+ try{b=await get('/api/buttons?id='+encodeURIComponent(editId))}catch(e){el.textContent='';return}
+ if(!b.found){el.innerHTML=`<span class="muted">${esc(b.msg||'')}</span>`;return}
+ const me=PROJ.find(x=>x.id==editId)||{},title=me.game_title||me.name||'';
+ const g=k=>b.inputs.filter(i=>i.kind==k).map(i=>esc(i.name)),useful=g('useful'),dead=g('dead'),wait=[...g('testing'),...g('untested')];
+ let h=`<div>It has <b>${b.moves} moves</b> to choose from (${esc(b.controls)}).</div>`;
+ if(b.reboot)h+='<div class="muted">This game can\'t be re-run from a saved moment, so its buttons can\'t be checked.</div>';
+ else if(b.keep)h+='<div class="muted">You chose to keep all its buttons, so it isn\'t checking them. <a href="#" onclick="btnDo(\'check\');return false">Check them again</a></div>';
+ else{if(useful.length)h+=`<div>These buttons do something: <b>${useful.join(', ')}</b>.</div>`;
+  if(dead.length)h+=`<div>No effect seen: <b>${dead.join(', ')}</b>.</div>`;
+  if(wait.length)h+=`<div class="muted">Still checking: ${wait.join(', ')} - it checks while it trains.</div>`;
+  h+='<details style="margin:6px 0"><summary class="muted">How sure is it?</summary><ul style="margin:6px 0 6px 18px;padding:0">'+b.inputs.map(i=>`<li><b>${esc(i.name)}</b>: ${esc(i.verdict)}</li>`).join('')+'</ul></details>'}
+ const s=b.suggest,many=s&&s.count>1;
+ if(s)h+=`<div class="chipsays"><img src="/help/chip-head.webp" alt=""><div>`+(s.source=='finder'?`When you showed Chip the game, <b>${esc(s.names)}</b> never changed anything.`:`<b>${esc(s.names)}</b> ${many?"haven't":"hasn't"} changed anything in ${(s.tries||0).toLocaleString()}+ tries${many?' each':''}.`)+
+  ` Shall we remove ${many?'them':'it'} from the controls? It would leave <b>${s.moves_after} moves instead of ${b.moves}</b>.<div class="small muted">Fewer moves means Chip learns faster. But if one only works later in the game, like a potion you have to pick up first, removing it means Chip can never discover it. Not sure? <a href="${lookUp(title)}" target="_blank" rel="noopener">Look up the game's controls</a>.</div>`+
+  `<div class="row"><button class="go" onclick="btnDo('drop')">Yes, remove ${many?'them':'it'}</button><button onclick="btnDo('keep')">No, keep ${many?'them':'it'}</button></div></div></div>`;
+ if(b.restore)h+=`<div class="row" style="margin-top:8px"><button onclick="btnDo('restore')">&#8634; Give it its buttons back</button><span class="muted">(${esc(b.restore.to)} - ${b.restore.moves} moves)</span></div>`;
+ if(b.others&&b.others.length&&(s||b.restore))h+=`<div class="muted" style="margin-top:6px">Buttons belong to the game, so this changes ${esc(b.others.join(', '))} too.</div>`;
+ el.innerHTML=h}
+async function btnDo(a){if(a=='drop'&&!confirm('Drop those buttons?\n\nWith fewer moves it learns faster - but it can never discover a button it no longer has. You can give them back here any time.'))return;
+ const r=await get(`/api/buttons?id=${encodeURIComponent(editId)}&do=${a}`);toast(r.msg,10000);loadBtns()}
+async function saveCp(){const r=await get(`/api/checkpoint?id=${encodeURIComponent(editId)}&name=${encodeURIComponent($('cp_name').value)}`);toast(r.msg,7000);loadCps()}
+async function restoreCp(n){if(!confirm('Go back to "'+n+'"? (What it has learned since is kept in old runs.)'))return;const r=await get(`/api/restore?id=${encodeURIComponent(editId)}&cp=${encodeURIComponent(n)}`);toast(r.msg,8000);openM(editId);loadProjects()}
+async function resetAI(){if(!confirm('Start this AI again from scratch?'))return;const r=await get('/api/reset?id='+encodeURIComponent(editId));toast(r.msg,8000);loadProjects()}
+// ---------------------------------------------------------------- recipe cards (safe JSON, never the ROM)
+let recipeText='',recipeData=null,recipeOverride=false,recipeBackup='',recipeUndoPid='';
+function closeRecipe(){$('recipebox').style.display='none'}
+async function previewRecipe(share){
+ const r=await post('/api/recipe/preview',{id:editId,notes:$('recipe_notes').value,include_specs:$('recipe_specs').checked});
+ if(!r.ok)return toast(r.msg,10000);
+ recipeText=r.json;recipeData=r.recipe;recipeOverride=false;
+ $('recipe_title').textContent=share?'Share this recipe card?':'Export this recipe card?';
+ $('recipe_msg').textContent='This is exactly what will be saved. Check it before you choose. No ROM is included.';
+ $('recipe_json').textContent=recipeText;$('recipe_diff').innerHTML='';
+ $('recipe_save').style.display='inline-block';$('recipe_share').style.display='inline-block';$('recipe_apply').style.display='none';
+ $('recipebox').style.display='flex';
+}
+async function saveRecipe(share){
+ const r=await post('/api/recipe/export',{id:editId,json:recipeText,share});
+ toast(r.msg,12000);if(r.ok)closeRecipe();
+}
+async function importRecipe(file){
+ if(!file)return;if(file.size>2000000)return toast('Recipe files are limited to 2 MB.',8000);
+ recipeText=await file.text();recipeOverride=false;$('recipe_file').value='';await showImportPreview();
+}
+async function showImportPreview(){
+ const r=await post('/api/recipe/import_preview',{id:editId,recipe:recipeText,override_fingerprint:recipeOverride});
+ if(!r.ok){
+  if(r.fingerprint_mismatch&&!recipeOverride){
+   if(confirm(r.msg+'\n\nOnly continue if you deliberately want these settings on this different game. Apply them anyway?')){recipeOverride=true;return showImportPreview()}
+  }else toast(r.msg,10000);return;
+ }
+ recipeData=r.recipe;$('recipe_title').textContent='Import these settings?';
+ let msg=r.msg;if(r.fingerprint_mismatch)msg+=' WARNING: the ROM fingerprints do not match.';
+ if(r.ignored_keys&&r.ignored_keys.length)msg+=' Ignored unknown keys: '+r.ignored_keys.join(', ')+'.';
+ $('recipe_msg').textContent=msg;$('recipe_json').textContent=recipeText;
+ $('recipe_diff').innerHTML=r.diff.length?'<table><thead><tr><th>Use?</th><th>Dial</th><th>Before</th><th>After</th></tr></thead><tbody>'+r.diff.map(d=>`<tr><td><input type="checkbox" class="recipe-dial" value="${esc(d.key)}" checked></td><td>${esc(d.key)}</td><td>${esc(JSON.stringify(d.before))}</td><td>${esc(JSON.stringify(d.after))}</td></tr>`).join('')+'</tbody></table>':'<p>No dials need changing.</p>';
+ $('recipe_save').style.display='none';$('recipe_share').style.display='none';$('recipe_apply').style.display=r.diff.length?'inline-block':'none';
+ $('recipebox').style.display='flex';
+}
+async function applyRecipe(){
+ const keys=[...document.querySelectorAll('.recipe-dial:checked')].map(x=>x.value);
+ const r=await post('/api/recipe/import_apply',{id:editId,recipe:recipeText,keys,override_fingerprint:recipeOverride});
+ toast(r.msg,12000);
+ if(r.ok){recipeBackup=r.backup;recipeUndoPid=editId;$('recipe_undo').style.display='inline-block';closeRecipe();await openM(editId);loadProjects()}
+}
+async function undoRecipe(){
+ if(!recipeBackup||recipeUndoPid!==editId)return toast('That undo belongs to a different AI. Open the AI you imported into first.',8000);
+ const r=await post('/api/recipe/undo',{id:editId,backup:recipeBackup});toast(r.msg,10000);
+ if(r.ok){recipeBackup='';recipeUndoPid='';$('recipe_undo').style.display='none';await openM(editId);loadProjects()}
+}
+(function(){let shut={};try{shut=JSON.parse(localStorage.getItem('shut')||'{}')}catch(e){}
+ document.querySelectorAll('main>.panel').forEach((pn,i)=>{const h=pn.querySelector(':scope>h2');if(!h)return;
+  const body=document.createElement('div');body.className='pbody';while(h.nextSibling)body.appendChild(h.nextSibling);pn.appendChild(body);
+  h.classList.add('fold');h.tabIndex=0;h.title='Click to fold this section away (or open it again)';h.addEventListener('keydown',e=>{if((e.key=='Enter'||e.key==' ')&&e.target==h){e.preventDefault();h.click()}});const key=h.textContent.trim().slice(0,24);if(shut[key])pn.classList.add('shut');
+  h.addEventListener('click',e=>{if(e.target.closest('button'))return;pn.classList.toggle('shut');shut[key]=pn.classList.contains('shut');try{localStorage.setItem('shut',JSON.stringify(shut))}catch(e){}})})})();
+let ROBOTT=null;
+async function robotTick(){let r;try{r=await get('/api/robot')}catch(e){return}const b=$('robotbox');if(!b)return;
+ const i=' <button class="info" onclick="info(\'robot\')">i</button>';
+ if(!r.installed){b.innerHTML='<b>Got a big arcade collection?</b>'+i+' <span class="muted">The optional <a href="https://arcadeapprentice.co.uk/#robot" target="_blank" rel="noopener"><b>Library Robot</b></a> add-on can work through all of it on its own and find the scores for you.</span>';return}
+ const pct=r.total?Math.round(100*(r.checked||0)/r.total):0;
+ if(r.running){b.innerHTML=`<b>&#129302; Library Robot is working</b>${i}<div class="bar"><i style="width:${pct}%"></i></div>Checked ${r.checked||0} of ${r.total} - found ${r.found||0} new score${r.found==1?'':'s'}${r.current?' - now trying <b>'+esc(r.current)+'</b>':''}${r.eta_min?' - about '+(r.eta_min>90?Math.round(r.eta_min/60)+' hours':r.eta_min+' min')+' left':''} <button onclick="robotGo('stop')" style="margin-left:8px">&#9632; Stop</button>`;
+  if(r.found!=robotTick.f){robotTick.f=r.found;loadGames&&loadGames()}}
+ else{const was=r.state=='finished'?`Last run finished: found ${r.found||0} new score${r.found==1?'':'s'} from ${r.checked||0} games. `:r.state=='stopped'?`Stopped after ${r.checked||0} of ${r.total} games (found ${r.found||0}). `:'';
+  b.innerHTML=`<b>&#129302; Library Robot</b>${i} <span class="muted">${was}Let it work through your arcade games and find the scores by itself.</span> <button class="go" onclick="robotGo('start')" style="margin-left:8px">&#9654; ${r.state?'Carry on':'Start the robot'}</button>`}
+ clearTimeout(ROBOTT);ROBOTT=setTimeout(robotTick,r.running?5000:30000)}
+async function robotGo(a){const r=await get('/api/robot_'+a);toast(r.msg,8000);setTimeout(robotTick,1500)}
+setTheme();loadHW();loadGames();loadProjects().then(liveTick);robotTick();setInterval(loadProjects,15000);
+if(location.hash=='#about')openBox('aboutbox');if(location.hash=='#help')openBox('helpbox');
+</script></body></html>

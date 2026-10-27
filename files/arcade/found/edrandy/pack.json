@@ -1,0 +1,111 @@
+{
+ "id": "found-edrandy",
+ "name": "EDRANDY (arcade, auto)",
+ "set": "edrandy",
+ "rom_file": "edrandy.zip",
+ "crcs": [
+  "03c1f982",
+  "1b420ec8",
+  "24caed19",
+  "278f674f",
+  "33677b80",
+  "3735b22d",
+  "3f2ccf95",
+  "42da8ef0",
+  "464f3eb9",
+  "5c2e6418",
+  "5e7b19a8",
+  "5eb819a1",
+  "60871f77",
+  "6ab28eba",
+  "6c76face",
+  "79a68ca6",
+  "7bb13e1c",
+  "930f4900",
+  "9f94c60b",
+  "a0bd62b6",
+  "ac03466e",
+  "b96c6cbe",
+  "c0bff892",
+  "c2969fbb",
+  "ce1ba964",
+  "dfe28c7b",
+  "ee567448"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 8279,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 8273,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 7711,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 3579,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 7367,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 1,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 110,
+  "final": 200,
+  "distinct_steps": 1,
+  "busy": 0.48
+ },
+ "made": "2026-10-13 04:55",
+ "n_actions": 36
+}

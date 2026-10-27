@@ -1,0 +1,103 @@
+{
+ "id": "found-boogwing",
+ "name": "BOOGWING (arcade, auto)",
+ "set": "boogwing",
+ "rom_file": "boogwing.zip",
+ "crcs": [
+  "10b61f4a",
+  "1768c66a",
+  "241faac1",
+  "329323a8",
+  "3ad4b54c",
+  "3e8bc4e1",
+  "7750847a",
+  "8426efef",
+  "adb20ba9",
+  "add4d50b",
+  "b25aa721",
+  "cf798f2c",
+  "d10aef95",
+  "d7de4f4b",
+  "d9764d0b",
+  "e38892b9",
+  "f13b1e56",
+  "f159f76a",
+  "f44f2f87"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 1,
+  "big": false,
+  "offset": 33330,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 65611,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 65449,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 65449,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 65433,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 4042,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 39,
+  "final": 10,
+  "distinct_steps": 8,
+  "busy": 0.49
+ },
+ "made": "2026-10-11 03:16",
+ "n_actions": 36
+}

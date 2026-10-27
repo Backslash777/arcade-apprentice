@@ -1,0 +1,67 @@
+{
+ "id": "found-altbeast",
+ "name": "ALTBEAST (arcade, auto)",
+ "set": "altbeast",
+ "rom_file": "altbeast.zip",
+ "crcs": [
+  "0c04acac",
+  "14dcc245",
+  "17a9fc53",
+  "2b71343b",
+  "2ef2f144",
+  "33bbcf07",
+  "400c4a36",
+  "57dc5c7a",
+  "a01425cd",
+  "a57a66d5",
+  "b20c0edb",
+  "bbd7f460",
+  "d9e03363",
+  "e3f77c5e",
+  "f43dcdec",
+  "f9a60f06"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 114927,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 540,
+  "values": [
+   13
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 58000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 15,
+  "final": 2900,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 04:13",
+ "n_actions": 36
+}

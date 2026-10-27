@@ -1,0 +1,67 @@
+{
+ "id": "found-bankp",
+ "name": "BANKP (arcade, auto)",
+ "set": "bankp",
+ "rom_file": "bankp.zip",
+ "crcs": [
+  "044552b8",
+  "05f3a867",
+  "0acca001",
+  "1aa37fce",
+  "3fa337e1",
+  "a18165a1",
+  "aef34a93",
+  "b58aa8fa",
+  "b8405d38",
+  "c4c4878b",
+  "c98ac200",
+  "ca13cb11",
+  "d29b1598",
+  "e53bafdb",
+  "eb70c5ae"
+ ],
+ "score": {
+  "kind": "digits",
+  "offset": 295,
+  "swapped": false,
+  "scale": 1,
+  "stride": 1,
+  "base": 0,
+  "max_digits": 8
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 161,
+  "values": [
+   6
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 54000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 11,
+  "final": 2700,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 04:21",
+ "n_actions": 36
+}

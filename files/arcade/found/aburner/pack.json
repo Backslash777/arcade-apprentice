@@ -1,0 +1,111 @@
+{
+ "id": "found-aburner",
+ "name": "ABURNER (arcade, auto)",
+ "set": "aburner",
+ "rom_file": "aburner.zip",
+ "crcs": [
+  "08838392",
+  "136ea264",
+  "17be8f67",
+  "4a51b1fa",
+  "4d132c4e",
+  "4ef048cc",
+  "50c15a6d",
+  "5ce10b8c",
+  "64284761",
+  "6493368b",
+  "66d36757",
+  "6888eb8f",
+  "6c07c78d",
+  "7c01d40b",
+  "9209068f",
+  "a0d49480",
+  "ada70d64",
+  "b49183d4",
+  "b98294dc",
+  "c1e23521",
+  "c8efb2c3",
+  "cc0821d6",
+  "d7d485f4",
+  "d8437d92",
+  "df4d4c4f",
+  "e7675baf",
+  "ed8bd632",
+  "f0199658"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 1991,
+  "swapped": true,
+  "scale": 1
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 251,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 2107,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 135,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 1179,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 148,
+  "values": [
+   94
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 498,
+  "final": 300,
+  "distinct_steps": 2,
+  "busy": 0.2
+ },
+ "made": "2026-10-10 08:40",
+ "n_actions": 36
+}

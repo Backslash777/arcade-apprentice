@@ -1,0 +1,102 @@
+{
+ "id": "found-cbuster",
+ "name": "CBUSTER (arcade, auto)",
+ "set": "cbuster",
+ "rom_file": "cbuster.zip",
+ "crcs": [
+  "1080d619",
+  "2d1d65f2",
+  "2f914a45",
+  "3645b70f",
+  "526809ca",
+  "58b7231d",
+  "5bc2c0de",
+  "65f20f10",
+  "660eaabd",
+  "6be6d50e",
+  "76053b9d",
+  "8134d412",
+  "b8525622",
+  "b875266b",
+  "c3d65bf9",
+  "c6afc5c8",
+  "ca8d0bb3",
+  "ddae6d83"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 16264,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 285,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 5126,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 5129,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 5131,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 14,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 37,
+  "final": 100,
+  "distinct_steps": 2,
+  "busy": 0.41
+ },
+ "made": "2026-10-11 04:30",
+ "n_actions": 36
+}

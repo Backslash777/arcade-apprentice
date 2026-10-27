@@ -1,0 +1,94 @@
+{
+ "id": "found-bwidow",
+ "name": "BWIDOW (arcade, auto)",
+ "set": "bwidow",
+ "rom_file": "bwidow.zip",
+ "crcs": [
+  "0dd52987",
+  "10ad0376",
+  "1fdf801c",
+  "2fc4ce79",
+  "3da354ed",
+  "44f9943f",
+  "8a1430ee",
+  "97f6000c",
+  "ccc9b26c",
+  "fe3febb7"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": true,
+  "offset": 307,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1260,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1109,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 75,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 1,
+   "big": false,
+   "offset": 75,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 122,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 6,
+  "final": 200,
+  "distinct_steps": 3,
+  "busy": 0.13
+ },
+ "made": "2026-10-11 03:30",
+ "n_actions": 36
+}

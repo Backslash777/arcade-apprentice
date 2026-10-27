@@ -1,0 +1,95 @@
+{
+ "id": "found-gnbarich",
+ "name": "GNBARICH (arcade, auto)",
+ "set": "gnbarich",
+ "rom_file": "gnbarich.zip",
+ "crcs": [
+  "026754da",
+  "02c066fe",
+  "0432e1a8",
+  "36bf9a58",
+  "4b3eafd8",
+  "5433385a",
+  "6588fc96",
+  "7b10436b",
+  "8cd7aaa0",
+  "c136cd9c",
+  "f90fa3ea"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   132,
+   139,
+   167,
+   224
+  ],
+  "fg": 0,
+  "edge": 22,
+  "gap": 3,
+  "keys": {
+   "0bf8a0ff3350": 7,
+   "c50326499b63": 6,
+   "8f2826b9177a": 0
+  },
+  "frame_shape": [
+   320,
+   224
+  ],
+  "report": {
+   "ups": 6,
+   "resets": 2,
+   "digits_seen": 3,
+   "rules": 1,
+   "brain_sure": 0.609,
+   "values": [
+    0,
+    6,
+    7,
+    0,
+    6,
+    7,
+    0,
+    6,
+    7
+   ],
+   "zero": "8f2826b9177a"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 77411,
+  "values": [
+   96
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 6,
+  "final": 7,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 05:39",
+ "n_actions": 36
+}

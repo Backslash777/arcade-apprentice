@@ -1,0 +1,93 @@
+{
+ "id": "found-bbros",
+ "name": "BBROS (arcade, auto)",
+ "set": "bbros",
+ "rom_file": "bbros.zip",
+ "crcs": [
+  "09231c68",
+  "2fb3db6c",
+  "39f47a63",
+  "62f29992",
+  "79a8ed08",
+  "a3041ca4",
+  "c52e5b8e",
+  "f705aa89",
+  "fdba4f6e"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 574,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 1545,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1545,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 1547,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1547,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 10,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 5,
+  "ups": 17,
+  "final": 325,
+  "distinct_steps": 8,
+  "busy": 0.2
+ },
+ "made": "2026-10-11 02:59",
+ "n_actions": 36
+}

@@ -1,0 +1,59 @@
+{
+ "id": "found-hitice",
+ "name": "HITICE (arcade, auto)",
+ "set": "hitice",
+ "rom_file": "hitice.zip",
+ "crcs": [
+  "46ae291d",
+  "4d4dfa52",
+  "9e513048",
+  "a080d7af",
+  "affb5e07",
+  "d3cbc10b",
+  "e243e3b0",
+  "e4ffad15"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 2094,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 34,
+  "values": [
+   128
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 3,
+  "final": 3,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 06:02",
+ "n_actions": 36
+}

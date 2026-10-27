@@ -1,0 +1,93 @@
+{
+ "id": "found-irobot",
+ "name": "IROBOT (arcade, auto)",
+ "set": "irobot",
+ "rom_file": "irobot.zip",
+ "crcs": [
+  "00f9b304",
+  "0a6cdcca",
+  "0c83296d",
+  "2a083465",
+  "326aba54",
+  "39fff18f",
+  "446335ba",
+  "4a6aa7f9",
+  "51d29666",
+  "62a38c08",
+  "7875930a",
+  "848948b6",
+  "9163efe4",
+  "98efe8d0",
+  "9d588f22",
+  "9fbc9bf3",
+  "a5a13ad8",
+  "adebcb99",
+  "b2713214",
+  "b4556cb0",
+  "b4d0be59",
+  "c0eb2133",
+  "da7b6f79",
+  "e114a526",
+  "f6be3cd0"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 10828,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 10664,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 3,
+   "big": false,
+   "offset": 10828,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 10425,
+  "values": [
+   241
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 2,
+  "ups": 202,
+  "final": 38,
+  "distinct_steps": 3,
+  "busy": 0.39
+ },
+ "made": "2026-10-13 06:10",
+ "n_actions": 36
+}

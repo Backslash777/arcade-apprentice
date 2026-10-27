@@ -1,0 +1,94 @@
+{
+ "id": "found-blswhstl",
+ "name": "BLSWHSTL (arcade, auto)",
+ "set": "blswhstl",
+ "rom_file": "blswhstl.zip",
+ "crcs": [
+  "09381492",
+  "14628736",
+  "32454241",
+  "3c26d281",
+  "70dddba1",
+  "c400edf3",
+  "c680395d",
+  "e8b7b234",
+  "f738ad4a",
+  "f9d9a673"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 125,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 123,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 70,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 125,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 32033,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 1,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 111,
+  "final": 102,
+  "distinct_steps": 8,
+  "busy": 0.34
+ },
+ "made": "2026-10-11 03:08",
+ "n_actions": 36
+}

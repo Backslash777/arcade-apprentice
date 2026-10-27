@@ -1,0 +1,108 @@
+{
+ "id": "found-bionicc",
+ "name": "BIONICC (arcade, auto)",
+ "set": "bionicc",
+ "rom_file": "bionicc.zip",
+ "crcs": [
+  "17857ad2",
+  "3b36948c",
+  "40bf0eb4",
+  "46b2ad83",
+  "4e157ae2",
+  "5ee1ae6a",
+  "6a049292",
+  "9469efa4",
+  "98777006",
+  "9bf0b7a2",
+  "a8f5a004",
+  "a9a6cafa",
+  "ab30237a",
+  "b58d0023",
+  "b5c82722",
+  "bbfbe58a",
+  "c9884bfb",
+  "cf965a0a",
+  "d363b5f9",
+  "deb657e4",
+  "e4b4619e",
+  "e66ca0f9",
+  "ea912701",
+  "f1180d02",
+  "f156e564"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 1643,
+  "swapped": true,
+  "scale": 1
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 3499,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 251,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 2107,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 1179,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 104,
+  "values": [
+   2
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 314,
+  "final": 300,
+  "distinct_steps": 3,
+  "busy": 0.3
+ },
+ "made": "2026-10-10 09:58",
+ "n_actions": 36
+}

@@ -1,0 +1,116 @@
+{
+ "id": "found-gunsmoku",
+ "name": "GUNSMOKU (arcade, auto)",
+ "set": "gunsmoku",
+ "rom_file": "gunsmoku.zip",
+ "crcs": [
+  "02f55589",
+  "0af4f7eb",
+  "0be932ed",
+  "0d99c3b3",
+  "0eaf5158",
+  "125ba58e",
+  "25c90c2a",
+  "2b5667fb",
+  "3cee181e",
+  "4382c0d2",
+  "4a9da18b",
+  "4cafe7a6",
+  "4e98562a",
+  "539f182d",
+  "592f211b",
+  "63072f93",
+  "68883749",
+  "7f14270e",
+  "8d4b423f",
+  "906612b5",
+  "989399c0",
+  "b61ece9b",
+  "cb9394fc",
+  "cd7a2c38",
+  "d997b78c",
+  "dc9c508c",
+  "e1e36dd9",
+  "e87e526d",
+  "ef91cdd2",
+  "f469c13c",
+  "f6769fc5",
+  "f69a3c7c"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 68301,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 879,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 27337,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 27336,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 50629,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 25804,
+  "values": [
+   128
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 202000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "low",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 10100,
+  "ups": 496,
+  "final": 10100,
+  "distinct_steps": 1,
+  "busy": 0.18
+ },
+ "made": "2026-10-13 05:53",
+ "n_actions": 36
+}

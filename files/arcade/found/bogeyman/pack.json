@@ -1,0 +1,100 @@
+{
+ "id": "found-bogeyman",
+ "name": "BOGEYMAN (arcade, auto)",
+ "set": "bogeyman",
+ "rom_file": "bogeyman.zip",
+ "crcs": [
+  "0a8f218d",
+  "41af81c0",
+  "46b2d4d0",
+  "4a7c5367",
+  "5d486de9",
+  "77ebd0a4",
+  "8b438421",
+  "b507157f",
+  "b6127713",
+  "cc03ceb2",
+  "ea90d637",
+  "f2aa05ed",
+  "fdc787bf"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   8,
+   16,
+   44,
+   134
+  ],
+  "fg": 65522,
+  "edge": 60,
+  "gap": 6,
+  "keys": {
+   "5ef6dbb41243": 4,
+   "9bacc6dcea0d": 6,
+   "0160a3a0ea0a": 3,
+   "993dc33b30de": 7,
+   "bf4dc6e44999": 1,
+   "ce7c281de697": 9,
+   "109b5504a4b1": 0
+  },
+  "frame_shape": [
+   240,
+   256
+  ],
+  "report": {
+   "ups": 7,
+   "resets": 0,
+   "digits_seen": 7,
+   "rules": 4,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    300,
+    600,
+    900,
+    1000,
+    1100,
+    1400,
+    1700
+   ],
+   "zero": "109b5504a4b1"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 30,
+  "values": [
+   128
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 7,
+  "final": 1700,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 03:08",
+ "n_actions": 36
+}

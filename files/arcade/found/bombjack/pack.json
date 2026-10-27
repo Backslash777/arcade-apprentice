@@ -1,0 +1,127 @@
+{
+ "id": "found-bombjack",
+ "name": "BOMBJACK (arcade, auto)",
+ "set": "bombjack",
+ "rom_file": "bombjack.zip",
+ "crcs": [
+  "013f58f2",
+  "101c858d",
+  "1d3ecee5",
+  "3155ee7d",
+  "398d4a02",
+  "51eebd89",
+  "52a1e5fb",
+  "70e0244d",
+  "81ec12e6",
+  "8407917d",
+  "94694097",
+  "9dd98e9d",
+  "9f0470d5",
+  "b68a062a",
+  "c668dc30",
+  "e87ec8b1"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   7,
+   16,
+   11,
+   94
+  ],
+  "fg": 65535,
+  "edge": 61,
+  "gap": 6,
+  "keys": {
+   "855ae0603456": 7,
+   "b2b7a878d0b6": 5,
+   "0964eac1461f": 2,
+   "1f8821318b27": 6,
+   "3292aaf46279": 8,
+   "6ef13fd00af3": 3,
+   "c2bc4a462047": 4,
+   "2ed116b2fe85": 1,
+   "f357a22afbef": 9,
+   "8231769fff0b": 0
+  },
+  "frame_shape": [
+   256,
+   224
+  ],
+  "report": {
+   "ups": 28,
+   "resets": 0,
+   "digits_seen": 10,
+   "rules": 9,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    10,
+    20,
+    30,
+    130,
+    140,
+    240,
+    250,
+    350,
+    360,
+    370,
+    380,
+    390,
+    400,
+    410,
+    420,
+    430,
+    540,
+    550,
+    750,
+    760,
+    770,
+    780,
+    880,
+    890,
+    900,
+    910,
+    1010,
+    1020
+   ],
+   "zero": "8231769fff0b"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 117,
+  "values": [
+   2
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 28,
+  "final": 1020,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 03:09",
+ "n_actions": 36
+}

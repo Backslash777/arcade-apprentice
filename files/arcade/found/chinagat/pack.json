@@ -1,0 +1,100 @@
+{
+ "id": "found-chinagat",
+ "name": "CHINAGAT (arcade, auto)",
+ "set": "chinagat",
+ "rom_file": "chinagat.zip",
+ "crcs": [
+  "237f725a",
+  "2914af38",
+  "2f268f37",
+  "2f445030",
+  "3c864299",
+  "439a3b19",
+  "46339529",
+  "8b6f26e9",
+  "8caf6097",
+  "8d88d64d",
+  "9ffcadb6",
+  "aef814c8",
+  "b745cac4",
+  "f678594f",
+  "f91f1001",
+  "fdb130a9"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   15,
+   23,
+   52,
+   149
+  ],
+  "fg": 65535,
+  "edge": 67,
+  "gap": 5,
+  "keys": {
+   "33a0820f9b15": 6,
+   "10d0eb68ebf1": 2,
+   "2e57faa372f2": 7,
+   "253073c25be7": 5,
+   "46d9e4446646": 1,
+   "1a75c3d04e25": 0
+  },
+  "frame_shape": [
+   240,
+   256
+  ],
+  "report": {
+   "ups": 5,
+   "resets": 0,
+   "digits_seen": 6,
+   "rules": 2,
+   "brain_sure": 0.998,
+   "values": [
+    0,
+    50,
+    100,
+    120,
+    160,
+    170
+   ],
+   "zero": "1a75c3d04e25"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 48,
+  "values": [
+   32
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 5,
+  "final": 170,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 04:47",
+ "n_actions": 36
+}

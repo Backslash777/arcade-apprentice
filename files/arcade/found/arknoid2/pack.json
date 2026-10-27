@@ -1,0 +1,104 @@
+{
+ "id": "found-arknoid2",
+ "name": "ARKNOID2 (arcade, found by you)",
+ "set": "arknoid2",
+ "rom_file": "arknoid2.zip",
+ "crcs": [
+  "056a985f",
+  "136edf9d",
+  "274a795f",
+  "2ccc86b4",
+  "9754f703",
+  "a4f7ebd9",
+  "e8035ef1",
+  "ea34d9f7"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 10148,
+  "swapped": false,
+  "scale": 10,
+  "penalty": 0.0,
+  "why": "67 changes, 0 drops, 0 unreadable of 800"
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 10148,
+   "swapped": false,
+   "scale": 10,
+   "penalty": 0.0,
+   "why": "67 changes, 0 drops, 0 unreadable of 800"
+  },
+  {
+   "kind": "digits",
+   "stride": 1,
+   "base": 48,
+   "offset": 1034,
+   "swapped": false,
+   "scale": 1,
+   "max_digits": 8,
+   "penalty": 0.1,
+   "why": "67 changes, 0 drops, 0 unreadable of 800"
+  }
+ ],
+ "lives": {
+  "offset": 9232,
+  "adjust": 1,
+  "penalty": 0.03503128911138924
+ },
+ "playing": {
+  "offset": 1140,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr"
+ ],
+ "buttons": [
+  0
+ ],
+ "decision_repeat": 4,
+ "core": "fbneo",
+ "max_jump": 314200,
+ "health": null,
+ "reward": "score",
+ "labels": [
+  50,
+  100,
+  200,
+  420,
+  640,
+  640,
+  890,
+  3480,
+  3580,
+  3920,
+  6710,
+  11720,
+  15710
+ ],
+ "made": "2026-10-13 01:11",
+ "n_actions": 6,
+ "controls_history": [
+  {
+   "axes": [
+    "lr",
+    "ud"
+   ],
+   "buttons": [
+    0,
+    8,
+    1
+   ],
+   "n_actions": 36,
+   "until": "2026-10-17 09:17",
+   "why": "button test"
+  }
+ ]
+}

@@ -1,0 +1,121 @@
+{
+ "id": "found-cclimber",
+ "name": "CCLIMBER (arcade, auto)",
+ "set": "cclimber",
+ "rom_file": "cclimber.zip",
+ "crcs": [
+  "14f3ecc9",
+  "217ec4ff",
+  "21c0f9fb",
+  "2c33b760",
+  "332347cb",
+  "3e873baf",
+  "481b64cc",
+  "4e4b3658",
+  "5da13aaa",
+  "6db0879c",
+  "71317756",
+  "751c3325",
+  "ab1940fa",
+  "b3c26cef",
+  "e0042f75",
+  "f48c5fe3"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   55,
+   64,
+   3,
+   78
+  ],
+  "fg": 37120,
+  "edge": 61,
+  "gap": 6,
+  "keys": {
+   "0964eac1461f": 2,
+   "1f8821318b27": 6,
+   "3e5da0e6c4a2": 5,
+   "6ef13fd00af3": 3,
+   "c2bc4a462047": 4,
+   "e213b2b2c8f5": 7,
+   "ea9ecf4c6490": 8,
+   "2ed116b2fe85": 1,
+   "f357a22afbef": 9,
+   "8231769fff0b": 0
+  },
+  "frame_shape": [
+   224,
+   256
+  ],
+  "report": {
+   "ups": 21,
+   "resets": 1,
+   "digits_seen": 10,
+   "rules": 8,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1600,
+    1700,
+    1800,
+    1900,
+    2000,
+    2100,
+    0
+   ],
+   "zero": "8231769fff0b"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 8367,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 21,
+  "final": 2100,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 04:34",
+ "n_actions": 36
+}

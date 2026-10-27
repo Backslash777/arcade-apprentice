@@ -1,0 +1,97 @@
+{
+ "id": "found-darkseal",
+ "name": "DARKSEAL (arcade, auto)",
+ "set": "darkseal",
+ "rom_file": "darkseal.zip",
+ "crcs": [
+  "264b90ed",
+  "3c9c3012",
+  "49504e89",
+  "52acf1d6",
+  "588dd3cb",
+  "9996f3dc",
+  "b28f7584",
+  "bafad556",
+  "c4828a6d",
+  "c9bf68e1",
+  "d5e3ae3f",
+  "f409050e",
+  "fbf3ac63"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 6245,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 319,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 11787,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 12291,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 4689,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 0,
+  "values": [
+   128
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 120,
+  "final": 100,
+  "distinct_steps": 2,
+  "busy": 0.13
+ },
+ "made": "2026-10-13 04:42",
+ "n_actions": 36
+}

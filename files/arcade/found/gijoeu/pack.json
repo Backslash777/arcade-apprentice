@@ -1,0 +1,96 @@
+{
+ "id": "found-gijoeu",
+ "name": "GIJOEU (arcade, auto)",
+ "set": "gijoeu",
+ "rom_file": "gijoeu.zip",
+ "crcs": [
+  "11d6dcd6",
+  "25ff77d2",
+  "3153e788",
+  "31cced1c",
+  "325477d4",
+  "4c6743ee",
+  "63eba8e1",
+  "74172b99",
+  "75a7585c",
+  "c4ab07ed",
+  "ccaa3971",
+  "e6e36b05"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 174875,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 21081,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 28448,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 28464,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 165378,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 4164,
+  "values": [
+   6
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 475,
+  "final": 600,
+  "distinct_steps": 2,
+  "busy": 0.23
+ },
+ "made": "2026-10-11 10:06",
+ "n_actions": 36
+}

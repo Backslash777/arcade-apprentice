@@ -1,0 +1,110 @@
+{
+ "id": "found-ghoulsu",
+ "name": "GHOULSU (arcade, auto)",
+ "set": "ghoulsu",
+ "rom_file": "ghoulsu.zip",
+ "crcs": [
+  "0ba9c0b0",
+  "17e11df0",
+  "20f85c03",
+  "29f79c78",
+  "2a40166a",
+  "2f1345b4",
+  "334d85b2",
+  "3692f6e5",
+  "37c9b6c6",
+  "3c2a212a",
+  "3ea1b0f2",
+  "3f70dd37",
+  "4a524140",
+  "4ba90b59",
+  "4bdee9de",
+  "5d760ab9",
+  "7e69e2e6",
+  "8426144b",
+  "889aac05",
+  "94aae205",
+  "ae24bb19",
+  "bcc0f28c",
+  "cee8ceb5",
+  "d34e271a",
+  "da088d61",
+  "f187ba1c"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 6747,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 7346,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 7318,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 53516,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 2036,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 44,
+  "values": [
+   10
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 100,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.28
+ },
+ "made": "2026-10-13 05:38",
+ "n_actions": 36
+}

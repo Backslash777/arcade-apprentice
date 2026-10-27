@@ -1,0 +1,111 @@
+{
+ "id": "found-baddudes",
+ "name": "BADDUDES (arcade, auto)",
+ "set": "baddudes",
+ "rom_file": "baddudes.zip",
+ "crcs": [
+  "05cfc3e5",
+  "17e42633",
+  "3a77326c",
+  "3c87463e",
+  "3ff8da57",
+  "4bf158a7",
+  "6901e628",
+  "6f226dda",
+  "74f5110c",
+  "982da0d1",
+  "9aff67b8",
+  "9fb1ef4b",
+  "a38a7d30",
+  "b893d880",
+  "bcf59a69",
+  "e11e988f",
+  "e5ae2751",
+  "e83c760a",
+  "eeee8a1a",
+  "f01ebb3b",
+  "f8f2bd94",
+  "fea2a134"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   9,
+   16,
+   27,
+   102
+  ],
+  "fg": 59196,
+  "edge": 61,
+  "gap": 6,
+  "keys": {
+   "5be496e1ebd5": 2,
+   "1e98bd637873": 3,
+   "90add05015e5": 5,
+   "b55d5c8be924": 6,
+   "018ab2541dcf": 4,
+   "c71e0d6b80c2": 1,
+   "f9f8a841c084": 8,
+   "1507000dd349": 0
+  },
+  "frame_shape": [
+   240,
+   256
+  ],
+  "report": {
+   "ups": 8,
+   "resets": 0,
+   "digits_seen": 8,
+   "rules": 6,
+   "brain_sure": 0.83,
+   "values": [
+    0,
+    400,
+    800,
+    1200,
+    2800,
+    3200,
+    3600,
+    5200,
+    6800
+   ],
+   "zero": "1507000dd349"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 102,
+  "values": [
+   36
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 136000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 8,
+  "final": 6800,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 02:55",
+ "n_actions": 36
+}

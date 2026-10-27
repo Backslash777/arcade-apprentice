@@ -1,0 +1,25 @@
+{
+ "n_raw": 0,
+ "top": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1664,
+   "swapped": false,
+   "scale": 1,
+   "penalty": 0.0,
+   "why": "67 changes, 0 drops, 0 unreadable of 800",
+   "confidence": "high",
+   "screen_agrees": 1.0,
+   "found_by": "screen labels",
+   "ups": 75,
+   "final": 850,
+   "agree": 2,
+   "step_gcd": 0,
+   "distinct_steps": 0,
+   "busy": 0
+  }
+ ],
+ "groups": null
+}

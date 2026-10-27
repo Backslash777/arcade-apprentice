@@ -1,0 +1,100 @@
+{
+ "id": "found-godzilla",
+ "name": "GODZILLA (arcade, auto)",
+ "set": "godzilla",
+ "rom_file": "godzilla.zip",
+ "crcs": [
+  "0d6b663d",
+  "146bacb0",
+  "4ab76e43",
+  "58e0e41f",
+  "59cbef10",
+  "5af0114e",
+  "7448b054",
+  "78fbbb84",
+  "7c52581b",
+  "8ac192a5",
+  "91c2a6a5",
+  "96f7646e",
+  "9c22bc13",
+  "bb16e5d0",
+  "bb8c0132",
+  "be9c6e5a"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 1,
+  "big": false,
+  "offset": 41283,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 171485,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 171489,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 171493,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 171617,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 24,
+  "values": [
+   144
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "low",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 40,
+  "ups": 644,
+  "final": 40,
+  "distinct_steps": 1,
+  "busy": 0.07
+ },
+ "made": "2026-10-13 05:40",
+ "n_actions": 36
+}

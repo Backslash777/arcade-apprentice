@@ -1,0 +1,101 @@
+{
+ "id": "found-bubbobr1",
+ "name": "BUBBOBR1 (arcade, auto)",
+ "set": "bubbobr1",
+ "rom_file": "bubbobr1.zip",
+ "crcs": [
+  "20358c22",
+  "2844033d",
+  "2d0f8545",
+  "32c8305b",
+  "4f9a26e8",
+  "66e9438c",
+  "6b61a413",
+  "7b5369a8",
+  "930168a9",
+  "9773e512",
+  "9ef863ad",
+  "9f243b68",
+  "ae11a07b",
+  "b1bfb53d",
+  "b5492d97",
+  "d045549b",
+  "d0af35c5",
+  "d69762d5"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 27977,
+  "swapped": false,
+  "scale": 1
+ },
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 27321,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 27322,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 354,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 372,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 17864,
+  "values": [
+   28
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 145,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.34
+ },
+ "made": "2026-10-10 10:16",
+ "n_actions": 36
+}

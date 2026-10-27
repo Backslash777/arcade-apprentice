@@ -1,0 +1,90 @@
+{
+ "id": "found-llander",
+ "name": "LLANDER (arcade, auto)",
+ "set": "llander",
+ "rom_file": "llander.zip",
+ "crcs": [
+  "2724e591",
+  "355a9371",
+  "72837a4e",
+  "77da4b2f",
+  "9c4ffa68",
+  "b8763eea"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 250,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 250,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 2,
+   "big": false,
+   "offset": 16901,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 2,
+   "big": false,
+   "offset": 16901,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 17538,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 226,
+  "values": [
+   64
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 10,
+  "ups": 11,
+  "final": 10,
+  "distinct_steps": 4,
+  "busy": 0.23
+ },
+ "made": "2026-10-13 06:44",
+ "n_actions": 36
+}

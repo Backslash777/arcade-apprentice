@@ -1,0 +1,94 @@
+{
+ "id": "found-flicky",
+ "name": "FLICKY (arcade, auto)",
+ "set": "flicky",
+ "rom_file": "flicky.zip",
+ "crcs": [
+  "03d9a34c",
+  "266af78f",
+  "296f1492",
+  "2f5ce930",
+  "648350b8",
+  "64b03ef9",
+  "6d220d4e",
+  "7402256b",
+  "967f1d9a",
+  "a496ca15",
+  "b5f894a1",
+  "e659f358"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   0,
+   7,
+   58,
+   141
+  ],
+  "fg": 65535,
+  "edge": 53,
+  "gap": 6,
+  "keys": {
+   "f64d97941453": 2,
+   "3f8a91f32f5f": 1,
+   "d1fc67b6a038": 3,
+   "7b38df3363f0": 0
+  },
+  "frame_shape": [
+   224,
+   256
+  ],
+  "report": {
+   "ups": 5,
+   "resets": 0,
+   "digits_seen": 4,
+   "rules": 2,
+   "brain_sure": 0.955,
+   "values": [
+    0,
+    10,
+    20,
+    30,
+    130,
+    230
+   ],
+   "zero": "7b38df3363f0"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 9,
+  "values": [
+   3
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 5,
+  "final": 230,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 07:55",
+ "n_actions": 36
+}

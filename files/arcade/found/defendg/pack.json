@@ -1,0 +1,96 @@
+{
+ "id": "found-defendg",
+ "name": "DEFENDG (arcade, auto)",
+ "set": "defendg",
+ "rom_file": "defendg.zip",
+ "crcs": [
+  "33db686f",
+  "3af34c05",
+  "3cfc04ce",
+  "545c3326",
+  "5ca4e860",
+  "6111d74d",
+  "788b76d7",
+  "941cf34e",
+  "9a9eb3d2",
+  "d184ab6b",
+  "f57caa62",
+  "fefd5b48"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 1,
+  "big": false,
+  "offset": 85359,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 85364,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 85363,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 85363,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 2,
+   "big": false,
+   "offset": 85359,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 39964,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "medium",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 1,
+  "ups": 8,
+  "final": 21,
+  "distinct_steps": 5,
+  "busy": 0.46
+ },
+ "made": "2026-10-11 06:12",
+ "n_actions": 36
+}

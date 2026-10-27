@@ -1,0 +1,82 @@
+{
+ "id": "found-atetris",
+ "name": "ATETRIS (arcade, auto)",
+ "set": "atetris",
+ "rom_file": "atetris.zip",
+ "crcs": [
+  "2acbdb09",
+  "84a1939f"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   217,
+   224,
+   42,
+   117
+  ],
+  "fg": 63488,
+  "edge": 37,
+  "gap": 6,
+  "keys": {
+   "00327d74ba98": 2,
+   "022e5d02f236": 7,
+   "17125cfdfb4a": 1,
+   "78a305d9af0a": 0
+  },
+  "frame_shape": [
+   240,
+   336
+  ],
+  "report": {
+   "ups": 3,
+   "resets": 0,
+   "digits_seen": 4,
+   "rules": 2,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    1,
+    2,
+    7
+   ],
+   "zero": "78a305d9af0a"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 4140,
+  "values": [
+   12
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 3,
+  "final": 7,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 02:45",
+ "n_actions": 36
+}

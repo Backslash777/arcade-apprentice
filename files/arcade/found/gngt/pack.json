@@ -1,0 +1,111 @@
+{
+ "id": "found-gngt",
+ "name": "GNGT (arcade, auto)",
+ "set": "gngt",
+ "rom_file": "gngt.zip",
+ "crcs": [
+  "06d7e5ca",
+  "0eaf5158",
+  "20035bda",
+  "2d77e9b2",
+  "4a1285a4",
+  "615f5b6f",
+  "652406f6",
+  "66606beb",
+  "6aaf12f9",
+  "7302529d",
+  "7780a925",
+  "87f1b7e0",
+  "8f7cff61",
+  "93e50a8f",
+  "9e01c65e",
+  "bc1fe02d",
+  "d6397b2b",
+  "ddd56fa9",
+  "e525207d",
+  "e80c3fca",
+  "ecfccf07",
+  "f12ba271",
+  "fb040b42"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   8,
+   15,
+   12,
+   93
+  ],
+  "fg": 61307,
+  "edge": 59,
+  "gap": 5,
+  "keys": {
+   "99dae5904ac0": 6,
+   "c1e10f3d3cfe": 4,
+   "695231e01d6b": 2,
+   "b8f46cc4c302": 8,
+   "672e64155963": 1,
+   "0151b94373c2": 0
+  },
+  "frame_shape": [
+   224,
+   256
+  ],
+  "report": {
+   "ups": 9,
+   "resets": 0,
+   "digits_seen": 6,
+   "rules": 3,
+   "brain_sure": 0.997,
+   "values": [
+    0,
+    200,
+    400,
+    600,
+    800,
+    1000,
+    1200,
+    1400,
+    1600,
+    1800
+   ],
+   "zero": "0151b94373c2"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 2,
+  "values": [
+   2
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 9,
+  "final": 1800,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 02:16",
+ "n_actions": 36
+}

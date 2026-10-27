@@ -1,0 +1,116 @@
+{
+ "id": "found-chasehq",
+ "name": "CHASEHQ (arcade, auto)",
+ "set": "chasehq",
+ "rom_file": "chasehq.zip",
+ "crcs": [
+  "0eaebc08",
+  "12232f95",
+  "1b8cc647",
+  "2c6a3a05",
+  "2f414df0",
+  "30cc1f79",
+  "37abb74a",
+  "3a73d6b1",
+  "4e117e93",
+  "4e7beb46",
+  "5b5bf7f6",
+  "60bdaf1a",
+  "60dd2ed1",
+  "61e89e91",
+  "6271be0d",
+  "77682a4f",
+  "78eeec0d",
+  "7d8dce36",
+  "8366d27c",
+  "8620780c",
+  "89719d17",
+  "963bc82b",
+  "a2f54789",
+  "a3f8490d",
+  "aa945d83",
+  "ad46983c",
+  "c189781c",
+  "e6f4b8c4",
+  "f02e47b9",
+  "f1998e20",
+  "fa2f840e",
+  "fbf81f30"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 1033,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1034,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 1032,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1035,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 1033,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 4,
+  "values": [
+   188
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 222200,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 10,
+  "ups": 599,
+  "final": 11110,
+  "distinct_steps": 12,
+  "busy": 0.15
+ },
+ "made": "2026-10-11 04:46",
+ "n_actions": 36
+}

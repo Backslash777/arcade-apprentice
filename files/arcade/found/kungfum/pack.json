@@ -1,0 +1,112 @@
+{
+ "id": "found-kungfum",
+ "name": "KUNGFUM (arcade, auto)",
+ "set": "kungfum",
+ "rom_file": "kungfum.zip",
+ "crcs": [
+  "01298885",
+  "16fb5150",
+  "23f06b99",
+  "28a213aa",
+  "35e45021",
+  "550563e1",
+  "58e87ab0",
+  "6189d626",
+  "668e6bca",
+  "67745a33",
+  "6a70615f",
+  "6b2cc9c8",
+  "7532918e",
+  "76c05a9c",
+  "7a601c3d",
+  "82c20d12",
+  "8ac5ed3a",
+  "964b6495",
+  "b16de4f2",
+  "b6e2d083",
+  "bd1c2261",
+  "c648f558",
+  "c77b87d4",
+  "c81e31ea",
+  "d5228df3",
+  "d99fb995",
+  "eba0d66b",
+  "fbe9276e"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 74113,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 76306,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 859,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 858,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 858,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 73985,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 10,
+  "ups": 5,
+  "final": 20,
+  "distinct_steps": 2,
+  "busy": 0.06
+ },
+ "made": "2026-10-13 06:36",
+ "n_actions": 36
+}

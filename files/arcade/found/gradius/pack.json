@@ -1,0 +1,58 @@
+{
+ "id": "found-gradius",
+ "name": "GRADIUS (arcade, auto)",
+ "set": "gradius",
+ "rom_file": "gradius.zip",
+ "crcs": [
+  "2f44f970",
+  "5827b1e8",
+  "5cafb263",
+  "92df792c",
+  "a5a8e57d",
+  "b99d8cff",
+  "d02c9552"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 197289,
+  "swapped": false,
+  "scale": 100
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 386581,
+  "values": [
+   245
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 90000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 56,
+  "final": 4500,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 05:44",
+ "n_actions": 36
+}

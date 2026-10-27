@@ -1,0 +1,26 @@
+{
+ "n_raw": 0,
+ "top": [
+  {
+   "kind": "digits",
+   "stride": 1,
+   "base": 0,
+   "offset": 295,
+   "swapped": false,
+   "scale": 1,
+   "max_digits": 8,
+   "penalty": 0.1,
+   "why": "12 changes, 0 drops, 0 unreadable of 800",
+   "confidence": "high",
+   "screen_agrees": 1.0,
+   "found_by": "screen labels",
+   "ups": 11,
+   "final": 2700,
+   "agree": 2,
+   "step_gcd": 0,
+   "distinct_steps": 0,
+   "busy": 0
+  }
+ ],
+ "groups": null
+}

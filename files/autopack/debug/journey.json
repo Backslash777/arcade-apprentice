@@ -1,0 +1,792 @@
+{
+ "n_raw": 140,
+ "top": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 6675,
+   "swapped": true,
+   "scale": 1,
+   "gcd": 100,
+   "ups": 218,
+   "final": 100,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 1,
+   "step_gcd": 100,
+   "max_step": 100,
+   "busy": 0.19,
+   "agree": 2,
+   "confidence": "high"
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 9,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 1,
+   "ups": 36,
+   "final": 20,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 2,
+   "step_gcd": 1,
+   "max_step": 20,
+   "busy": 0.97,
+   "agree": 1,
+   "confidence": "low"
+  },
+  {
+   "kind": "bin",
+   "n": 1,
+   "big": false,
+   "offset": 13,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 1,
+   "ups": 44,
+   "final": 32,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 4,
+   "step_gcd": 1,
+   "max_step": 252,
+   "busy": 0.97,
+   "agree": 1,
+   "confidence": "low"
+  },
+  {
+   "kind": "bin",
+   "n": 1,
+   "big": false,
+   "offset": 9,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 1,
+   "ups": 36,
+   "final": 32,
+   "downs": 0,
+   "bad": 0,
+   "distinct_steps": 2,
+   "step_gcd": 1,
+   "max_step": 32,
+   "busy": 0.97,
+   "agree": 1,
+   "confidence": "low"
+  },
+  {
+   "kind": "bin",
+   "n": 1,
+   "big": false,
+   "offset": 15,
+   "swapped": false,
+   "scale": 1,
+   "gcd": 1,
+   "ups": 20,
+   "final": 187,
+   "downs": 2,
+   "bad": 0,
+   "distinct_steps": 4,
+   "step_gcd": 1,
+   "max_step": 119,
+   "busy": 0.97,
+   "agree": 1,
+   "confidence": "low"
+  }
+ ],
+ "groups": [
+  {
+   "rank": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    218,
+    -100,
+    true
+   ],
+   "c": [
+    "bcd",
+    2,
+    false,
+    true,
+    "0x1a13",
+    100,
+    100,
+    1,
+    0.19
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    true,
+    true,
+    36,
+    -1,
+    false
+   ],
+   "c": [
+    "bcd",
+    1,
+    false,
+    false,
+    "0x9",
+    1,
+    20,
+    2,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    true,
+    true,
+    36,
+    -1,
+    false
+   ],
+   "c": [
+    "bcd",
+    1,
+    false,
+    true,
+    "0x8",
+    1,
+    20,
+    2,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    44,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0xd",
+    1,
+    32,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    44,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0xc",
+    1,
+    32,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    36,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x9",
+    1,
+    32,
+    2,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    36,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x8",
+    1,
+    32,
+    2,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    20,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0xf",
+    1,
+    187,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    20,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0xe",
+    1,
+    187,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    19,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x13",
+    1,
+    201,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    19,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x12",
+    1,
+    201,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    18,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    2,
+    true,
+    true,
+    "0x43",
+    1,
+    3072,
+    8,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    14,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x42",
+    1,
+    12,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    14,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x43",
+    1,
+    12,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    13,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0xa2",
+    1,
+    12,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    13,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0xa3",
+    1,
+    12,
+    4,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    11,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x2e",
+    1,
+    12,
+    6,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    11,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x52",
+    1,
+    12,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    11,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x7a",
+    1,
+    12,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    11,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x2f",
+    1,
+    12,
+    6,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    11,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x53",
+    1,
+    12,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    11,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x7b",
+    1,
+    12,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    10,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0xb6",
+    1,
+    12,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    10,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0xb7",
+    1,
+    12,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    9,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x2b",
+    1,
+    224,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    9,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0x1aa",
+    1,
+    28,
+    5,
+    0.91
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    9,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x2a",
+    1,
+    224,
+    5,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    9,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0x1ab",
+    1,
+    28,
+    5,
+    0.91
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    7,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    false,
+    "0xa6",
+    1,
+    12,
+    3,
+    0.97
+   ]
+  },
+  {
+   "rank": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    7,
+    -1,
+    false
+   ],
+   "c": [
+    "bin",
+    1,
+    false,
+    true,
+    "0xa7",
+    1,
+    12,
+    3,
+    0.97
+   ]
+  }
+ ]
+}

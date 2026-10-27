@@ -1,0 +1,58 @@
+{
+ "id": "found-lifefrce",
+ "name": "LIFEFRCE (arcade, auto)",
+ "set": "lifefrce",
+ "rom_file": "lifefrce.zip",
+ "crcs": [
+  "09fe0632",
+  "2255fe8c",
+  "2f8c1cbd",
+  "4a44da18",
+  "7f0e9b41",
+  "c2f567ea",
+  "e5caf6e6"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 899,
+  "swapped": false,
+  "scale": 100
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 2,
+  "values": [
+   7
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 186000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 26,
+  "final": 9300,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 06:39",
+ "n_actions": 36
+}

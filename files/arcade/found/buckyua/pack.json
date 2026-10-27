@@ -1,0 +1,118 @@
+{
+ "id": "found-buckyua",
+ "name": "BUCKYUA (arcade, auto)",
+ "set": "buckyua",
+ "rom_file": "buckyua.zip",
+ "crcs": [
+  "0fc2ad24",
+  "42fb0a0c",
+  "4cdaee71",
+  "4cf85439",
+  "6541a34f",
+  "7dd54d6f",
+  "b0d747c4",
+  "c93697c4",
+  "cd724026",
+  "d14333b4",
+  "dcaecca0",
+  "dcdded95",
+  "e3c856a6"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   0,
+   7,
+   0,
+   148
+  ],
+  "fg": 63487,
+  "edge": 87,
+  "gap": 6,
+  "keys": {
+   "007faa0af3bf": 5,
+   "7d13f10559d9": 4,
+   "b5b8a5de4ec4": 6,
+   "d3053a3f8183": 3,
+   "d4260802d2da": 2,
+   "51a334ed1f85": 7,
+   "dfb60ff966b7": 1,
+   "569ec243099b": 0
+  },
+  "frame_shape": [
+   224,
+   384
+  ],
+  "report": {
+   "ups": 23,
+   "resets": 1,
+   "digits_seen": 8,
+   "rules": 6,
+   "brain_sure": 0.786,
+   "values": [
+    0,
+    50,
+    100,
+    150,
+    200,
+    250,
+    300,
+    350,
+    400,
+    450,
+    500,
+    600,
+    650,
+    700,
+    750,
+    0,
+    50,
+    100,
+    150,
+    200,
+    250,
+    300,
+    350,
+    400,
+    450
+   ],
+   "zero": "569ec243099b"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 253,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 23,
+  "final": 750,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 04:29",
+ "n_actions": 36
+}

@@ -1,0 +1,63 @@
+{
+ "id": "found-1941",
+ "name": "1941 (arcade, auto)",
+ "set": "1941",
+ "rom_file": "1941.zip",
+ "crcs": [
+  "01d1cb11",
+  "0f9d8527",
+  "15aec3a6",
+  "4e9648ca",
+  "816a818f",
+  "983be58f",
+  "9deb1e75",
+  "aeaa3509",
+  "d1f15aeb",
+  "d63942b3",
+  "df201112",
+  "ff77985a"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 221257,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 217815,
+  "values": [
+   6
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 60000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 41,
+  "final": 3000,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 03:58",
+ "n_actions": 36
+}

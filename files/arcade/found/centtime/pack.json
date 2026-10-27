@@ -1,0 +1,90 @@
+{
+ "id": "found-centtime",
+ "name": "CENTTIME (arcade, auto)",
+ "set": "centtime",
+ "rom_file": "centtime.zip",
+ "crcs": [
+  "33ce4640",
+  "66d7b04a",
+  "880acfb9",
+  "b1397029",
+  "bcdebe1b",
+  "c4d995eb"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 441,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 360,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1341,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 2,
+   "big": false,
+   "offset": 441,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bin",
+   "n": 3,
+   "big": false,
+   "offset": 360,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 327,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 1,
+  "ups": 34,
+  "final": 34,
+  "distinct_steps": 1,
+  "busy": 0.38
+ },
+ "made": "2026-10-11 04:37",
+ "n_actions": 36
+}

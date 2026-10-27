@@ -1,0 +1,102 @@
+{
+ "id": "found-ddragn2u",
+ "name": "DDRAGN2U (arcade, auto)",
+ "set": "ddragn2u",
+ "rom_file": "ddragn2u.zip",
+ "crcs": [
+  "097eaf26",
+  "3a615aad",
+  "3ad1049c",
+  "44dd5d4b",
+  "46339529",
+  "49ddddcd",
+  "589564ae",
+  "6d16d889",
+  "75e36cd6",
+  "a84b2a29",
+  "a8c93e76",
+  "bc6a48d5",
+  "c3081e0c",
+  "daf040d6",
+  "db309c84",
+  "ea437867",
+  "ee555237",
+  "f2cfc649"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": true,
+  "offset": 53191,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 955,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 491,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 375,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 607,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 436,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 421,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.46
+ },
+ "made": "2026-10-13 04:47",
+ "n_actions": 36
+}

@@ -1,0 +1,134 @@
+{
+ "id": "found-citycon",
+ "name": "CITYCON (arcade, auto)",
+ "set": "citycon",
+ "rom_file": "citycon.zip",
+ "crcs": [
+  "08eaaccd",
+  "0d7a1eeb",
+  "139eb1aa",
+  "1819aafb",
+  "1fad7589",
+  "2246fe9d",
+  "7ef3ac1b",
+  "8aeb47e6",
+  "a6b32fc6",
+  "ae88b53c",
+  "c03d8b1b",
+  "e8b97de9",
+  "f2da4f23"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   8,
+   15,
+   28,
+   109
+  ],
+  "fg": 57343,
+  "edge": 59,
+  "gap": 6,
+  "keys": {
+   "694dbca96ccd": 7,
+   "a31df8fc8114": 3,
+   "1df8e5cec2a5": 5,
+   "3e5889891cfc": 9,
+   "6af86453adc3": 4,
+   "99fbbe0e5c24": 2,
+   "a8803d875b1c": 6,
+   "e62dd61b551a": 8,
+   "3f8a91f32f5f": 1,
+   "8e940b013be2": 0
+  },
+  "frame_shape": [
+   224,
+   240
+  ],
+  "report": {
+   "ups": 36,
+   "resets": 2,
+   "digits_seen": 10,
+   "rules": 10,
+   "brain_sure": 0.995,
+   "values": [
+    0,
+    400,
+    500,
+    600,
+    700,
+    900,
+    1000,
+    0,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1600,
+    1700,
+    1800,
+    1900,
+    2000,
+    2100,
+    2200,
+    2300,
+    2400,
+    2500,
+    0,
+    100,
+    200,
+    300,
+    700,
+    800,
+    900,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1600,
+    1700
+   ],
+   "zero": "8e940b013be2"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 2,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 36,
+  "final": 2500,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 04:52",
+ "n_actions": 36
+}

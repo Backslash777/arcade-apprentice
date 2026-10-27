@@ -1,0 +1,104 @@
+{
+ "id": "found-ldrun",
+ "name": "LDRUN (arcade, auto)",
+ "set": "ldrun",
+ "rom_file": "ldrun.zip",
+ "crcs": [
+  "08d8cf9a",
+  "24f9b58d",
+  "34d88d3c",
+  "3f7f3939",
+  "43175e08",
+  "4bae1c25",
+  "53040416",
+  "55154154",
+  "5b716837",
+  "5d7e2a4d",
+  "645e42aa",
+  "67786037",
+  "7a96accd",
+  "8141403e",
+  "924e34d0",
+  "96f20473",
+  "9cd3db94",
+  "b041c4a9",
+  "e01f69e2",
+  "e0317124"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 159,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 74911,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 135,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 151,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 159,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 74096,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 1,
+  "ups": 17,
+  "final": 1400,
+  "distinct_steps": 2,
+  "busy": 0.25
+ },
+ "made": "2026-10-13 06:37",
+ "n_actions": 36
+}

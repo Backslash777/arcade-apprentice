@@ -1,0 +1,120 @@
+{
+ "id": "found-galaga",
+ "name": "GALAGA (arcade, auto)",
+ "set": "galaga",
+ "rom_file": "galaga.zip",
+ "crcs": [
+  "499fcc76",
+  "4a04bb6b",
+  "54603c6b",
+  "58b2f47c",
+  "59b6edab",
+  "753ce503",
+  "77245b66",
+  "7a2815b4",
+  "ab036c9f",
+  "ad447c80",
+  "bb5caae3",
+  "d016686b",
+  "d9232240",
+  "dd6f1afc"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   8,
+   15,
+   0,
+   70
+  ],
+  "fg": 57083,
+  "edge": 48,
+  "gap": 6,
+  "keys": {
+   "094a13cd2bc9": 3,
+   "f13562a75a7a": 4,
+   "00327d74ba98": 2,
+   "022e5d02f236": 7,
+   "17125cfdfb4a": 1,
+   "46905ff6bb17": 8,
+   "9d98880797c7": 6,
+   "c379ccee3fef": 5,
+   "8ef61b0098fe": 9,
+   "78a305d9af0a": 0
+  },
+  "frame_shape": [
+   288,
+   224
+  ],
+  "report": {
+   "ups": 23,
+   "resets": 0,
+   "digits_seen": 10,
+   "rules": 10,
+   "brain_sure": 1.0,
+   "values": [
+    0,
+    160,
+    320,
+    480,
+    560,
+    640,
+    690,
+    740,
+    790,
+    840,
+    890,
+    1040,
+    1090,
+    1140,
+    1220,
+    1380,
+    1430,
+    1530,
+    1580,
+    1630,
+    1680,
+    1730,
+    1780,
+    1830
+   ],
+   "zero": "78a305d9af0a"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 1016,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 23,
+  "final": 1830,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-11 08:20",
+ "n_actions": 36
+}

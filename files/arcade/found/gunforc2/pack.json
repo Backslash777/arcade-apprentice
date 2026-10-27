@@ -1,0 +1,99 @@
+{
+ "id": "found-gunforc2",
+ "name": "GUNFORC2 (arcade, auto)",
+ "set": "gunforc2",
+ "rom_file": "gunforc2.zip",
+ "crcs": [
+  "0b9efe67",
+  "1395ee6d",
+  "1d5b05f8",
+  "2287e0b3",
+  "2e2d103d",
+  "34280b88",
+  "38e03147",
+  "3c8cdb6a",
+  "49965e22",
+  "68b8f574",
+  "7a9e9978",
+  "8c88b278",
+  "97609d9d",
+  "c8c13f51",
+  "f2f461cc"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 111911,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 101061,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 135269,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 70262,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 70262,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 69632,
+  "values": [
+   3
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 468,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.14
+ },
+ "made": "2026-10-13 05:50",
+ "n_actions": 36
+}

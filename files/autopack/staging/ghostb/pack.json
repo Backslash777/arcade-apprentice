@@ -1,0 +1,72 @@
+{
+ "id": "found-ghostb",
+ "name": "GHOSTB (arcade, auto)",
+ "set": "ghostb",
+ "rom_file": "ghostb.zip",
+ "crcs": [
+  "0315f691",
+  "0abbf76d",
+  "32f9ddfe",
+  "3e7c0405",
+  "40361b8b",
+  "47e1f83b",
+  "5606a8f4",
+  "5a9a344a",
+  "6ef9963b",
+  "798f56df",
+  "7c5bb4b1",
+  "817fae99",
+  "8d219489",
+  "8e117541",
+  "992b4f31",
+  "a01a5fd9",
+  "a5e19c24",
+  "bb6efc02",
+  "d09bad99",
+  "d8fe2d99",
+  "e7455167"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": true,
+  "offset": 19508,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 158,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 370000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 24,
+  "final": 18500,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 05:37",
+ "n_actions": 36
+}

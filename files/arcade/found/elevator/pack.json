@@ -1,0 +1,104 @@
+{
+ "id": "found-elevator",
+ "name": "ELEVATOR (arcade, auto)",
+ "set": "elevator",
+ "rom_file": "elevator.zip",
+ "crcs": [
+  "13702e39",
+  "1cabda08",
+  "24e277ef",
+  "46f52646",
+  "55446482",
+  "61317eea",
+  "639cc2fd",
+  "6d5f57cb",
+  "77895c0f",
+  "839112ec",
+  "8913b293",
+  "9a1b6901",
+  "9ce75afc",
+  "b833b5ea",
+  "bbbb3fba",
+  "c10691d7",
+  "db7ff692",
+  "e22fe57e",
+  "f0a769a1",
+  "f4647b4f"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 29403,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 10087,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 29527,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 9514,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 9513,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 8709,
+  "values": [
+   6
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 64,
+  "final": 100,
+  "distinct_steps": 3,
+  "busy": 0.35
+ },
+ "made": "2026-10-11 07:22",
+ "n_actions": 36
+}

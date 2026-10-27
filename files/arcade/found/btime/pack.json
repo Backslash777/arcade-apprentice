@@ -1,0 +1,99 @@
+{
+ "id": "found-btime",
+ "name": "BTIME (arcade, auto)",
+ "set": "btime",
+ "rom_file": "btime.zip",
+ "crcs": [
+  "086440ad",
+  "25b49078",
+  "368a25b5",
+  "8005bffa",
+  "854a872a",
+  "8650c788",
+  "8dec15e6",
+  "ac01042f",
+  "b4ba400d",
+  "b8ef56c3",
+  "c4617243",
+  "c7a14485",
+  "d26bc1f3",
+  "d4848014",
+  "f55e5211"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 69887,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 123,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 127,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 124,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 128,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 2,
+  "values": [
+   224
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 15,
+  "final": 100,
+  "distinct_steps": 2,
+  "busy": 0.3
+ },
+ "made": "2026-10-11 03:23",
+ "n_actions": 36
+}

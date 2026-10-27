@@ -1,0 +1,59 @@
+{
+ "id": "found-hattrick",
+ "name": "HATTRICK (arcade, auto)",
+ "set": "hattrick",
+ "rom_file": "hattrick.zip",
+ "crcs": [
+  "4dd0a525",
+  "951f08c9",
+  "9f41baba",
+  "c1df3d1f",
+  "d8f910fb",
+  "f25c1b99",
+  "f6c41257",
+  "fc44f36c"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 1,
+  "big": false,
+  "offset": 25239,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 25073,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 16,
+  "final": 16,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 06:00",
+ "n_actions": 36
+}

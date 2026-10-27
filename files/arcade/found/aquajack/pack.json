@@ -1,0 +1,98 @@
+{
+ "id": "found-aquajack",
+ "name": "AQUAJACK (arcade, auto)",
+ "set": "aquajack",
+ "rom_file": "aquajack.zip",
+ "crcs": [
+  "119b9485",
+  "395a7d1c",
+  "67400dde",
+  "7238f0ff",
+  "7db1fc5e",
+  "84ba54b7",
+  "948e5ad9",
+  "95e643ed",
+  "9a3030a7",
+  "bed0be6c",
+  "cd4d0969",
+  "cdab000d",
+  "ce2aed00",
+  "daea0d2e"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": true,
+  "offset": 4363,
+  "swapped": true,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 4411,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 4459,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 11793,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 11793,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 62,
+  "values": [
+   2
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 100,
+  "ups": 188,
+  "final": 200,
+  "distinct_steps": 2,
+  "busy": 0.49
+ },
+ "made": "2026-10-13 04:14",
+ "n_actions": 36
+}

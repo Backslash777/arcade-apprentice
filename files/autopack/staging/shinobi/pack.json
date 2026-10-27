@@ -1,0 +1,69 @@
+{
+ "id": "found-shinobi",
+ "name": "SHINOBI (arcade, auto)",
+ "set": "shinobi",
+ "rom_file": "shinobi.zip",
+ "crcs": [
+  "04a437f8",
+  "06508bb9",
+  "2457a7cf",
+  "25307ef8",
+  "343f4c46",
+  "3c0797c0",
+  "41f41063",
+  "5eb00fc1",
+  "5f62e163",
+  "611f413a",
+  "75f8fbc9",
+  "7961d07e",
+  "9d46e707",
+  "b6e1fd72",
+  "b930399d",
+  "c29ac34e",
+  "c8df8460",
+  "e5a4cf30"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 112687,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 112711,
+  "values": [
+   1
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 24,
+  "final": 1400,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 16:43",
+ "n_actions": 36
+}

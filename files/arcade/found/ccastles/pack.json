@@ -1,0 +1,91 @@
+{
+ "id": "found-ccastles",
+ "name": "CCASTLES (arcade, auto)",
+ "set": "ccastles",
+ "rom_file": "ccastles.zip",
+ "crcs": [
+  "39960b7d",
+  "4befc296",
+  "81471ae5",
+  "820daf29",
+  "9d1d89fc",
+  "e2e17236",
+  "f6ccfbd4"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 50308,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 50924,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 16586,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": true,
+   "offset": 16597,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 16768,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 16746,
+  "values": [
+   21
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 203,
+  "final": 200,
+  "distinct_steps": 1,
+  "busy": 0.25
+ },
+ "made": "2026-10-13 04:34",
+ "n_actions": 36
+}

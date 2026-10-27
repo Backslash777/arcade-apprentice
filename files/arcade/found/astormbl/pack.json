@@ -1,0 +1,68 @@
+{
+ "id": "found-astormbl",
+ "name": "ASTORMBL (arcade, auto)",
+ "set": "astormbl",
+ "rom_file": "astormbl.zip",
+ "crcs": [
+  "15684dc5",
+  "2293427d",
+  "3b6b4c55",
+  "4e01b477",
+  "5df3af20",
+  "7682ed3e",
+  "7829c4f3",
+  "787afab8",
+  "8c9a71c4",
+  "94e6c76e",
+  "a782b704",
+  "de9221ed",
+  "df5d0a61",
+  "e2ec0d8d",
+  "e668eefb",
+  "eb510228",
+  "efe9711e"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 2,
+  "big": false,
+  "offset": 169937,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 66676,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 19003500,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 0,
+  "ups": 5,
+  "final": 950175,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 04:21",
+ "n_actions": 36
+}

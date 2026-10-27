@@ -1,0 +1,73 @@
+{
+ "id": "found-sf2",
+ "name": "Street Fighter II (arcade, found)",
+ "set": "sf2",
+ "rom_file": "sf2.zip",
+ "crcs": [
+  "0627c831",
+  "14b84312",
+  "22c9cc8e",
+  "2c7e2229",
+  "3e66ad9d",
+  "4b1b33a8",
+  "57213be8",
+  "5e22db70",
+  "5e9cd89a",
+  "626ef934",
+  "69a0a301",
+  "7f162009",
+  "8bf9f1e5",
+  "994bfa58",
+  "a4823a1b",
+  "b5548f17",
+  "ba529b4f",
+  "bb4af315",
+  "beade53f",
+  "c02a13eb",
+  "c1befaa8",
+  "fb92cd74",
+  "fe39ee33"
+ ],
+ "score": null,
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 1907,
+  "values": [
+   21
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1,
+  9,
+  10,
+  11
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": {
+  "mine": {
+   "fmt": "s16le",
+   "swapped": false,
+   "offset": 34178,
+   "full": 144
+  },
+  "theirs": {
+   "fmt": "s16le",
+   "swapped": false,
+   "offset": 34544,
+   "full": 144
+  },
+  "full": 144
+ },
+ "reward": "health",
+ "labels": [],
+ "made": "2026-10-10 03:09",
+ "n_actions": 63
+}

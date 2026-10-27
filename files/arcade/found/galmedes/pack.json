@@ -1,0 +1,87 @@
+{
+ "id": "found-galmedes",
+ "name": "GALMEDES (arcade, auto)",
+ "set": "galmedes",
+ "rom_file": "galmedes.zip",
+ "crcs": [
+  "32a70753",
+  "3bab0581",
+  "4da2a407",
+  "7a4a1315",
+  "d6f56c21",
+  "fae546a4"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   45,
+   51,
+   8,
+   78
+  ],
+  "fg": 21130,
+  "edge": 64,
+  "gap": 3,
+  "keys": {
+   "342d1f219726": 4,
+   "4ce838c510b8": 1,
+   "e12726ed41eb": 6,
+   "b06253c5a6bf": 0
+  },
+  "frame_shape": [
+   320,
+   240
+  ],
+  "report": {
+   "ups": 3,
+   "resets": 1,
+   "digits_seen": 4,
+   "rules": 0,
+   "brain_sure": 0.771,
+   "values": [
+    0,
+    1,
+    0,
+    1,
+    64
+   ],
+   "zero": "b06253c5a6bf"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 2473,
+  "values": [
+   255
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 3,
+  "final": 64,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 05:04",
+ "n_actions": 36
+}

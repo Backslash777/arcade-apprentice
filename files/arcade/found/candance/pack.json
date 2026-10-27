@@ -1,0 +1,100 @@
+{
+ "id": "found-candance",
+ "name": "CANDANCE (arcade, auto)",
+ "set": "candance",
+ "rom_file": "candance.zip",
+ "crcs": [
+  "21251b33",
+  "247712dc",
+  "4fa55577",
+  "83881e25",
+  "cea8368e",
+  "ec6b3257",
+  "f007d376",
+  "faf1d51d"
+ ],
+ "score": {
+  "kind": "screen",
+  "box": [
+   4,
+   11,
+   0,
+   216
+  ],
+  "fg": 65504,
+  "edge": 127,
+  "gap": 6,
+  "keys": {
+   "1aa50ec8d817": 3,
+   "40dc2c068d66": 5,
+   "4f6e39321b40": 7,
+   "df71c449f9c3": 6,
+   "e81de6c131c4": 4,
+   "ebe84274cef6": 2,
+   "0cb598c440a0": 8,
+   "7d8c36237248": 1,
+   "f942683b0665": 9,
+   "43ab2299582f": 0
+  },
+  "frame_shape": [
+   240,
+   320
+  ],
+  "report": {
+   "ups": 9,
+   "resets": 0,
+   "digits_seen": 10,
+   "rules": 7,
+   "brain_sure": 0.988,
+   "values": [
+    0,
+    110,
+    220,
+    330,
+    440,
+    550,
+    660,
+    770,
+    880,
+    1190
+   ],
+   "zero": "43ab2299582f"
+  },
+  "confident": true
+ },
+ "read_from": "screen",
+ "alternatives": [],
+ "lives": null,
+ "playing": {
+  "offset": 205,
+  "values": [
+   128
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 1,
+  "step_gcd": 0,
+  "ups": 9,
+  "final": 1190,
+  "distinct_steps": 0,
+  "busy": 0
+ },
+ "made": "2026-10-13 04:32",
+ "n_actions": 36
+}

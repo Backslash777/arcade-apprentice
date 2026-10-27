@@ -1,0 +1,103 @@
+{
+ "id": "found-digdug",
+ "name": "DIGDUG (arcade, auto)",
+ "set": "digdug",
+ "rom_file": "digdug.zip",
+ "crcs": [
+  "00c7c419",
+  "2829ec99",
+  "2cf399c2",
+  "458499e9",
+  "4cb9da99",
+  "559f00bd",
+  "6687933b",
+  "77245b66",
+  "7a2815b4",
+  "7b383983",
+  "843d857f",
+  "8cbc6fe1",
+  "a41bce72",
+  "a80ec984",
+  "c58252a0",
+  "d066f830",
+  "e22957c8",
+  "e9b3e08e",
+  "f14a6fe1"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 2533,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 4804,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 4805,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 4805,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 1364,
+   "swapped": true,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 294,
+  "values": [
+   8
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 1,
+  "ups": 29,
+  "final": 29,
+  "distinct_steps": 1,
+  "busy": 0.06
+ },
+ "made": "2026-10-11 06:12",
+ "n_actions": 36
+}

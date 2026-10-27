@@ -1,0 +1,91 @@
+{
+ "id": "found-dogyuun",
+ "name": "DOGYUUN (arcade, auto)",
+ "set": "dogyuun",
+ "rom_file": "dogyuun.zip",
+ "crcs": [
+  "043271b3",
+  "191b595f",
+  "72f18907",
+  "d48dc74f",
+  "d4c1db45",
+  "d58d29ca"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 5192,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 5191,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 15251,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 15250,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 15253,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 20655,
+  "values": [
+   0
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "mame2003_plus",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 10,
+  "ups": 61,
+  "final": 700,
+  "distinct_steps": 5,
+  "busy": 0.2
+ },
+ "made": "2026-10-13 04:51",
+ "n_actions": 36,
+ "reset": "reboot"
+}

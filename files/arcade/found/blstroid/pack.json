@@ -1,0 +1,109 @@
+{
+ "id": "found-blstroid",
+ "name": "BLSTROID (arcade, auto)",
+ "set": "blstroid",
+ "rom_file": "blstroid.zip",
+ "crcs": [
+  "090e42ab",
+  "1ff79e67",
+  "2720ee71",
+  "2faecd15",
+  "33690379",
+  "3c2daa5b",
+  "4bb72060",
+  "4be1d504",
+  "4d5fc284",
+  "50e0823f",
+  "56fa3d16",
+  "729de7a9",
+  "7aaca15e",
+  "a15e79e1",
+  "a70fc6e6",
+  "ae3e93e8",
+  "ae5274f0",
+  "baa8b5fe",
+  "c364706e",
+  "d14badc4",
+  "e4409310",
+  "f257f738",
+  "f423b4f8",
+  "f84f0b97",
+  "fd2365df"
+ ],
+ "score": {
+  "kind": "bcd",
+  "n": 3,
+  "big": false,
+  "offset": 4907,
+  "swapped": false,
+  "scale": 1
+ },
+ "read_from": "memory",
+ "alternatives": [
+  {
+   "kind": "bcd",
+   "n": 2,
+   "big": false,
+   "offset": 14839,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 1,
+   "big": false,
+   "offset": 14841,
+   "swapped": false,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": true,
+   "offset": 14838,
+   "swapped": true,
+   "scale": 1
+  },
+  {
+   "kind": "bcd",
+   "n": 3,
+   "big": false,
+   "offset": 14619,
+   "swapped": false,
+   "scale": 1
+  }
+ ],
+ "lives": null,
+ "playing": {
+  "offset": 1024,
+  "values": [
+   24
+  ]
+ },
+ "axes": [
+  "lr",
+  "ud"
+ ],
+ "buttons": [
+  0,
+  8,
+  1
+ ],
+ "decision_repeat": 4,
+ "max_jump": 50000,
+ "health": null,
+ "reward": "score",
+ "auto": true,
+ "core": "fbneo",
+ "confidence": "high",
+ "evidence": {
+  "agree": 2,
+  "step_gcd": 100,
+  "ups": 18,
+  "final": 100,
+  "distinct_steps": 1,
+  "busy": 0.31
+ },
+ "made": "2026-10-11 03:06",
+ "n_actions": 36
+}
