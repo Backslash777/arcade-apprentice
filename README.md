@@ -24,6 +24,16 @@ You give him a game, tell him what counts as winning and leave him to it. He has
 
 The kit uses **PPO (stands for Proximal Policy Optimisation. A fancy way of saying the AI tries something, sees whether it was worth doing, does more of it if it worked and less of it if it didn't.)**
 
+## Watch Arcade Apprentice
+
+**The 44-second trailer.** See what the kit does and why it's completely free.
+
+[![Watch the Arcade Apprentice trailer](https://i.ytimg.com/vi/TlTMaJoTX9k/maxresdefault.jpg)](https://youtu.be/TlTMaJoTX9k)
+
+**The three-minute tutorial.** Learn how to set the kit up and teach an AI to play games, all in one song.
+
+[![Watch the Arcade Apprentice tutorial](https://i.ytimg.com/vi/9Ibw875J3nU/maxresdefault.jpg)](https://youtu.be/9Ibw875J3nU)
+
 ## What you can do
 
 - Train an AI on Atari 2600 games and old arcade games, all on your own computer.
