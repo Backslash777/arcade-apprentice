@@ -83,7 +83,7 @@ Share your cards in [Settings on the forum](https://forum.arcadeapprentice.co.uk
 - [Report a bug](https://forum.arcadeapprentice.co.uk/t/bugfixes)
 - In the kit, press **Make a problem report**. It creates one small text file about your PC and what went wrong, ready to send with your question.
 
-Alfred is on the forum periodically, with 24/7 support planned. Jonny comes on when work and life allow. If he's taking a while, he's probably at work or stuck behind a tram.
+If you get stuck, ask in the forum and I'll get back to you when I can. I do check in around work and everything else, so don't worry if it takes me a little while.
 
 ## The important legal bit
 
