@@ -1,54 +1,84 @@
 # Arcade Apprentice
 
-Teach an AI to play Atari 2600 and arcade games from scratch, on your own Windows PC. No cloud training account, no command-line setup and no bundled games.
+Teach an AI to play arcade games on your own Windows computer.
 
-**[Download v1.2](https://arcadeapprentice.co.uk/download/Arcade-Apprentice-v1.2.zip)** · [Project website](https://arcadeapprentice.co.uk/) · [Community forum](https://forum.arcadeapprentice.co.uk/)
+You don't need a cloud account, you don't need to type commands and you don't need to be a programmer. Download the kit, unzip it and double-click **START HERE**.
 
-## What it does
+**[Download Arcade Apprentice v1.2](https://arcadeapprentice.co.uk/download/Arcade-Apprentice-v1.2.zip)** · [Visit the website](https://arcadeapprentice.co.uk/) · [Join the forum](https://forum.arcadeapprentice.co.uk/)
 
-- Trains game-playing AIs locally with PPO.
-- Supports Atari 2600 plus MAME/FBNeo arcade games.
-- Includes score-finding tools for arcade games that are not already configured.
-- Adapts training to your graphics card, processor and memory.
-- Lets you watch the latest AI play and inspect its report card.
-- Exports and imports shareable **recipe cards**: training dials, results and a ROM fingerprint, never the ROM itself.
+## Why I made it
 
-## Quick start
+When I first tried AI, just getting it working was a nightmare. At the very least, you needed Linux on a bootable USB stick, and that was before you'd got anywhere near training anything. I spent more time fighting the setup than watching the AI learn.
 
-1. Download and extract [Arcade Apprentice v1.2](https://arcadeapprentice.co.uk/download/Arcade-Apprentice-v1.2.zip) somewhere you can write to, such as Desktop or Documents. Do not use Program Files.
+I know there are plenty of people out there who are brighter than me but get put off by all that faff. So I made this kit to get them through the door. Unzip it, double-click it, pick a game and have a go.
+
+If you enjoy it, you can dig deeper afterwards. Add your own tweaks, experiment with the settings and teach it games I haven't included. I'd love to see where you take it.
+
+Cheers, Jonny
+
+## Meet Chip
+
+Chip is your apprentice. Out of the box, he's rubbish. He doesn't even know which button fires.
+
+You give him a game, tell him what counts as winning and leave him to it. He has a go, gets it wrong and has another go. Thousands of goes, then millions. Come back in the morning and he's better than you. Sorry about that.
+
+The kit uses **PPO (stands for Proximal Policy Optimisation. A fancy way of saying the AI tries something, sees whether it was worth doing, does more of it if it worked and less of it if it didn't.)**
+
+## What you can do
+
+- Train an AI on Atari 2600 games and old arcade games, all on your own computer.
+- Watch Chip play and see his scores improve on his report card.
+- Show him how to play yourself. He copies you first, then learns to beat you.
+- Use **Find the score** for games the kit doesn't know yet. Play for a few minutes and type in the score you can see. The kit works out where the game keeps it.
+- Share your settings and results with other people using recipe cards.
+- Add your own tweaks for games I haven't included.
+
+## Getting started
+
+1. **[Download the kit](https://arcadeapprentice.co.uk/download/Arcade-Apprentice-v1.2.zip)** and unzip it somewhere like your Desktop, Documents or Downloads. Don't put it in Program Files.
 2. Double-click **START HERE.bat**.
-3. On first run, the kit downloads its own private Python and AI libraries. Allow roughly **4 GB** and **5–15 minutes**, depending on your connection and PC.
-4. Put game files you are legally entitled to use in **ROMs - put your games here**, then scan that folder from the kit's page.
-5. Choose a game and training settings, create your AI and press **Train**.
+3. The first time, it downloads its own private copy of Python and the AI bits. That's about **4 GB**, so allow **5 to 15 minutes** and put the kettle on. It doesn't install anything on your system.
+4. Put your game files in **ROMs - put your games here**. ROMs are the game files. Only use games you're entitled to use. None are included with the kit.
+5. Press **Scan the ROMs folder**, pick a game, choose your settings and press **Create my AI**.
+6. Press **Train** and leave Chip to it. Overnight is best.
 
-Closing the browser does not stop training. Use **REOPEN THE PAGE.bat** to return to the dashboard, or **CLOSE THE KIT.bat** to save and stop the kit.
+Closing the browser doesn't stop the training. Double-click **REOPEN THE PAGE.bat** to get back to the kit's page. When you want everything to stop, double-click **CLOSE THE KIT.bat** and it saves first.
 
-## Requirements
+## What you need
 
 - Windows 10 or 11.
-- 8 GB RAM minimum; 16 GB recommended.
-- About 6 GB disk space after setup.
-- NVIDIA, supported newer AMD Radeon, or many AMD/Intel GPUs through DirectML. CPU-only training works but is slower.
+- 8 GB of memory. 16 GB is better.
+- About 6 GB of free space once everything's downloaded.
+- Your own game files.
+- A graphics card helps, but it isn't a must. NVIDIA works. AMD and Intel cards should work too, but those routes haven't been tried on a real PC yet. No graphics card? Chip learns on the processor instead. Slower, but he still learns.
 
-The download is approximately 53 MB. It contains no trained AIs, ROMs or private Python runtime.
+The kit download is about **53 MB**. There are no trained AIs and no games in it.
 
 ## Recipe cards
 
-Open an AI's **Settings → Recipe cards** to preview exactly what will be exported. Cards use the .aarecipe format and contain the selected dials, results and the game's SHA-256 fingerprint.
+Found some settings that work? Share them. You don't need to explain the whole setup again.
 
-You can import only the dials you want. The kit rejects unknown keys, clamps out-of-range values, warns about ROM mismatches, backs up your existing settings and provides one-click undo. PC specifications are optional; PC names, usernames, serial numbers and file paths are not exported.
+Open an AI's **Settings**, then **Recipe cards**. You'll see exactly what goes into the card before you save it: the settings, the results and a **SHA-256 fingerprint (a digital fingerprint that identifies the exact game file without including the game itself)**.
 
-Share cards and results in the [Recipes forum](https://forum.arcadeapprentice.co.uk/t/recipes).
+When you import somebody else's card, tick only the settings you want. The kit checks that you've got the same game, keeps daft values within safe limits, backs up your current settings and gives you one-click undo.
 
-## Help and feedback
+Your game files are never included. Your PC name, username, serial numbers and file paths aren't included either. Sharing a few basic PC specifications is optional and off unless you choose it.
 
-- [Help forum](https://forum.arcadeapprentice.co.uk/t/help)
-- [Suggestions](https://forum.arcadeapprentice.co.uk/t/suggestions)
-- [Bugfixes](https://forum.arcadeapprentice.co.uk/t/bugfixes)
-- In the kit, use **Make a problem report** to create a diagnostic text file.
+Share your cards in [Settings on the forum](https://forum.arcadeapprentice.co.uk/t/settings).
 
-## Legal and privacy
+## Need a hand?
 
-Use only game files you are entitled to use. ROMs and trained AIs stay on your computer unless you choose to share something yourself. Recipe cards contain no ROM contents.
+- [Ask for help](https://forum.arcadeapprentice.co.uk/t/help)
+- [Make a suggestion](https://forum.arcadeapprentice.co.uk/t/suggestions)
+- [Report a bug](https://forum.arcadeapprentice.co.uk/t/bugfixes)
+- In the kit, press **Make a problem report**. It creates one small text file about your PC and what went wrong, ready to send with your question.
+
+Alfred is on the forum periodically, with 24/7 support planned. Jonny comes on when work and life allow. If he's taking a while, he's probably at work or stuck behind a tram.
+
+## The important legal bit
+
+Only use game files you're entitled to use. Your games and trained AIs stay on your computer unless you choose to share something yourself.
+
+Arcade Apprentice is free, with no adverts and no sign-ups. It's offered as it is, with no warranty. The arcade emulators inside it have their own licences, which are included in the download.
 
 Copyright © 2026 Jonathan Terrington. All rights reserved unless otherwise stated.
