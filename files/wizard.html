@@ -286,9 +286,11 @@ a.btn:hover{filter:brightness(1.07);color:var(--accent-ink)}
 @media(max-width:700px){.hw{grid-template-columns:1fr 1fr}main{padding:18px 14px 30px}.panel{padding:16px 16px 18px;border-radius:18px}h1.wordmark{font-size:15px}.chiphead{width:58px}.opt{grid-template-columns:1fr}select,input[type=text]{min-width:0;width:100%}.sb{gap:18px}.sb-num{font-size:19px}}
 .hdbtns .closebtn{color:var(--pink);border-color:var(--pink-line)}.hdbtns .closebtn:hover:not(:disabled){background:var(--pink-soft);border-color:var(--pink)}
 .chipsays{display:flex;gap:12px;align-items:flex-start;margin:10px 0;padding:12px 14px;border:1px solid var(--pink-line);border-radius:14px;background:var(--pink-soft);line-height:1.5}.chipsays img{width:44px;height:auto;flex:none;margin-top:2px}.chipsays .row{margin-top:8px;gap:8px}.chipsays .small{margin-top:6px}.pcwarn{margin:2px 0;font-size:13.5px;color:var(--muted)}.proj>.chipsays,.proj>.pcwarn{grid-column:1/-1}
+.updbar{margin:0 0 16px;padding:14px 16px;border:1px solid var(--line-strong);border-radius:16px;background:var(--card);line-height:1.5}.updbar .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.updbar pre{white-space:pre-wrap;font:inherit;font-size:13.5px;max-height:260px;overflow:auto;margin:10px 0 0}
 </style></head><body><main>
 <header class="top"><div class="brand"><img class="chiphead" src="/help/chip-head.webp" width="76" height="44" alt=""><div><h1 class="wordmark">Arcade Apprentice</h1><div class="tagline">Teach an AI to play a game from scratch. It starts knowing nothing - not even what the buttons do - and learns by playing thousands of games. You watch it get better.</div></div></div>
 <div class="hdbtns"><button class="themebtn" id="themebtn" onclick="flipTheme()" aria-label="Light page" aria-pressed="false" title="Switch to the light page"><svg class="moon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M10.6 1.6A6.6 6.6 0 1 0 14.4 11 5.4 5.4 0 0 1 10.6 1.6z"/></svg><svg class="sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="currentColor"/><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3.05 3.05l1.13 1.13M11.82 11.82l1.13 1.13M3.05 12.95l1.13-1.13M11.82 4.18l1.13-1.13"/></svg></button><button onclick="openBox('helpbox')">Help</button><button onclick="openBox('aboutbox')">About</button><button class="closebtn" onclick="quitKit()" title="Stops training (it saves first), the robot and the report card, then closes the page">&#9211; Close the kit</button></div></header>
+<div id="updbar" class="updbar" style="display:none"></div>
 
 <div class="panel ais"><h2>Your AIs <button class="info" onclick="info('graphs')" title="What do the graphs mean?">i</button><button class="vidbtn" onclick="openVideo()" title="Three minutes, and it's a song">&#9654; Watch the help video</button><button class="vidbtn" onclick="stopAll()" title="Stop every AI that's training (each one saves first). Anything stuck is closed after 3 minutes.">&#9632; Stop all training</button></h2><div id="projects"><div class="small muted">Loading your AIs...</div></div>
 <div class="toolrow"><button onclick="report()">&#128202; Open the report card</button>
@@ -416,6 +418,21 @@ a.btn:hover{filter:brightness(1.07);color:var(--accent-ink)}
 const $=id=>document.getElementById(id);let gameId=null,gamePlat='atari',gameFile=null,editId=null;
 const get=u=>fetch(u,{cache:'no-store'}).then(r=>r.json());
 const post=(u,b)=>fetch(u,{method:'POST',body:JSON.stringify(b)}).then(r=>r.json());
+// ALFRED 1 Nov 2026: updates - a banner when a newer kit is out; one click updates it, keeping your AIs
+async function updShow(){const b=$('updbar');try{const l=(await get('/api/update_last')).last;
+ if(l&&!l.seen&&!l.undone){b.innerHTML=`<b>&#9989; Updated from v${esc(l.from)} to v${esc(l.to)}</b> - your AIs, games and recipe cards are all still here.${l.needs_setup?' <b>This version needs a few new bits: press Close the kit, then double-click START HERE once.</b>':''}${l.kept_packs&&l.kept_packs.length?`<div class="small muted">Game packs you'd changed were left as they were: ${esc(l.kept_packs.join(', '))}.</div>`:''}<div class="row"><button onclick="updOk()">OK</button><button onclick="updUndo()">Undo update</button></div>`;b.style.display='block';return}
+ const c=await get('/api/update_check');if(!c.newer)return;let skip='';try{skip=localStorage.getItem('upd_skip')||''}catch(e){}if(skip==c.latest)return;
+ b.innerHTML=`<b>&#127873; Arcade Apprentice v${esc(c.latest)} is out</b> (you've got v${esc(c.current)}). Updating keeps all your AIs, games and recipe cards.<div class="row"><button onclick="updGo()">&#11015; Update now</button><button onclick="this.closest('.updbar').querySelector('pre').style.display='block'">What's new</button><button onclick="updSkip('${esc(c.latest)}')">Not now</button></div><pre style="display:none">${esc(c.notes||'')}</pre>`;b.style.display='block'}catch(e){}}
+function updSkip(v){try{localStorage.setItem('upd_skip',v)}catch(e){}$('updbar').style.display='none'}
+async function updOk(){await get('/api/update_last?seen=1');$('updbar').style.display='none'}
+async function updRun(url){const b=$('updbar');const r=await get(url);if(!r.ok){toast(r.msg,12000);return}
+ b.innerHTML='<b>&#8987; Updating...</b> <span id="updmsg"></span>';b.style.display='block';
+ let seen=false;for(let i=0;i<400;i++){await new Promise(z=>setTimeout(z,1500));let s=null;try{s=await get('/api/update_status')}catch(e){}
+  if(s){if(s.state=='restarting')seen=true;if(seen&&s.state=='idle'){location.reload();return}
+   if(s.msg)$('updmsg').textContent=s.msg;if(s.state=='failed'){b.innerHTML='<b>&#9888; Update stopped:</b> '+esc(s.msg);return}}
+  else if(seen){try{await get('/api/update_last');location.reload();return}catch(e){}}}}
+function updGo(){if(!confirm('Update Arcade Apprentice now?\n\nYour AIs, games and recipe cards stay exactly as they are. Every file it replaces is backed up first, and there\'s an Undo button afterwards. The page restarts when it\'s done (about a minute).'))return;updRun('/api/update_apply')}
+function updUndo(){if(!confirm('Go back to the version you had before the update?'))return;updRun('/api/update_undo')}
 function toast(m,ms){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',ms||5000)}
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // text going inside onclick="f('...')": escape for the JS string first (backslashes in sub-folder paths, apostrophes), then for HTML
@@ -831,6 +848,6 @@ async function robotTick(){let r;try{r=await get('/api/robot')}catch(e){return}c
   b.innerHTML=`<b>&#129302; Library Robot</b>${i} <span class="muted">${was}Let it work through your arcade games and find the scores by itself.</span> <button class="go" onclick="robotGo('start')" style="margin-left:8px">&#9654; ${r.state?'Carry on':'Start the robot'}</button>`}
  clearTimeout(ROBOTT);ROBOTT=setTimeout(robotTick,r.running?5000:30000)}
 async function robotGo(a){const r=await get('/api/robot_'+a);toast(r.msg,8000);setTimeout(robotTick,1500)}
-setTheme();loadHW();loadGames();loadProjects().then(liveTick);robotTick();setInterval(loadProjects,15000);
+setTheme();loadHW();loadGames();loadProjects().then(liveTick);robotTick();setInterval(loadProjects,15000);updShow();
 if(location.hash=='#about')openBox('aboutbox');if(location.hash=='#help')openBox('helpbox');
 </script></body></html>

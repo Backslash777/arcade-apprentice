@@ -26,7 +26,7 @@ FILES = Path(__file__).resolve().parent
 ROOT = FILES.parent
 ROMS = ROOT / "ROMs - put your games here"
 PROJECTS = ROOT / "My AIs"
-PORT, REPORT_PORT = 8795, 8796
+PORT, REPORT_PORT = int(os.environ.get("AA_PORT") or 8795), int(os.environ.get("AA_REPORT_PORT") or 8796)   # ALFRED 1 Nov 2026: tests
 PY = sys.executable
 # windows that should be SEEN (Teach) need the console Python - the page itself runs under pythonw.exe, which can't
 # show a console window at all (19 Oct 2026: 'Teach' said 'in a new window' and none appeared)
@@ -378,6 +378,56 @@ DIALS = {"reward_style": str, "life_penalty": float, "curiosity": float, "gamma"
          "learn_from_best": bool, "best_study_times": int, "lives_at_game_over": bool,
          "miss_price": float, "practice": float, "progress_pay": float}
 LENGTHS = {"taster": 5e6, "overnight": 100e6, "forever": 1e12, "more5": 5e6}   # more5: set properly at each Train
+
+
+UPDATE = {"state": "idle", "msg": ""}      # ALFRED 1 Nov 2026: the one-click updater (updater.py)
+
+
+def relaunch(after=2.0):
+    """Start a fresh page server on the new code, then this one bows out (the page reloads itself)."""
+    def go():
+        time.sleep(after)
+        flags = getattr(subprocess, "DETACHED_PROCESS", 0) | NOWIN
+        subprocess.Popen([sys.executable, "-B", str(FILES / "app.py"), "--after-update"], cwd=str(FILES),
+                         creationflags=flags, close_fds=True)
+        time.sleep(0.5)
+        os._exit(0)
+    threading.Thread(target=go, daemon=True).start()
+
+
+def update_start(undo=False):
+    if UPDATE["state"] == "working":
+        return {"ok": False, "msg": "Already on it."}
+    live = [x["id"] for x in projects() if x.get("status", {}).get("live")]
+    if live:
+        return {"ok": False, "msg": f"Stop training first ({', '.join(live)}) - it saves, then you can update."}
+    import updater
+    UPDATE.update(state="working", msg="Putting your old version back..." if undo else "Checking for the update...")
+
+    def run():
+        try:
+            r = updater.undo() if undo else updater.apply(say=lambda m: UPDATE.update(msg=m))
+        except Exception as e:
+            r = {"ok": False, "msg": f"The update stopped part-way ({e!r}). Your AIs are untouched; 'Undo update' puts the old files back."}
+        if r.get("ok"):
+            UPDATE.update(state="restarting", msg=r["msg"] + " Restarting the page...")
+            relaunch()
+        else:
+            UPDATE.update(state="failed", msg=r["msg"])
+    threading.Thread(target=run, daemon=True).start()
+    return {"ok": True, **UPDATE}
+
+
+def update_last(seen=False):
+    p = FILES / "logs" / "update_last.json"
+    try:
+        rec = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return {"ok": True, "last": None}
+    if seen:
+        rec["seen"] = True
+        p.write_text(json.dumps(rec, indent=1), encoding="utf-8")
+    return {"ok": True, "last": rec}
 
 
 def is_live(pid):
@@ -1007,6 +1057,17 @@ class H(BaseHTTPRequestHandler):
                 return self.send(watch(q["id"], q.get("best") == "1"))
             if u.path == "/api/teach":
                 return self.send(teach(q["from"], q["to"]))
+            if u.path == "/api/update_check":       # ALFRED 1 Nov 2026: updates
+                import updater
+                return self.send(updater.check(force=q.get("force") == "1"))
+            if u.path == "/api/update_apply":
+                return self.send(update_start())
+            if u.path == "/api/update_undo":
+                return self.send(update_start(undo=True))
+            if u.path == "/api/update_status":
+                return self.send({"ok": True, **UPDATE})
+            if u.path == "/api/update_last":
+                return self.send(update_last(seen=q.get("seen") == "1"))
             if u.path == "/api/showhow":           # ALFRED 1 Nov 2026: Show it how (lives + how far along)
                 return self.send(show_how(q["id"]))
             if u.path == "/api/findscore":
@@ -1153,13 +1214,20 @@ class H(BaseHTTPRequestHandler):
 
 def main():
     url = f"http://127.0.0.1:{PORT}/"
-    with socket.socket() as s:
-        if s.connect_ex(("127.0.0.1", PORT)) == 0:
+    after_update = "--after-update" in sys.argv         # ALFRED 1 Nov 2026: restarted by the updater
+    for _ in range(40 if after_update else 1):
+        with socket.socket() as s:
+            busy = s.connect_ex(("127.0.0.1", PORT)) == 0
+        if not busy:
+            break
+        if not after_update:
             webbrowser.open(url)
             return
+        time.sleep(0.5)
     srv = ThreadingHTTPServer(("127.0.0.1", PORT), H)
     print(f"Arcade Apprentice is open at {url}\nKeep this window open while you use the page. Training keeps going if you close it.")
-    threading.Timer(0.8, lambda: webbrowser.open(url)).start()
+    if not after_update:                    # the page that asked for the update reloads itself
+        threading.Timer(0.8, lambda: webbrowser.open(url)).start()
     srv.serve_forever()
 
 
