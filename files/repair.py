@@ -252,6 +252,21 @@ def repair(proj, fix=True, say=print):
         stp.write_text(json.dumps({"state": "stopped", "updated": time.strftime("%Y-%m-%d %H:%M:%S"), "step": step,
                                    "note": "repaired after a crash"}))
         fixed.append("reset its status")
+    elif fix and stp.exists():
+        # ALFRED 1 Nov 2026: files all fine after a crash - clear the 'Crashed' flag so the page shows it as Stopped
+        try:
+            s = json.loads(stp.read_text())
+            if s.get("state") == "crashed":
+                keep_copy(stp)
+                try:
+                    step = int((run / "train_log.csv").read_text(encoding="utf-8").strip().splitlines()[-1].split(",")[2])
+                except Exception:
+                    step = s.get("step", 0)
+                stp.write_text(json.dumps({"state": "stopped", "updated": time.strftime("%Y-%m-%d %H:%M:%S"),
+                                           "step": step, "note": "checked after a crash - files fine"}))
+                fixed.append("cleared the crash warning (its files are fine)")
+        except Exception:
+            pass
     bc = run / "button_checks.json"
     if bc.exists():
         try:
@@ -305,7 +320,7 @@ def repair(proj, fix=True, say=print):
 
     # the answer
     if not found and not unfixable:
-        msg = f"Checked {name}: everything opens fine - nothing to repair."
+        msg = f"Checked {name}: everything opens fine - nothing to repair." + (" It's ready to train again." if fixed else "")
     elif not fix:
         msg = f"Checked {name}: " + "; ".join(found + unfixable) + "."
     else:
