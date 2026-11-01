@@ -47,16 +47,25 @@ def main():
     W, H = max(f.shape[1] * sc, 760), f.shape[0] * sc + 190
     win = pygame.display.set_mode((W, H))
     pygame.display.set_caption(f"Show it how - {cfg.get('game_name', gid)}")
+    bring_to_front()                  # ALFRED 1 Nov 2026: in front of the browser, and kept there while it's open
     font, big = pygame.font.SysFont("segoeui", 18), pygame.font.SysFont("segoeui", 22, bold=True)
     clock = pygame.time.Clock()
     rec = None
     g_prev = np.asarray(Image.fromarray(env.host.frame).convert("L"), np.uint8)
-    mode, frame_n, result, msg = "ready", 0, None, "Press R when you're ready to start recording."
+    mode, frame_n, result, msg = "intro", 0, None, "Press R when you're ready to start recording."
+    ok_box = None
     check = None                      # live readings once something is found
     while True:
         for e in pygame.event.get():
             if e.type == pygame.QUIT or (e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE):
                 pygame.quit(); return
+            if mode == "intro":         # the instructions card: nothing happens until OK
+                hit = e.type == pygame.MOUSEBUTTONDOWN and ok_box is not None and ok_box.collidepoint(e.pos)
+                if hit or (e.type == pygame.KEYDOWN and e.key in (pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_SPACE)):
+                    mode = "ready"
+                if not (e.type == pygame.KEYDOWN and e.key == pygame.K_r):
+                    continue
+                mode = "ready"              # R on the card: straight into recording
             if e.type != pygame.KEYDOWN:
                 continue
             if mode == "record" and e.key in (pygame.K_d, pygame.K_RETURN, pygame.K_KP_ENTER):
@@ -69,6 +78,11 @@ def main():
                 g_prev = np.asarray(Image.fromarray(env.host.frame).convert("L"), np.uint8)
             elif mode == "result" and e.key == pygame.K_y and result and (result[0] or result[1]):
                 msg = save(pdir, result); mode = "saved"
+        if mode == "intro":
+            ok_box = draw_intro(win, env, sc, font, big)
+            pygame.display.flip()
+            clock.tick(30)
+            continue
         held = pygame.key.get_pressed()
         buttons = tuple(sorted({b for k, b in KEYS.items() if held[k]}))
         env.host.run(buttons, capture=True)
@@ -93,6 +107,59 @@ def main():
         draw(win, env, sc, font, big, mode, rec, msg, result, check)
         pygame.display.flip()
         clock.tick(60)
+
+
+def bring_to_front():
+    """Over the browser and kept on top while you play (Windows won't let a new window just take focus)."""
+    if sys.platform != "win32":
+        return
+    try:
+        import ctypes
+        u = ctypes.windll.user32
+        hwnd = pygame.display.get_wm_info()["window"]
+        u.ShowWindow(hwnd, 9)
+        u.SetWindowPos(hwnd, -1, 0, 0, 0, 0, 0x43)       # HWND_TOPMOST, no move/size, show
+        u.keybd_event(0x12, 0, 0, 0)
+        u.keybd_event(0x12, 0, 2, 0)
+        u.SetForegroundWindow(hwnd)
+    except Exception:
+        pass
+
+
+INTRO = ["SHOW IT HOW",
+         "",
+         "Teach the kit two things about this game:",
+         "how far along the level you are, and how many lives you've got.",
+         "",
+         "1.  Press R to start recording.",
+         "2.  Play the way the level goes (arrows move, Z X C are the game's buttons).",
+         "3.  Each time you lose a life, press D straight after.",
+         "4.  When the bar turns green, press F.  Check the readings, then Y to save.",
+         "",
+         "Esc closes it without saving."]
+
+
+def draw_intro(win, env, sc, font, big):
+    """The instructions card over the (paused) game. Returns the OK button's rectangle."""
+    win.fill(BG)
+    f = env.host.frame
+    surf = pygame.surfarray.make_surface(np.ascontiguousarray(f.swapaxes(0, 1)))
+    surf = pygame.transform.scale(surf, (f.shape[1] * sc, f.shape[0] * sc))
+    win.blit(surf, ((win.get_width() - surf.get_width()) // 2, 0))
+    shade = pygame.Surface(win.get_size(), pygame.SRCALPHA)
+    shade.fill((8, 12, 22, 215))
+    win.blit(shade, (0, 0))
+    y = 60
+    for i, line in enumerate(INTRO):
+        t = (big if i == 0 else font).render(line, True, GOLD if i == 0 else WHITE)
+        win.blit(t, ((win.get_width() - t.get_width()) // 2, y))
+        y += 40 if i == 0 else 28
+    box = pygame.Rect(0, 0, 160, 50)
+    box.center = (win.get_width() // 2, y + 40)
+    pygame.draw.rect(win, (255, 140, 40), box, border_radius=12)
+    t = big.render("OK", True, (20, 20, 30))
+    win.blit(t, t.get_rect(center=box.center))
+    return box
 
 
 def reading(env, spec):

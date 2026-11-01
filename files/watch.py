@@ -309,8 +309,8 @@ def watch_arcade(proj, cfg, run):
     speaker = Speaker(cab.env.host.sample_rate)
     screen = pygame.display.set_mode((max(w * S, 640), h * S + TOP))
     pygame.display.set_caption(f"Arcade Apprentice - {cfg['game_name']}")
-    bring_to_front()
-    on_top = False
+    on_top = True                     # ALFRED 1 Nov 2026: Jonny - game windows stay on top (toggle still works)
+    bring_to_front(on_top)
     hud = Hud()
     clock = pygame.time.Clock()
     fast = paused = greedy = False
@@ -521,8 +521,8 @@ def main():
     speaker = Speaker(30720)
     screen = pygame.display.set_mode((w * S * 2, h * S + TOP))
     pygame.display.set_caption(f"Arcade Apprentice - {cfg['game_name']}")
-    bring_to_front()
-    on_top = False
+    on_top = True                     # ALFRED 1 Nov 2026: Jonny - game windows stay on top (toggle still works)
+    bring_to_front(on_top)
     hud = Hud()
     clock = pygame.time.Clock()
     fast = paused = greedy = False
