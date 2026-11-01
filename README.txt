@@ -1,4 +1,4 @@
-ARCADE APPRENTICE v1.2
+ARCADE APPRENTICE v1.3
 Teach an AI to play Atari 2600 and arcade games from scratch - on your own computer.  (c) 2026 Jonathan Terrington
 
 0. Extract this folder anywhere you can write to (Desktop, Documents, Downloads...) - not inside Program Files.
@@ -27,6 +27,19 @@ Teach an AI to play Atari 2600 and arcade games from scratch - on your own compu
    Shut the page without pressing "Close the kit"? Double-click CLOSE THE KIT.bat - it stops any training
    (each AI saves first) and closes everything the kit left open.
 6. Press Watch it play to see the latest brain in action. Open the report card for live charts.
+
+NEW IN v1.3:
+   - "Pay it for getting further" (Settings). Some games have easy points that never run out - the zombies at the
+     start of Ghosts 'n Goblins - so the AI learns to stand there farming them and never sees the rest of the game.
+     Turn this on and it also gets paid for every bit of new ground it reaches, each life. It reads how far along it
+     is straight off the screen, so it works on any arcade game that scrolls. Ghosts 'n Goblins went from camping
+     zombies to getting past the first boss overnight.
+   - "Show it how". Some dials need to know a game's lives or exactly how far along the level it is. Press Show it
+     how, press R, play for a minute the way the level goes, press D each time you lose a life, then F. The kit finds
+     both in the game's memory and the dials light up.
+   - Dials a game can't use are now greyed out with a short note saying why, instead of quietly doing nothing.
+   - If you play games for your AI to copy (Learn from my games), an AI that's already well trained no longer gets
+     your old recordings copied over the top of it when you restore it.
 
 RECIPE CARDS (new in v1.2):
    Open an AI's Settings and look for Recipe cards.

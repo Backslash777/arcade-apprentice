@@ -82,6 +82,8 @@ class GenericArcadeEnv(gym.Env):
             self._seen = 0
         self.health = self.pack.get("health")      # fighting games: points = damage dealt - damage taken
         self.lives_c = self.pack.get("lives")
+        self.progress_c = self.pack.get("progress")   # ALFRED 31 Oct 2026: where it keeps how far along it is
+        self.screen_progress = False    # ALFRED 1 Nov 2026: no address -> read the scroll off the screen (set by Cabinet)
         self.flag = self.pack.get("playing")
         self.max_jump = int(self.pack.get("max_jump", 100000))
         self.rng = np.random.default_rng()
@@ -111,6 +113,53 @@ class GenericArcadeEnv(gym.Env):
             return 0
         return max(0, ramscan.read_lives(self.mem, self.lives_c))
 
+    def read_progress(self):
+        """ALFRED 31 Oct 2026: how far along the level it is (e.g. the screen-scroll counter)."""
+        c, m = self.progress_c, self.mem
+        o, fmt = int(c["offset"]), c.get("fmt", "u16be")
+        if fmt == "u8":
+            v, top = int(m[o]), 255
+        else:
+            a, b = int(m[o]), int(m[o + 1])
+            v, top = ((a << 8 | b) if fmt == "u16be" else (b << 8 | a)), 65535
+        return top - v if c.get("invert") else v      # ALFRED 1 Nov 2026: counters that run down as it goes on
+
+    def _track_progress(self, lives_now):
+        """ALFRED 31 Oct 2026: count NEW ground reached this game. After a death the counter goes back (start or
+        checkpoint) and walking it again pays nothing until it passes its best; a big drop with no death = a new
+        stage, so the best starts again from there."""
+        if self.lives_c and lives_now < self.lives:
+            self.died = True
+        p = self.read_progress()
+        if p < self.pos - int(self.progress_c.get("new_stage_drop", 200)):
+            if self.died:
+                self.died = False
+                if self.progress_c.get("per_life"):
+                    self.far = p          # ALFRED 1 Nov 2026: each life is paid for walking on from where it starts
+            else:
+                self.far = p
+        if p > self.far:
+            if p - self.far <= int(self.progress_c.get("max_jump", 64)):
+                self.progress += (p - self.far) / float(self.progress_c.get("units_per_px", 1) or 1)   # (a bigger jump is a
+                # cut-scene or a warp: not paid for). ALFRED 1 Nov 2026: counters in sub-pixels are paid per pixel
+            self.far = p
+        self.pos = p
+
+    def _track_screen_progress(self):
+        """ALFRED 1 Nov 2026: new ground from the pixels - the view's furthest reach left, right, up and down this game
+        (going back over old ground pays nothing; after a death the view usually jumps back, which isn't counted)."""
+        import scrollscan
+        g = np.asarray(Image.fromarray(self.host.frame).convert("L"), np.uint8)
+        dx, dy = scrollscan.shift(self._sp_prev, g)
+        self._sp_prev = g
+        self.cam = (self.cam[0] + dx, self.cam[1] + dy)
+        x0, x1, y0, y1 = self.ext
+        cx, cy = self.cam
+        grow = max(0, cx - x1) + max(0, x0 - cx) + max(0, cy - y1) + max(0, y0 - cy)
+        if grow:
+            self.ext = (min(x0, cx), max(x1, cx), min(y0, cy), max(y1, cy))
+            self.progress += grow
+
     def playing(self):
         return ramscan.is_playing(self.mem, self.flag)
 
@@ -122,7 +171,10 @@ class GenericArcadeEnv(gym.Env):
         return np.asarray(Image.fromarray(g).resize((84, 84), Image.Resampling.BILINEAR), np.uint8)[None].copy()
 
     def _info(self):
-        return {"score": self.score, "lives": self.lives, "raw_score": self.raw, "playing": self.on}
+        info = {"score": self.score, "lives": self.lives, "raw_score": self.raw, "playing": self.on}
+        if self.progress_c or self.screen_progress:
+            info["progress"] = self.progress          # ALFRED 31 Oct 2026: new ground reached this game
+        return info
 
     # -------------------------------------------------------------------------------------------- gym API
     def reset(self, *, seed=None, options=None):
@@ -159,6 +211,12 @@ class GenericArcadeEnv(gym.Env):
         self.best = self.base                       # points = only rises above the best reading this game
         self.score, self.raw = 0, self.base
         self.lives = self.read_lives()
+        if self.progress_c:                          # ALFRED 31 Oct 2026
+            self.pos = self.far = self.read_progress()
+            self.progress, self.died = 0, False
+        elif self.screen_progress:                   # ALFRED 1 Nov 2026
+            self.progress, self.cam, self.ext = 0, (0, 0), (0, 0, 0, 0)
+            self._sp_prev = np.asarray(Image.fromarray(self.host.frame).convert("L"), np.uint8)
         self.on, self.off_frames, self.quiet_frames, self.frames = True, 0, 0, 0
         if self.health:
             self.hp = self.read_health()
@@ -183,7 +241,7 @@ class GenericArcadeEnv(gym.Env):
                         terminated = True
         if self.decision_repeat == 1:
             self._prev = None
-        if self.flag is None and (not self.screen or self.lives_c or self.health):
+        if self.flag is None and (not self.screen or self.lives_c or self.health or self.progress_c):
             self.snap()                                 # (a score read off the screen doesn't need the memory)
         r = self.read_score()
         self.raw = r
@@ -207,7 +265,12 @@ class GenericArcadeEnv(gym.Env):
             self.quiet_frames = 0
         else:
             self.quiet_frames += self.decision_repeat
-        self.lives = self.read_lives()
+        lives_now = self.read_lives()
+        if self.progress_c:
+            self._track_progress(lives_now)
+        elif self.screen_progress:
+            self._track_screen_progress()
+        self.lives = lives_now
         self.on = not terminated
         truncated = (not terminated) and self.quiet_frames >= STUCK_FRAMES
         return self._obs(), float(0), terminated, truncated, self._info()

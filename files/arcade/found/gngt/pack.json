@@ -75,7 +75,10 @@
  },
  "read_from": "screen",
  "alternatives": [],
- "lives": null,
+ "lives": {
+  "offset": 96,
+  "adjust": 0
+ },
  "playing": {
   "offset": 2,
   "values": [
@@ -88,8 +91,7 @@
  ],
  "buttons": [
   0,
-  8,
-  1
+  8
  ],
  "decision_repeat": 4,
  "max_jump": 50000,
@@ -107,5 +109,30 @@
   "busy": 0
  },
  "made": "2026-10-11 02:16",
- "n_actions": 36
+ "n_actions": 27,
+ "progress": {
+  "offset": 156,
+  "fmt": "u16be",
+  "max_jump": 64,
+  "new_stage_drop": 200,
+  "found": "ALFRED 31 Oct 2026: screen scroll (walk-right probe, matches the pixels); 0x60 = lives 3,2,1",
+  "per_life": true
+ },
+ "fast_reset": true,
+ "controls_history": [
+  {
+   "axes": [
+    "lr",
+    "ud"
+   ],
+   "buttons": [
+    0,
+    8,
+    1
+   ],
+   "n_actions": 36,
+   "until": "2026-10-31 23:32",
+   "why": "dropped by you (Settings > Buttons): button 3 (C) never changed anything in its own play"
+  }
+ ]
 }

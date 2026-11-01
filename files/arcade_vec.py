@@ -69,7 +69,7 @@ def refresh_found():
             p = json.loads(d.read_text(encoding="utf-8"))
             PACKS[p["id"]] = {"name": p["name"], "generic": str(d.parent), "n_actions": int(p["n_actions"]),
                               "decision_repeat": int(p.get("decision_repeat", 4)), "kwargs": {},
-                              "crcs": p["crcs"], "fast_reset": False, "found": True, "core": p.get("core", "fbneo")}
+                              "crcs": p["crcs"], "fast_reset": bool(p.get("fast_reset", False)), "found": True, "core": p.get("core", "fbneo")}
         except Exception:
             pass
 
@@ -246,10 +246,13 @@ def _saucer_tally(info):
 class Cabinet:
     """One arcade machine: points = change in the real on-screen score, lives from the game's own RAM."""
 
-    def __init__(self, pack_id, rom_path, runtime_root, seed, sticky=0.25, audio=False, probe=None, practice=0.0):
+    def __init__(self, pack_id, rom_path, runtime_root, seed, sticky=0.25, audio=False, probe=None, practice=0.0,
+                 want_progress=False):
         if pack_id not in PACKS:
             refresh_found()
         self.env = make_env(pack_id, rom_path, runtime_root, audio=audio)
+        if want_progress and hasattr(self.env, "screen_progress") and not getattr(self.env, "progress_c", None):
+            self.env.screen_progress = True      # ALFRED 1 Nov 2026: no address in the pack - read the scroll off the screen
         self.seed, self.games = seed, 0
         self.sticky, self.rng, self.prev = float(sticky), np.random.default_rng(seed), 0
         # the button check: found games only, and only ones whose save-states restore
@@ -269,6 +272,7 @@ class Cabinet:
         self.practice_pool = {}             # kind of moment -> [(emulator state, adapter bookkeeping), ...]
         self.drill, self.restart_pending = False, -1.0
         self.step_misses, self.game_stats, self._miss_seen = 0, None, 0
+        self.step_progress, self._prog_seen = 0.0, 0.0     # ALFRED 31 Oct 2026: 'Pay it for getting further'
 
     REAL_RESET_EVERY = 25      # a full boot -> coin -> start every 25 games refreshes the snapshot
 
@@ -336,6 +340,7 @@ class Cabinet:
         self.score, self.lives, self.decisions = float(info.get("score", 0)), int(info.get("lives", 0) or 0), 0
         self.restart_pending = self.score          # reported with the next move (the trainer keeps it off the scoreboard)
         self._miss_seen = int(info.get("misses", 0) or 0)
+        self._prog_seen = float(info.get("progress", 0) or 0)
         return obs[0]
 
     def pop_restart(self):
@@ -377,6 +382,7 @@ class Cabinet:
             self.recipe = None
         self.score, self.lives, self.decisions = float(info.get("score", 0)), int(info.get("lives", 0) or 0), 0
         self._miss_seen = int(info.get("misses", 0) or 0)
+        self._prog_seen = float(info.get("progress", 0) or 0)
         return obs[0]
 
     def start_from(self, recipe):
@@ -413,10 +419,17 @@ class Cabinet:
             self.step_misses = 0
         else:
             self.step_misses, self._miss_seen = max(0, int(m) - self._miss_seen), int(m)
+        pr = info.get("progress")                 # ALFRED 31 Oct 2026: new ground this move
+        if pr is None:
+            self.step_progress = 0.0
+        else:
+            self.step_progress, self._prog_seen = max(0.0, float(pr) - self._prog_seen), float(pr)
         if term or trunc or capped:
             self.game_stats = ({"shots": int(info["shots"]), "hits": int(info["hits"]), "misses": int(m or 0),
                                 **_saucer_tally(info)}   # ALFRED 26 Oct 2026: saucer tally (measures only)
                                if info.get("hits") is not None and info.get("shots") is not None else None)
+            if pr is not None:                    # ALFRED 31 Oct 2026: how much new ground it covered
+                self.game_stats = dict(self.game_stats or {}, progress=int(pr))
         elif self.practice > 0:
             self._keep_moment()
         return obs[0], pts, bool(term), bool(trunc or capped)
@@ -449,9 +462,10 @@ class Cabinet:
         return c, seen[0] != seen[1]
 
 
-def _worker(conn, pack_id, rom_path, runtime_root, seed, sticky, probe=None, practice=0.0):
+def _worker(conn, pack_id, rom_path, runtime_root, seed, sticky, probe=None, practice=0.0, want_progress=False):
     try:
-        cab = Cabinet(pack_id, rom_path, runtime_root, seed, sticky, probe=probe, practice=practice)
+        cab = Cabinet(pack_id, rom_path, runtime_root, seed, sticky, probe=probe, practice=practice,
+                      want_progress=want_progress)
         obs = cab.new_game()
         conn.send(("ok", obs.tobytes(), cab.lives, cab.recipe))
         while True:
@@ -466,7 +480,7 @@ def _worker(conn, pack_id, rom_path, runtime_root, seed, sticky, probe=None, pra
             if term or trunc:
                 obs = cab.new_game()      # same-step reset: obs is the first frame of the next game
             conn.send(("ok", obs.tobytes(), pts, lives, term, trunc, acted, cab.recipe if (term or trunc) else None,
-                       cab.last_probe, cab.step_misses, stats, rs))
+                       cab.last_probe, cab.step_misses, stats, rs, cab.step_progress))
     except Exception:
         try:
             conn.send(("error", traceback.format_exc()))
@@ -482,8 +496,9 @@ class _Space:
 class ArcadeVec:
     """N cabinets in N processes, shaped like ale_py's AtariVectorEnv for trainer.py."""
 
-    def __init__(self, pack_id, rom_path, num_envs, seed=1, sticky=0.25, probe=None, practice=0.0):
+    def __init__(self, pack_id, rom_path, num_envs, seed=1, sticky=0.25, probe=None, practice=0.0, want_progress=False):
         self.practice = float(practice or 0)       # ALFRED 23 Oct 2026: 'Practise the hard parts'
+        self.want_progress = bool(want_progress)   # ALFRED 1 Nov 2026: 'Pay it for getting further' is on
         if pack_id not in PACKS:
             refresh_found()
         if pack_id not in PACKS:
@@ -517,7 +532,7 @@ class ArcadeVec:
         for i in range(self.N):
             a, b = ctx.Pipe()
             pr = ctx.Process(target=_worker, args=(b, pack_id, str(rom_path), str(self.runtime), seed + i * 1_000_003, self.sticky, self.probe,
-                                                         self.practice),
+                                                         self.practice, self.want_progress),
                              daemon=True)
             pr.start()
             self.conns.append(a)
@@ -550,6 +565,7 @@ class ArcadeVec:
         ended_recipes = [None] * self.N
         probes = []
         misses = np.zeros(self.N, np.float32)      # ALFRED 23 Oct 2026: see Cabinet.step / _worker
+        progress = np.zeros(self.N, np.float32)    # ALFRED 31 Oct 2026: new ground this move
         stats = [None] * self.N
         restart = np.full(self.N, -1.0)
         self.stack = np.roll(self.stack, -1, axis=1)
@@ -563,6 +579,8 @@ class ArcadeVec:
                 probes.append(msg[8])
             if len(msg) > 11:
                 misses[i], stats[i], restart[i] = msg[9], msg[10], msg[11]
+            if len(msg) > 12:
+                progress[i] = msg[12]
             if te or tr:
                 self.stack[i] = 0
                 ended_recipes[i] = self.recipes[i]           # the game that just ended
@@ -570,7 +588,8 @@ class ArcadeVec:
             self.stack[i, -1] = np.frombuffer(ob, np.uint8).reshape(84, 84)
         return self.stack.copy(), rew, term, trunc, {"lives": self.lives.copy(), "acted": acted,
                                                        "ended_recipes": ended_recipes, "probes": probes,
-                                                       "misses": misses, "game_stats": stats, "restart_score": restart}
+                                                       "misses": misses, "game_stats": stats, "restart_score": restart,
+                                                       "progress": progress}
 
     def close(self):
         for c in self.conns:

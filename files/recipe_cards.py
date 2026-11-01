@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 FORMAT_VERSION = 1
-KIT_VERSION = "1.2"
+KIT_VERSION = "1.3"
 MAX_RECIPE_BYTES = 2_000_000
 LENGTHS = {"taster": 5e6, "overnight": 100e6, "forever": 1e12, "more5": 5e6}
 

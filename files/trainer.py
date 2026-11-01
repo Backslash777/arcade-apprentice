@@ -330,7 +330,8 @@ def main():
         envs = ArcadeVec(cfg["game_id"], rom, N, seed=int(time.time()) % 100000,
                          sticky=0.25 if cfg.get("sticky", True) else 0.0,
                          probe=checker.inputs() if checker is not None else None,
-                         practice=float(cfg.get("practice", 0) or 0))      # ALFRED 23 Oct 2026
+                         practice=float(cfg.get("practice", 0) or 0),      # ALFRED 23 Oct 2026
+                         want_progress=bool(float(cfg.get("progress_pay", 0) or 0)))   # ALFRED 1 Nov 2026
         try:     # ALFRED 21 Oct 2026: learning gets fast cores of its own, the cabinets the rest (cpu_split.py)
             import cpu_split
             _split = cpu_split.plan(int(hw["trainer_cpus"]) if hw.get("trainer_cpus") else None)
@@ -377,6 +378,7 @@ def main():
     reward_fn = make_reward_fn(cfg)
     lives_at_go = bool(cfg.get("lives_at_game_over", False))   # ALFRED 21 Oct 2026: see 'r = reward_fn' below
     miss_price = float(cfg.get("miss_price", 0) or 0)          # ALFRED 23 Oct 2026: 'A missed shot costs'
+    progress_pay = float(cfg.get("progress_pay", 0) or 0)      # ALFRED 31 Oct 2026: 'Pay it for getting further'
     practising = float(cfg.get("practice", 0) or 0) > 0 and cfg.get("platform") == "arcade"
 
     explorer = Explorer(dev, cfg["explorer"], N) if float(cfg.get("explorer", 0) or 0) > 0 else None
@@ -408,6 +410,10 @@ def main():
             f"{stx['places']:,} places).")
     if explorer:
         say(f"Explorer bonus ON (strength {explorer.beta}): rewarded for reaching screens it hasn't seen much.")
+    if progress_pay:
+        say(f"PAID FOR GETTING FURTHER: {progress_pay:g} for every bit of new ground it reaches in a game (walking "
+            "on from where each life starts - per life on packs that say so). Packs that know where the game keeps it use that; "
+            "other arcade games read the scrolling off the screen.")
     if miss_price:
         say(f"A MISSED SHOT COSTS {miss_price:g} (off the top of the screen, or into its own shields; shooting down a "
             "bomb is free). Only games that can tell a miss - for the others this does nothing.")
@@ -450,6 +456,13 @@ def main():
                 left = max(0.0, 1 - (now - demo_step) / demos.FADE)
                 say(f"Learning from {bank.n:,} of your moves ({100 * left:.0f}% strength left)." if left > 0 else
                     f"Your {bank.n:,} recorded moves have done their job - it's on its own now.")
+            return
+        if starting and now >= 1_000_000 and not (st or {}).get("demo_frames"):
+            # ALFRED 1 Nov 2026: a brain that's already well trained with no record of these lessons (restored from old
+            # runs) - copying them at full strength over it wiped a 33k Ghosts 'n Goblins brain back to ~3k on 31 Oct
+            say(f"Your {bank.n:,} recorded moves are older than this brain's training - not copying them over it. "
+                "(Play new games in the Watch window and it learns those.)")
+            demo_frames, demo_step = bank.n, now - demos.FADE
             return
         # new lessons: copy them first (behaviour cloning), then let the pull fade over the next few million moves
         ups = int(min(3000, max(300, 20 * bank.n / 256)))
@@ -613,6 +626,8 @@ def main():
             r = reward_fn(rew, lost)
             if miss_price and info.get("misses") is not None:      # ALFRED 23 Oct 2026: 'A missed shot costs'
                 r = r - miss_price * np.asarray(info["misses"], np.float32)
+            if progress_pay and info.get("progress") is not None:    # ALFRED 31 Oct 2026: 'Pay it for getting further'
+                r = r + progress_pay * np.asarray(info["progress"], np.float32)
             for i in np.flatnonzero(ended):
                 g["games"] += 1
                 if recorder is not None:

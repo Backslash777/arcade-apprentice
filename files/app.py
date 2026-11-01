@@ -366,6 +366,7 @@ def create(p):
     cfg["lives_at_game_over"] = bool(p.get("lives_at_game_over", False))     # ALFRED 21 Oct 2026
     cfg["miss_price"] = float(p.get("miss_price", 0) or 0)                    # ALFRED 23 Oct 2026
     cfg["practice"] = float(p.get("practice", 0) or 0)                        # ALFRED 23 Oct 2026
+    cfg["progress_pay"] = float(p.get("progress_pay", 0) or 0)                # ALFRED 31 Oct 2026
     (folder / "project.json").write_text(json.dumps(cfg, indent=1))
     return {"ok": True, "id": folder.name}
 
@@ -375,7 +376,7 @@ DIALS = {"reward_style": str, "life_penalty": float, "curiosity": float, "gamma"
          "explorer": float, "ignore_losses": bool, "learning_rate": float, "length": str,
          "go_explore": float, "brain_size": str, "learn_from_me": float, "learn_style": str,
          "learn_from_best": bool, "best_study_times": int, "lives_at_game_over": bool,
-         "miss_price": float, "practice": float}
+         "miss_price": float, "practice": float, "progress_pay": float}
 LENGTHS = {"taster": 5e6, "overnight": 100e6, "forever": 1e12, "more5": 5e6}   # more5: set properly at each Train
 
 
@@ -383,9 +384,42 @@ def is_live(pid):
     return any(p["id"] == pid and p.get("status", {}).get("live") for p in projects())
 
 
+def dial_needs(cfg):
+    """ALFRED 1 Nov 2026: what this AI's game can tell the trainer - dials that need something it can't are greyed
+    out on the page (with 'Show it how' where that can fix it)."""
+    gid = cfg.get("game_id", "")
+    if cfg.get("platform", "atari") != "arcade":
+        return {"lives": True, "progress": False, "exact": False, "misses": False, "show_how": False,
+                "practice": False, "atari": True}
+    if gid.startswith("found-"):
+        try:
+            import controls
+            pack = json.loads((controls.pack_dir_for(gid) / "pack.json").read_text(encoding="utf-8"))
+        except Exception:
+            pack = {}
+        return {"lives": bool(pack.get("lives")), "progress": True, "exact": bool(pack.get("progress")),
+                "misses": False, "show_how": pack.get("reset") != "reboot",
+                "practice": bool(pack.get("fast_reset")) and pack.get("reset") != "reboot", "atari": False}
+    return {"lives": True, "progress": False, "exact": False, "misses": gid == "invaders", "show_how": False,
+            "practice": True, "atari": False}
+
+
+def show_how(pid):
+    """ALFRED 1 Nov 2026: open the Show it how window for one AI's game."""
+    d = PROJECTS / pid
+    if not (d / "project.json").exists():
+        return {"ok": False, "msg": "That AI has gone."}
+    (FILES / "logs").mkdir(exist_ok=True)
+    log = open(FILES / "logs" / "show-it-how.log", "w")
+    subprocess.Popen([PY, str(FILES / "show_how.py"), str(d)], cwd=str(FILES), creationflags=NOWIN,
+                     stdout=log, stderr=subprocess.STDOUT)
+    return {"ok": True, "msg": "Opening Show it how: press R, walk the way the level goes, press D each time you "
+                               "lose a life, then F. Y saves - then open Settings again."}
+
+
 def get_settings(pid):
     cfg = json.loads((PROJECTS / pid / "project.json").read_text())
-    return {k: cfg.get(k, {"learn_from_me": 1.0, "learn_style": "practice", "learn_from_best": False, "best_study_times": 1, "miss_price": 0.0, "practice": 0.0}.get(k)) for k in DIALS} | {"game_name": cfg.get("game_name"), "platform": cfg.get("platform", "atari")}
+    return {k: cfg.get(k, {"learn_from_me": 1.0, "learn_style": "practice", "learn_from_best": False, "best_study_times": 1, "miss_price": 0.0, "practice": 0.0, "progress_pay": 0.0}.get(k)) for k in DIALS} | {"game_name": cfg.get("game_name"), "platform": cfg.get("platform", "atari"), "can": dial_needs(cfg)}
 
 
 def set_settings(body):
@@ -973,6 +1007,8 @@ class H(BaseHTTPRequestHandler):
                 return self.send(watch(q["id"], q.get("best") == "1"))
             if u.path == "/api/teach":
                 return self.send(teach(q["from"], q["to"]))
+            if u.path == "/api/showhow":           # ALFRED 1 Nov 2026: Show it how (lives + how far along)
+                return self.send(show_how(q["id"]))
             if u.path == "/api/findscore":
                 return self.send(find_score(q["file"]))
             if u.path == "/api/report":
