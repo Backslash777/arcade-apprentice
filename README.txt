@@ -1,4 +1,4 @@
-ARCADE APPRENTICE v1.3
+ARCADE APPRENTICE v1.3.1
 Teach an AI to play Atari 2600 and arcade games from scratch - on your own computer.  (c) 2026 Jonathan Terrington
 
 0. Extract this folder anywhere you can write to (Desktop, Documents, Downloads...) - not inside Program Files.
@@ -27,6 +27,10 @@ Teach an AI to play Atari 2600 and arcade games from scratch - on your own compu
    Shut the page without pressing "Close the kit"? Double-click CLOSE THE KIT.bat - it stops any training
    (each AI saves first) and closes everything the kit left open.
 6. Press Watch it play to see the latest brain in action. Open the report card for live charts.
+
+NEW IN v1.3.1:
+   - If an AI crashes (a power cut, or the PC restarted while it was training), a Check & repair button now
+     sits right next to the crash message, instead of being tucked away in Settings.
 
 NEW IN v1.3:
    - "Pay it for getting further" (Settings). Some games have easy points that never run out - the zombies at the
