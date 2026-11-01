@@ -4,7 +4,7 @@ Teach an AI to play arcade games on your own Windows computer.
 
 You don't need a cloud account, you don't need to type commands and you don't need to be a programmer. Download the kit, unzip it and double-click **START HERE**.
 
-**[Download Arcade Apprentice v1.2](https://arcadeapprentice.co.uk/download/Arcade-Apprentice-v1.2.zip)** · [Visit the website](https://arcadeapprentice.co.uk/) · [Join the forum](https://forum.arcadeapprentice.co.uk/)
+**[Download Arcade Apprentice v1.3](https://arcadeapprentice.co.uk/Arcade-Apprentice-v1.3.zip)** · [Visit the website](https://arcadeapprentice.co.uk/) · [Join the forum](https://forum.arcadeapprentice.co.uk/)
 
 ## Why I made it
 
@@ -45,7 +45,7 @@ The kit uses **PPO (stands for Proximal Policy Optimisation. A fancy way of sayi
 
 ## Getting started
 
-1. **[Download the kit](https://arcadeapprentice.co.uk/download/Arcade-Apprentice-v1.2.zip)** and unzip it somewhere like your Desktop, Documents or Downloads. Don't put it in Program Files.
+1. **[Download the kit](https://arcadeapprentice.co.uk/Arcade-Apprentice-v1.3.zip)** and unzip it somewhere like your Desktop, Documents or Downloads. Don't put it in Program Files.
 2. Double-click **START HERE.bat**.
 3. The first time, it downloads its own private copy of Python and the AI bits. That's about **4 GB**, so allow **5 to 15 minutes** and put the kettle on. It doesn't install anything on your system.
 4. Put your game files in **ROMs - put your games here**. ROMs are the game files. Only use games you're entitled to use. None are included with the kit.
