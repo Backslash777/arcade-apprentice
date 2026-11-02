@@ -133,9 +133,11 @@ button.info:hover:not(:disabled){background:var(--teal);color:var(--panel);borde
 kbd{background:var(--card-hi);border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:6px;padding:0 6px;font:12px var(--mono)}
 
 /* ---------------------------------------------------------------- your AIs */
-.proj{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:start;border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin-top:12px;background:var(--card)}
+.proj{display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,max-content);gap:10px 16px;align-items:start;border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin-top:12px;background:var(--card)}
 .proj.is-live{border-color:var(--lime-line);box-shadow:0 0 0 3px var(--lime-soft)}
 .proj>.livebox,.proj>.charts,.proj>.chips,.proj>.projmsg,.proj>.smile{grid-column:1/-1}
+.proj .nm .ren{padding:2px 7px;font-size:13px;line-height:1.2;opacity:.55;min-height:0}
+.proj .nm .ren:hover,.proj .nm .ren:focus{opacity:1}
 .proj .nm{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:700 17.5px/1.3 var(--ui);min-width:0}
 .proj .gt{flex-basis:100%;margin-left:19px;font:400 13.5px/1.3 var(--ui);color:var(--muted)}
 .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
@@ -371,6 +373,12 @@ a.btn:hover{filter:brightness(1.07);color:var(--accent-ink)}
 <div id="d_body" class="small"></div>
 <div class="row" style="margin-top:16px;justify-content:flex-end"><button onclick="closeBox('delbox')">Keep it</button>
 <button class="danger solid" id="d_go" onclick="doDelete()">&#128465; Delete for ever</button></div></div></div>
+<div class="modal" id="renbox" onclick="if(event.target==this)closeBox(this.id)"><div class="box" style="max-width:480px">
+<h2 style="margin:0 0 6px">Rename this AI</h2>
+<div class="small muted">Handy when you've got more than one on the same game, like "Shinobi - copies me" and "Shinobi - on its own".</div>
+<div class="row" style="margin-top:12px"><input type="text" id="r_name" maxlength="60" style="flex:1" onkeydown="if(event.key=='Enter')doRename();if(event.key=='Escape')closeBox('renbox')"></div>
+<div class="row" style="margin-top:16px;justify-content:flex-end"><button onclick="closeBox('renbox')">Cancel</button>
+<button class="go" id="r_go" onclick="doRename()">&#9998; Rename</button></div></div></div>
 <div class="modal" id="aboutbox" onclick="if(event.target==this)closeBox(this.id)"><div class="box">
 <div class="row" style="justify-content:space-between;align-items:center"><h2 style="margin:0">About Arcade Apprentice</h2><button onclick="closeBox('aboutbox')">Close</button></div>
 <p>Hiya, I'm Jonny. I run a little shop on Dickson Road in Blackpool, and when it's quiet I tinker with AI.</p>
@@ -651,6 +659,11 @@ async function askDelete(id){const r=await get('/api/delete_info?id='+encodeURIC
   '<p><b>This can\'t be undone.</b> Your game file stays in the ROMs folder - you can always make a new AI from it.</p>'+
   (r.live?'<p style="color:var(--red)"><b>It is training right now - press Stop first.</b></p>':'');
  $('d_go').disabled=!!r.live;openBox('delbox')}
+let REN=null;
+function askRename(id){const me=(PROJ||[]).find(x=>x.id==id)||{};REN=id;$('r_name').value=me.name||id;openBox('renbox');setTimeout(()=>{$('r_name').focus();$('r_name').select()},50)}
+async function doRename(){if(!REN)return;const v=$('r_name').value.trim();if(!v)return toast('Give it a name first.');$('r_go').disabled=true;
+ const r=await get('/api/rename?id='+encodeURIComponent(REN)+'&name='+encodeURIComponent(v));$('r_go').disabled=false;
+ if(!r.ok)return toast(r.msg||'Could not rename it.',7000);closeBox('renbox');toast(r.msg,7000);REN=null;loadProjects()}
 async function doDelete(){if(!DEL)return;$('d_go').disabled=true;const r=await get('/api/delete?id='+encodeURIComponent(DEL));closeBox('delbox');$('d_go').disabled=false;toast(r.msg,9000);DEL=null;loadProjects()}
 let CL=[];
 async function clutterOpen(){openBox('clutterbox');$('cl_go').disabled=true;$('cl_list').innerHTML='<div class="small muted">Looking at what\'s running...</div>';const r=await get('/api/clutter');CL=r.apps||[];$('cl_go').disabled=!CL.length;
@@ -747,7 +760,7 @@ async function loadProjects(){const p=await get('/api/projects');PROJ=p;let smil
  if(s.step&&!s.live)chips.push(`<span class="chip"><b>${(s.step/1e6).toFixed(1)}M</b> moves</span>`);
  if(s.best_mean100>-1e8&&s.best_mean100!=null&&s.step)chips.push(`<span class="chip">best average <b>${Math.round(s.best_mean100).toLocaleString()}</b></span>`);
  return `<div class="proj${s.live?' is-live':''}" id="ai_${id}">
- <div class="nm"><i class="dot${s.live?' live':''}"></i>${esc(x.name)}${x.game_title&&x.game_title!=x.name?`<span class="gt">${esc(x.game_title)}</span>`:''}</div>
+ <div class="nm"><i class="dot${s.live?' live':''}"></i>${esc(x.name)}<button class="ren" onclick="askRename('${q}')" title="Rename this AI" aria-label="Rename ${esc(x.name)}">&#9998;</button>${x.game_title&&x.game_title!=x.name?`<span class="gt">${esc(x.game_title)}</span>`:''}</div>
  <div class="acts"><button class="go" onclick="act('train','${q}')" ${s.live?'disabled':''}>&#9654; Train</button><button onclick="act('stop','${q}')" ${s.live?'':'disabled'}>&#9632; Stop</button>
  <button onclick="act('watch','${q}')" title="Watch it play - press L in the window to take over and teach it">&#128065; Watch it play / teach it</button><button onclick="watchBest('${q}')" title="Watch its best game again - its record games are kept when 'Learn from its own best games' is ticked">&#127942; Best game</button><button onclick="report('${q}')" title="Open the report card on this AI: live charts of its score and learning">&#128202; Report card</button><button onclick="openM('${q}')">&#9881; Settings &amp; checkpoints</button><button class="danger" onclick="askDelete('${q}')" title="Remove this AI and free up its disk space" aria-label="Delete ${id}">&#128465; Delete</button></div>
  <div class="chips">${chips.join('')}</div>${s.msg?`<div class="projmsg">${esc(s.msg)}${s.state=='crashed'&&!s.live?` <button onclick="repairIt('${q}')">&#129657; Check &amp; repair</button>`:''}</div>`:''}${x.chip?chipSays(x):''}${x.damaged&&!s.live&&s.state!='crashed'?`<div class="projmsg">&#129657; Some of its files look damaged - probably a crash or power cut while it was training. <button onclick="repairIt('${q}')">Check &amp; repair</button></div>`:''}${s.live?'<div class="pcwarn">&#9888; Training uses your whole PC. Close as many other programs as you can - it trains faster, and crashes are much less likely.</div>':''}

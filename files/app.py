@@ -347,10 +347,54 @@ def projects():
     return out
 
 
+def _folder_name(name):
+    return re.sub(r"\s+", " ", re.sub(r"[^\w \-]", "", name)).strip()[:60]
+
+
+def _free_name(name, mine=None):
+    """A name (and its My AIs folder) nobody else is using: 'Shinobi', then 'Shinobi 2', 'Shinobi 3'..."""
+    base = _folder_name(name) or "My AI"
+    shown = name.strip() or base
+    n = 1
+    while True:
+        tag = "" if n == 1 else f" {n}"
+        folder = PROJECTS / (base + tag)
+        if not folder.exists() or (mine is not None and folder.resolve() == mine.resolve()):
+            return (shown + tag), folder
+        n += 1
+
+
+def rename_ai(pid, new):
+    """ALFRED 2 Nov 2026: rename an AI. The name on its card changes straight away; its folder in My AIs is
+    renamed too when it isn't training (folders can't be renamed while Windows has files in them open)."""
+    d = _ai_folder(pid)
+    new = re.sub(r"\s+", " ", (new or "")).strip()[:60]
+    if not _folder_name(new):
+        return {"ok": False, "msg": "Give it a name with at least one letter or number in it."}
+    cfg = json.loads((d / "project.json").read_text())
+    if is_live(pid):
+        cfg["game_name"] = new
+        (d / "project.json").write_text(json.dumps(cfg, indent=1))
+        return {"ok": True, "id": pid, "msg": f"Renamed to '{new}'. Its folder in My AIs keeps the old name "
+                                              "until you stop training and rename it again."}
+    shown, folder = _free_name(new, mine=d)
+    cfg["game_name"] = shown
+    (d / "project.json").write_text(json.dumps(cfg, indent=1))
+    if folder.resolve() == d.resolve():
+        return {"ok": True, "id": pid, "msg": f"Renamed to '{shown}'."}
+    try:
+        d.rename(folder)
+    except OSError:
+        return {"ok": True, "id": pid, "msg": f"Renamed to '{shown}'. Windows wouldn't let go of its folder "
+                                              "(is its Watch window or report card open?), so the folder keeps its old name."}
+    extra = f" ('{new}' was taken, so it's '{shown}')" if shown != new else ""
+    return {"ok": True, "id": folder.name, "msg": f"Renamed to '{shown}'{extra}."}
+
+
 def create(p):
     gid = p["game_id"]
     name = (p.get("title") or pretty(gid)).strip()
-    folder = PROJECTS / re.sub(r"[^\w \-]", "", name)
+    name, folder = _free_name(name)       # ALFRED 2 Nov 2026: a second Shinobi is "Shinobi 2" - never on top of the first
     (folder / "files" / "run").mkdir(parents=True, exist_ok=True)
     plat = p.get("platform", "atari")
     hw = hardware(plat)
@@ -809,6 +853,7 @@ def _train(pid):
     tl = FILES / "TUNING"
     if _tuning_now(tl):
         return {"ok": False, "msg": "Tune for this PC is running - wait until its window says it's done (about 15 minutes)."}
+    (d / "files" / "run").mkdir(parents=True, exist_ok=True)   # ALFRED 1 Nov 2026: gone after a reset -> Train crashed
     (d / "files" / "run" / "STOP").unlink(missing_ok=True)
     # Say "starting" straight away: the trainer takes a minute to load before it reports in, and until now that
     # gap let a second click start a second trainer on the same AI.
@@ -1090,6 +1135,8 @@ class H(BaseHTTPRequestHandler):
                 return self.send(robot_stop())
             if u.path == "/api/delete_info":
                 return self.send(delete_info(q["id"]))
+            if u.path == "/api/rename":
+                return self.send(rename_ai(q["id"], q.get("name", "")))
             if u.path == "/api/delete":
                 return self.send(delete_ai(q["id"]))
             if u.path == "/api/reset":
