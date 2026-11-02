@@ -46,9 +46,25 @@ def action_table(pack):
     return table, names
 
 
+# ALFRED 2 Nov 2026: score readers found to be wrong after they shipped. A pack whose score reader is EXACTLY the old one
+# reads with the fixed one - even if its owner changed something else in it (buttons, Show it how), so the updater
+# kept their copy, or "Find the score again" wrote the old reader back.
+SCORE_FIXES = {
+    "shinobi": ({"kind": "bcd", "n": 3, "big": False, "offset": 112687, "swapped": False, "scale": 1},      # missed the
+                {"kind": "bcd", "n": 4, "big": True, "offset": 112685, "swapped": True, "pair_base": 1}),   # 10,000s
+}
+
+
+def fix_score(pack):
+    fix, s = SCORE_FIXES.get(pack.get("set")), pack.get("score")
+    if fix and isinstance(s, dict) and not s.get("pair_base") and all(s.get(k) == v for k, v in fix[0].items()):
+        pack = dict(pack, score=dict(s, **fix[1]))
+    return pack
+
+
 def load_pack(pack_dir):
     pack_dir = Path(pack_dir)
-    return json.loads((pack_dir / "pack.json").read_text(encoding="utf-8"))
+    return fix_score(json.loads((pack_dir / "pack.json").read_text(encoding="utf-8")))
 
 
 class GenericArcadeEnv(gym.Env):

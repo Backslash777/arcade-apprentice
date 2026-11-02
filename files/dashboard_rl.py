@@ -274,6 +274,9 @@ PORTABLE = os.environ.get("PORTABLE_PROJECTS")
 def discover():
     if PORTABLE:
         base = Path(PORTABLE)
+        for gid, g in list(GAMES.items()):      # ALFRED 2 Nov 2026: renamed or deleted on the page - don't list it twice
+            if gid.startswith("Portable/") and not (g.folder / "project.json").exists():
+                GAMES.pop(gid, None)
         for d in sorted(base.iterdir()) if base.is_dir() else []:
             if d.is_dir() and (d / "project.json").exists() and f"Portable/{d.name}" not in GAMES:
                 g = Game("Portable", d)
@@ -348,7 +351,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(PAGE, "text/html")
             if u.path == "/api/games":
                 discover()
-                return self.send(json.dumps(clean([g.summary() for g in GAMES.values()]), default=str))
+                return self.send(json.dumps(clean([g.summary() for g in list(GAMES.values())]), default=str))
             if u.path == "/api/game":
                 discover()
                 g = GAMES.get(q.get("id", [""])[0])

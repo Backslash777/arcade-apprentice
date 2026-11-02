@@ -279,7 +279,8 @@ def footprint(c):
     if c["kind"] == "digits":
         return {c["offset"] - j * c["stride"] for j in range(c.get("max_digits", MAX_DIGITS))}
     idx = range(c["offset"], c["offset"] + c["n"])
-    return {i ^ 1 for i in idx} if c["swapped"] else set(idx)
+    pb = int(c.get("pair_base", 0))           # the same addresses decode() reads
+    return {((i - pb) ^ 1) + pb for i in idx} if c["swapped"] else set(idx)
 
 
 def describe(c):
@@ -289,7 +290,9 @@ def describe(c):
         how = (f"{c['n']}-byte {'BCD' if c['kind'] == 'bcd' else 'binary'}, "
                f"{'big' if c['big'] else 'little'}-endian")
     tail = f", shown x{c['scale']}" if c["scale"] > 1 else ""
-    return f"{how} at {c['offset']:#x}{' (68000 word-swapped)' if c['swapped'] else ''}{tail}"
+    sw = (" (68000 word-swapped, pairs start on odd addresses)" if c.get("pair_base") else " (68000 word-swapped)") \
+        if c["swapped"] else ""
+    return f"{how} at {c['offset']:#x}{sw}{tail}"
 
 
 # ------------------------------------------------------------------------------------------------ lives + "game on"

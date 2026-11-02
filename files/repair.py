@@ -85,6 +85,35 @@ def _training(proj):
     return False
 
 
+TRAINERS = ("keepgoing", "trainer", "evolution", "goexplore")      # programs that train an AI (write its brain)
+LEARNERS = TRAINERS + ("teacher",)                                  # ...or write its lessons
+
+
+def users(proj, scripts=None):
+    """ALFRED 2 Nov 2026: the kit's programs that were handed this AI's folder and are still running - training, a
+    restart waiting after a crash (keepgoing sleeps 30 s first), Watch, Show it how, a teacher... scripts=LEARNERS
+    narrows it to the training kind. The page's status can't see all of these; this asks Windows."""
+    try:
+        import psutil
+    except Exception:
+        return []
+    proj = Path(proj)        # the folder as the kit hands it out (My AIs\<name>), and resolved (in case it's a link)
+    mine = {os.path.normcase(os.path.normpath(str(p))) for p in (proj, proj.resolve(), PROJECTS / proj.name)}
+    want = {f"{s}.py" for s in scripts} if scripts else None
+    out = []
+    for p in psutil.process_iter(["pid", "cmdline"]):
+        try:
+            args = [a for a in (p.info["cmdline"] or []) if isinstance(a, str) and a]
+        except Exception:
+            continue
+        if p.info.get("pid") == os.getpid() or not any(os.path.normcase(os.path.normpath(a)) in mine for a in args):
+            continue
+        if want and not any(os.path.basename(a).lower() in want for a in args):
+            continue
+        out.append(p)
+    return out
+
+
 def _clean_log(p, ok, step_of=None, after=None):
     """Drop NUL bytes and broken lines (ok(i, line) says which are whole); optionally set aside lines past a step.
     Returns (new bytes, broken, set aside)."""
@@ -115,6 +144,19 @@ def repair(proj, fix=True, say=print):
         return {"ok": False, "msg": f"There's no AI called '{name}'."}
     if fix and _training(proj):
         return {"ok": False, "msg": "Stop it first - it can't be repaired while it's training."}
+    busy = users(proj, LEARNERS) if fix else []    # ALFRED 2 Nov 2026: e.g. starting itself again 30 s after a crash
+    if busy:
+        def runs(p, script):
+            try:
+                return any(os.path.basename(a).lower() == script for a in (p.info["cmdline"] or []))
+            except Exception:
+                return False
+        if all(runs(p, "teacher.py") for p in busy):
+            return {"ok": False, "msg": "Its Teach window is still open. Let it finish, press Enter in that window to "
+                                        "close it, then Check & repair."}
+        return {"ok": False, "msg": "It's still running - probably starting itself again after the crash (that takes "
+                                    "about 30 seconds). Give it a minute. If it keeps crashing, press Stop all "
+                                    "training at the top of the list, wait a minute, then Check & repair."}
     bk = proj / "files" / f"backup {time.strftime('%Y-%m-%d %H%M')} - repair"
     found, fixed, unfixable = [], [], []
 

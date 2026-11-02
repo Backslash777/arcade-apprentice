@@ -641,7 +641,7 @@ function card(r){const f=r.file?esc(r.file):'included with the kit';const fq=r.f
  let btn='';if(r.score=='find')btn=`<button class="go" style="margin-top:8px" onclick="findScore('${fq}')">&#128269; Find the score</button><button class="info" onclick="info('finder')">i</button><div class="small muted" style="margin-top:6px">When you've saved it, press Scan the ROMs folder and it moves to <b>Arcade - ready to train</b>.</div>`;
  else if(r.platform=='arcade'&&r.file)btn=`<button style="margin-top:8px;padding:4px 11px" onclick="findScore('${fq}')">&#128269; Find the score again</button>`;
  const mine=r.game_id?PROJ.filter(x=>x.game_id==r.game_id):[];
- const nudge=mine.length?`<div class="nudge">You've already got ${mine.length>1?'AIs':'an AI'} on this game: <b>${mine.map(x=>esc(x.id)).join(', ')}</b>. To carry on training ${mine.length>1?'one':'it'}, use its Train button at the top of the page. <button style="padding:3px 10px;margin-left:4px" onclick="goToAI('${jsq(mine[0].id)}')">Take me there</button><br><span class="small muted">Or carry on below to start a brand new one from scratch.</span></div>`:'';
+ const nudge=mine.length?`<div class="nudge">You've already got ${mine.length>1?'AIs':'an AI'} on this game: <b>${mine.map(x=>esc(x.name||x.id)).join(', ')}</b>. To carry on training ${mine.length>1?'one':'it'}, use its Train button at the top of the page. <button style="padding:3px 10px;margin-left:4px" onclick="goToAI('${jsq(mine[0].id)}')">Take me there</button><br><span class="small muted">Or carry on below to start a brand new one from scratch.</span></div>`:'';
  $('gamecard').innerHTML=`<div class="nm">${esc(nm(r))} ${SCORE_BADGE[r.score]}</div><div class="small muted">${r.maker?esc(r.maker)+' &middot; ':''}${f} &middot; ${esc(r.how||'')}</div>`+nudge+(r.score=='auto'?'<div class="small" style="margin-top:6px;color:var(--green)">Ready - carry on to step 3.</div>':'')+btn;
  $('gamecard').style.display='block'}
 function curTheme(){return document.documentElement.dataset.theme=='light'?'light':'dark'}
@@ -660,10 +660,10 @@ async function askDelete(id){const r=await get('/api/delete_info?id='+encodeURIC
   (r.live?'<p style="color:var(--red)"><b>It is training right now - press Stop first.</b></p>':'');
  $('d_go').disabled=!!r.live;openBox('delbox')}
 let REN=null;
-function askRename(id){const me=(PROJ||[]).find(x=>x.id==id)||{};REN=id;$('r_name').value=me.name||id;openBox('renbox');setTimeout(()=>{$('r_name').focus();$('r_name').select()},50)}
-async function doRename(){if(!REN)return;const v=$('r_name').value.trim();if(!v)return toast('Give it a name first.');$('r_go').disabled=true;
- const r=await get('/api/rename?id='+encodeURIComponent(REN)+'&name='+encodeURIComponent(v));$('r_go').disabled=false;
- if(!r.ok)return toast(r.msg||'Could not rename it.',7000);closeBox('renbox');toast(r.msg,7000);REN=null;loadProjects()}
+function askRename(id){const me=(PROJ||[]).find(x=>x.id==id)||{};REN=id;$('r_name').value=me.name||id;$('r_go').disabled=false;openBox('renbox');setTimeout(()=>{$('r_name').focus();$('r_name').select()},50)}
+async function doRename(){if(!REN||$('r_go').disabled)return;const v=$('r_name').value.trim();if(!v)return toast('Give it a name first.');$('r_go').disabled=true;
+ let r;try{r=await get('/api/rename?id='+encodeURIComponent(REN)+'&name='+encodeURIComponent(v))}catch(e){r={ok:false,msg:"Couldn't reach the kit - is it still running?"}}finally{$('r_go').disabled=false}
+ if(!r.ok)return toast(r.msg||'Could not rename it.',7000);closeBox('renbox');toast(r.msg,9000);REN=null;loadProjects()}
 async function doDelete(){if(!DEL)return;$('d_go').disabled=true;const r=await get('/api/delete?id='+encodeURIComponent(DEL));closeBox('delbox');$('d_go').disabled=false;toast(r.msg,9000);DEL=null;loadProjects()}
 let CL=[];
 async function clutterOpen(){openBox('clutterbox');$('cl_go').disabled=true;$('cl_list').innerHTML='<div class="small muted">Looking at what\'s running...</div>';const r=await get('/api/clutter');CL=r.apps||[];$('cl_go').disabled=!CL.length;
@@ -684,10 +684,11 @@ async function openVideo(){const r=await get('/api/openvideo');toast(r.msg,6000)
 async function findScore(f){const r=await get('/api/findscore?file='+encodeURIComponent(f));toast(r.msg,9000)}
 function chosen(){loadHW();if(gameId&&EXPLORE_GAMES.includes(gameId)){setPreset('explore');toast('That is an exploration game - switched to the exploration preset (explorer bonus on).',7000)}}
 async function createIt(){if(!gameId)return toast(gameFile?'Find the score for that game first (step 2) - then it can be trained.':'Pick a game first (step 2).',7000);
- const body={game_id:gameId,platform:gamePlat,rom_file:gameFile,title:$('title').value,...readDials($('dials_new'))};
+ const cb=$('createbtn');if(cb.disabled)return;cb.disabled=true;   // a double-click would make two AIs
+ try{const body={game_id:gameId,platform:gamePlat,rom_file:gameFile,title:$('title').value,...readDials($('dials_new'))};
  const r=await post('/api/create',body);if(!r.ok)return toast('Problem: '+r.msg);
  const t=await get('/api/train?id='+encodeURIComponent(r.id));toast(t.ok?'Created and training! A training window has opened - leave it running. Your AI is at the top of this page.':t.msg,9000);
- await loadProjects();window.scrollTo({top:0,behavior:'smooth'})}
+ await loadProjects();window.scrollTo({top:0,behavior:'smooth'})}catch(e){toast("Couldn't reach the kit - is it still running?",7000)}finally{cb.disabled=false}}
 // ---------------------------------------------------------------- AIs, graphs, settings, checkpoints
 async function stopAll(){if(!confirm('Stop all training?\n\nEvery AI that is training saves first, then stops. Anything stuck is closed after 3 minutes.'))return;const r=await get('/api/stopall');toast(r.msg||'',9000);setTimeout(loadProjects,2000)}
 async function watchBest(id){const r=await get('/api/watch?best=1&id='+encodeURIComponent(id));toast(r.msg||'')}
@@ -737,7 +738,7 @@ async function liveTick(){for(const x of PROJ){const s=x.status||{};if(!s.live&&
  <div class="sb-meta"><span><b>${(step/1e6).toFixed(2)}M</b> moves${pct!=null?` of ${(tgt/1e6).toFixed(0)}M`:''}</span><span><b>${big(st.sps||+r.sps)}</b> moves a second</span><span><b>${big(+r.games)}</b> games in the last round</span>${!isNaN(nov)&&nov>0?`<span>${nov>0.01?'Exploring new places':'Has seen most of it'}</span>`:''}${st.state=='stopping'?'<span><b>Stopping - saving first...</b></span>':''}<button class="sb-btn" onclick="openCon('${jsq(x.id)}')">&#128421; Show console</button></div>
  ${cheer?`<div class="wow"><img src="/help/chip-cheer.webp" alt="">${wow}</div>`:''}`;
  LIVEHTML[x.id]=h;const el=document.getElementById('lv_'+x.id);if(el)el.innerHTML=h}}
-function openCon(id){CONID=id;$('con_title').textContent='Training console - '+id;$('con_text').textContent='Loading...';$('conbox').style.display='flex';liveTick()}
+function openCon(id){CONID=id;$('con_title').textContent='Training console - '+(((PROJ||[]).find(x=>x.id==id)||{}).name||id);$('con_text').textContent='Loading...';$('conbox').style.display='flex';liveTick()}
 function closeCon(){CONID=null;$('conbox').style.display='none'}
 setInterval(liveTick,5000);
 function goToAI(id){const el=document.getElementById('ai_'+id);if(el){const pn=el.closest('.panel');if(pn)pn.classList.remove('shut');el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='3px solid var(--accent)';el.style.outlineOffset='3px';setTimeout(()=>{el.style.outline='';el.style.outlineOffset=''},2500)}}
@@ -769,7 +770,7 @@ async function loadProjects(){const p=await get('/api/projects');PROJ=p;let smil
 async function teachIt(){const to=$('pupil').value;if(!to)return toast('Make another AI on the same game first - then this one can teach it.',7000);const r=await get(`/api/teach?from=${encodeURIComponent(editId)}&to=${encodeURIComponent(to)}`);toast(r.msg,10000)}
 async function openM(id){editId=id;const s=await get('/api/settings?id='+encodeURIComponent(id));
  const all=await get('/api/projects');const me=all.find(x=>x.id==id)||{};const others=all.filter(x=>x.id!=id&&x.game_id==me.game_id);
- $('pupil').innerHTML=others.length?others.map(x=>`<option value="${esc(x.id)}">${esc(x.id)}${x.learn_style=='evolution'?' (evolution)':''}</option>`).join(''):'<option value="">- no other AI on this game yet -</option>';$('m_title').textContent='Settings - '+s.game_name;renderDials($('dials_edit'),s);loadCps();loadBtns();$('modal').style.display='flex'}
+ $('pupil').innerHTML=others.length?others.map(x=>`<option value="${esc(x.id)}">${esc(x.name||x.id)}${x.learn_style=='evolution'?' (evolution)':''}</option>`).join(''):'<option value="">- no other AI on this game yet -</option>';$('m_title').textContent='Settings - '+s.game_name;renderDials($('dials_edit'),s);loadCps();loadBtns();$('modal').style.display='flex'}
 function closeM(){$('modal').style.display='none'}
 async function saveSettings(){const r=await post('/api/settings',{id:editId,...readDials($('dials_edit'))});toast(r.msg,8000)}
 async function loadCps(){const c=await get('/api/checkpoints?id='+encodeURIComponent(editId));

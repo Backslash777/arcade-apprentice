@@ -289,8 +289,20 @@ def undo(projects: Path, pid: str, backup: str) -> dict:
     source = folder / "files" / "_dev" / backup
     if not source.is_file():
         raise ValueError("That undo backup no longer exists.")
+    try:
+        name_now = json.loads((folder / "project.json").read_text(encoding="utf-8")).get("game_name")
+    except Exception:
+        name_now = None
     _backup(folder, "before-recipe-undo")
     shutil.copy2(source, folder / "project.json")
+    if name_now:                    # ALFRED 2 Nov 2026: undoing an import puts the dials back, not an old name
+        try:
+            cfg = json.loads((folder / "project.json").read_text(encoding="utf-8"))
+            if cfg.get("game_name") != name_now:
+                cfg["game_name"] = name_now
+                (folder / "project.json").write_text(json.dumps(cfg, indent=1), encoding="utf-8")
+        except Exception:
+            pass
     with (folder / "files" / "run" / "console.log").open("a", encoding="utf-8") as f:
         f.write(f"RECIPE IMPORT UNDONE: restored {backup}\n")
     return {"ok": True, "msg": "Import undone. Your previous settings are back."}

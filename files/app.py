@@ -348,12 +348,17 @@ def projects():
 
 
 def _folder_name(name):
-    return re.sub(r"\s+", " ", re.sub(r"[^\w \-]", "", name)).strip()[:60]
+    return re.sub(r"\s+", " ", re.sub(r"[^\w \-]", "", name)).strip()[:60].rstrip()   # no space at the end (Windows)
+
+
+_RESERVED = {"CON", "PRN", "AUX", "NUL"} | {f"{d}{i}" for d in ("COM", "LPT") for i in range(1, 10)}   # Windows device names
 
 
 def _free_name(name, mine=None):
     """A name (and its My AIs folder) nobody else is using: 'Shinobi', then 'Shinobi 2', 'Shinobi 3'..."""
     base = _folder_name(name) or "My AI"
+    if base.upper() in _RESERVED:            # Windows won't make a folder called CON, NUL, COM1...
+        base += " AI"
     shown = name.strip() or base
     n = 1
     while True:
@@ -364,19 +369,29 @@ def _free_name(name, mine=None):
         n += 1
 
 
+def _in_use(d):
+    """ALFRED 2 Nov 2026: is anything using this AI's folder right now - training (the page's view), or any kit
+    window or job that was handed its folder (Watch, Show it how, a teacher, evolution...)?"""
+    if is_live(d.name):
+        return True
+    import repair
+    return bool(repair.users(d))
+
+
 def rename_ai(pid, new):
     """ALFRED 2 Nov 2026: rename an AI. The name on its card changes straight away; its folder in My AIs is
     renamed too when it isn't training (folders can't be renamed while Windows has files in them open)."""
     d = _ai_folder(pid)
-    new = re.sub(r"\s+", " ", (new or "")).strip()[:60]
+    new = re.sub(r"\s+", " ", (new or "")).strip()[:60].rstrip()
     if not _folder_name(new):
         return {"ok": False, "msg": "Give it a name with at least one letter or number in it."}
     cfg = json.loads((d / "project.json").read_text())
-    if is_live(pid):
+    if _in_use(d):
         cfg["game_name"] = new
         (d / "project.json").write_text(json.dumps(cfg, indent=1))
-        return {"ok": True, "id": pid, "msg": f"Renamed to '{new}'. Its folder in My AIs keeps the old name "
-                                              "until you stop training and rename it again."}
+        return {"ok": True, "id": pid, "msg": f"Renamed to '{new}'. It's training or open in another window, so its "
+                                              "folder in My AIs keeps the old name for now - rename it again once "
+                                              "it's stopped and closed if you want the folder to match."}
     shown, folder = _free_name(new, mine=d)
     cfg["game_name"] = shown
     (d / "project.json").write_text(json.dumps(cfg, indent=1))
@@ -385,8 +400,8 @@ def rename_ai(pid, new):
     try:
         d.rename(folder)
     except OSError:
-        return {"ok": True, "id": pid, "msg": f"Renamed to '{shown}'. Windows wouldn't let go of its folder "
-                                              "(is its Watch window or report card open?), so the folder keeps its old name."}
+        return {"ok": True, "id": pid, "msg": f"Renamed to '{shown}'. Windows wouldn't let go of its folder (something "
+                                              "still has one of its files open), so the folder keeps its old name for now."}
     extra = f" ('{new}' was taken, so it's '{shown}')" if shown != new else ""
     return {"ok": True, "id": folder.name, "msg": f"Renamed to '{shown}'{extra}."}
 
@@ -583,6 +598,7 @@ def restore(pid, name):
     old = json.loads((PROJECTS / pid / "project.json").read_text())
     cp = json.loads((src / "project.json").read_text())
     cp["hardware"] = old.get("hardware", cp.get("hardware"))
+    cp["game_name"] = old.get("game_name", cp.get("game_name"))    # ALFRED 2 Nov 2026: a restore keeps its current name
     (PROJECTS / pid / "project.json").write_text(json.dumps(cp, indent=1))
     with open(run / "console.log", "a", encoding="utf-8") as f:
         f.write(f"RESTORED checkpoint '{name}' (brain + settings) {time.strftime('%Y-%m-%d %H:%M')}\n")
@@ -650,6 +666,10 @@ def delete_ai(pid):
     d = _ai_folder(pid)
     if is_live(pid):
         return {"ok": False, "msg": "It's training right now - press Stop first, then delete it."}
+    try:
+        shown = json.loads((d / "project.json").read_text()).get("game_name") or pid
+    except Exception:
+        shown = pid
     freed = _size(d)
 
     def force(func, path, _exc):             # read-only files (Google Drive / Windows) - make writable and retry
@@ -665,7 +685,7 @@ def delete_ai(pid):
             return {"ok": False, "msg": "Some of its files are still in use (is its Watch window open?). Close it and "
                                         f"try again. Freed {_pretty(freed - left)} so far."}
         shutil.rmtree(d, ignore_errors=True)  # only tiny leftovers (e.g. Google Drive's desktop.ini) - tidy up
-    return {"ok": True, "msg": f"Deleted '{pid}' - freed {_pretty(freed)}."}
+    return {"ok": True, "msg": f"Deleted '{shown}' - freed {_pretty(freed)}."}
 
 
 # ------------------------------------------------------------------ LIBRARY ROBOT (optional add-on)
@@ -847,9 +867,16 @@ def _tuning_now(lock):
 
 
 def _train(pid):
-    d = PROJECTS / pid
+    try:
+        d = _ai_folder(pid)          # ALFRED 2 Nov 2026: only a real AI (a renamed or deleted one's old card can't
+    except ValueError:               # make a ghost folder, and no path tricks)
+        return {"ok": False, "msg": "That AI isn't there any more - renamed or deleted? The page will catch up in a moment."}
     if any(p.get("status", {}).get("live") for p in projects()):
         return {"ok": False, "msg": "Another AI is already training. One at a time - stop it first."}
+    import repair
+    if repair.users(d, repair.TRAINERS):     # ALFRED 2 Nov 2026: e.g. starting itself again 30 s after a crash
+        return {"ok": False, "msg": "It's still running from last time - saving after a Stop, or starting itself again "
+                                    "after a crash (that takes about 30 seconds). Give it a minute, then try again."}
     tl = FILES / "TUNING"
     if _tuning_now(tl):
         return {"ok": False, "msg": "Tune for this PC is running - wait until its window says it's done (about 15 minutes)."}
@@ -878,7 +905,8 @@ def _train(pid):
     out = open(d / "files" / "run" / "window.log", "w", encoding="utf-8", errors="replace")
     # normal priority (19 Oct 2026): below-normal made Windows 11 put all of it on the efficiency cores - the performance
     # cores sat idle and training ran about a third slower
-    subprocess.Popen([PY, "-u", str(FILES / "keepgoing.py"), script, str(d)], cwd=str(FILES), creationflags=NOWIN,
+    subprocess.Popen([PY, "-u", str(FILES / "keepgoing.py"), script, str(PROJECTS / d.name)], cwd=str(FILES),
+                     creationflags=NOWIN,
                      stdin=subprocess.DEVNULL, stdout=out, stderr=subprocess.STDOUT)
     if script == "evolution.py":
         return {"ok": True, "msg": "Evolution window opened: a family of brains takes turns practising. You can close "
@@ -1070,6 +1098,30 @@ class H(BaseHTTPRequestHandler):
     def log_message(self, *a):
         pass
 
+    def _foreign(self):
+        """ALFRED 2 Nov 2026: the kit's buttons are plain web addresses on this PC (Train, Delete, Rename...), so a web
+        page somewhere else could try to press them. Only the kit's own page may: a request the browser marks as coming
+        from another site, or addressed to a name other than this PC (DNS rebinding), is turned away."""
+        if not urlparse(self.path).path.startswith("/api/"):
+            return False
+        if (self.headers.get("Sec-Fetch-Site") or "").lower() == "cross-site":
+            return True
+        local = ("127.0.0.1", "localhost", "::1")
+        host = (self.headers.get("Host") or "").strip().lower()
+        host = host[1:host.index("]")] if host.startswith("[") and "]" in host else host.rsplit(":", 1)[0]
+        if host and host not in local:
+            return True
+        origin = self.headers.get("Origin")
+        return bool(origin) and (urlparse(origin).hostname or "") not in local
+
+    def refuse(self):
+        b = json.dumps({"ok": False, "msg": "Blocked: only the kit's own page can do that."}).encode()
+        self.send_response(403)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(b)
+
     def send(self, obj, ctype="application/json"):
         if not isinstance(obj, str):
             obj = json.dumps(_no_nan(obj))     # NaN (e.g. an average of no games yet) breaks the page's JSON
@@ -1081,6 +1133,8 @@ class H(BaseHTTPRequestHandler):
         self.wfile.write(b)
 
     def do_GET(self):
+        if self._foreign():
+            return self.refuse()
         u = urlparse(self.path)
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
         try:
@@ -1223,6 +1277,8 @@ class H(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self):
+        if self._foreign():
+            return self.refuse()
         n = int(self.headers.get("Content-Length", 0))
         if n > 2_100_000:
             return self.send({"ok": False, "msg": "That request is too large (2 MB maximum)."})
