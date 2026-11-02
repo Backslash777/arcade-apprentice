@@ -1,4 +1,4 @@
-ARCADE APPRENTICE v1.3.2
+ARCADE APPRENTICE v1.3.3
 Teach an AI to play Atari 2600 and arcade games from scratch - on your own computer.  (c) 2026 Jonathan Terrington
 
 0. Extract this folder anywhere you can write to (Desktop, Documents, Downloads...) - not inside Program Files.
@@ -28,6 +28,23 @@ Teach an AI to play Atari 2600 and arcade games from scratch - on your own compu
    (each AI saves first) and closes everything the kit left open.
 6. Press Watch it play to see the latest brain in action. Open the report card for live charts.
 
+NEW IN v1.3.3:
+   - Rename your AIs. Click the pencil next to an AI's name on its card. Handy when you've got more than one on
+     the same game, like "Shinobi - copies me" and "Shinobi - on its own".
+   - Two AIs on the same game. Making a second AI for a game you've already got now gives it its own folder
+     (Shinobi 2). Before, it could quietly overwrite the first one's settings.
+   - Shinobi now reads its whole score. It used to stop counting at 9,990, so the AI earned nothing for anything
+     it did past that.
+   - Check & repair clears the "Crashed" label when it finds nothing wrong, and says it's ready to train again.
+     And while a crashed AI is starting itself up again, Train and Check & repair wait instead of starting a
+     second copy on top of it.
+   - Show it how and Watch open on top of the browser instead of behind it, and Show it how starts with a card
+     that says which keys to press.
+   - Train works again on an AI that's been reset (it used to stop with an error).
+   - Safer: only the kit's own page can use its buttons. Before, a web page from another site open in your
+     browser could in theory have pressed them (Train, Delete...) while the kit was running.
+   - Tidier AI cards in smaller windows, and a shorter message after an update.
+
 NEW IN v1.3.2:
    - Updates. When a new version is out, a banner on the page says so. Press Update now and it downloads it,
      checks it, and swaps in the new code - your AIs, games and recipe cards stay exactly as they are, the old
@@ -49,7 +66,6 @@ NEW IN v1.3:
    - Dials a game can't use are now greyed out with a short note saying why, instead of quietly doing nothing.
    - If you play games for your AI to copy (Learn from my games), an AI that's already well trained no longer gets
      your old recordings copied over the top of it when you restore it.
-
 RECIPE CARDS (new in v1.2):
    Open an AI's Settings and look for Recipe cards.
    - Preview & export settings shows exactly what goes in the .aarecipe file first: every dial, the ROM's
