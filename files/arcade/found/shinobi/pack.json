@@ -25,11 +25,13 @@
  ],
  "score": {
   "kind": "bcd",
-  "n": 3,
-  "big": false,
-  "offset": 112687,
-  "swapped": false,
-  "scale": 1
+  "n": 4,
+  "big": true,
+  "offset": 112685,
+  "swapped": true,
+  "pair_base": 1,
+  "scale": 1,
+  "note": "ALFRED 2 Nov 2026: was n=3 at 112687, which missed the 10,000s digit - scores stuck at 9,990"
  },
  "read_from": "memory",
  "alternatives": [],

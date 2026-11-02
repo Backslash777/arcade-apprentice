@@ -68,11 +68,12 @@ def decode(ram, c):
             p *= 10
         return int(round(v * c["scale"]))
     n, big = c["n"], c["big"]
-    if o + n > size or ((o + n - 1) ^ sw) >= size:
+    pb = int(c.get("pair_base", 0)) if sw else 0     # ALFRED 2 Nov 2026: swapped byte pairs that start on an ODD address
+    if o + n > size or ((((o + n - 1) - pb) ^ sw) + pb) >= size:   # (Shinobi) - pair_base 1; 0 = the usual
         return -1
     v, mul = 0, 1
     for i in (range(n - 1, -1, -1) if big else range(n)):      # least significant byte first
-        b = int(ram[(o + i) ^ sw])
+        b = int(ram[(((o + i) - pb) ^ sw) + pb])
         if c["kind"] == "bcd":
             if (b & 15) > 9 or (b >> 4) > 9:
                 return -1
